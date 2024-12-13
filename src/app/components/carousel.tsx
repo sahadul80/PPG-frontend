@@ -45,55 +45,57 @@ export default function Carousel() {
     }, [isHydrated]);
 
     return (
-        <div className="carousel-header" style={{ height: "100vh", overflow: "hidden" }}>
+        <div
+            className="carousel-container"
+            style={{
+                width: "100%", // Smaller window size
+                height: "400px", // Fixed height for the carousel
+                overflow: "hidden",
+                position: "relative",
+                margin: "0 auto", // Center the carousel
+            }}
+        >
             <div id="carouselId" className="carousel" style={{ height: "100%" }}>
-                {/* Indicators */}
-                <ol className="carousel-indicators">
-                    {images.map((_, index) => (
-                        <li
-                            key={index}
-                            data-bs-target="#carouselId"
-                            data-bs-slide-to={index}
-                            className={index === currentIndex ? "active" : ""}
-                        />
-                    ))}
-                </ol>
-
                 {/* Carousel Inner */}
-                <div className="carousel-inner" role="listbox" style={{ height: "100%" }}>
+                <div
+                    className="carousel-inner"
+                    style={{
+                        display: "flex",
+                        height: "100%",
+                        transition: "transform 1s ease-in-out",
+                        transform: `translateX(-${currentIndex * 100}%)`, // Horizontal sliding effect
+                    }}
+                >
                     {images.map((image, index) => (
                         <div
                             key={index}
-                            className={`carousel-item ${index === currentIndex ? "active" : ""}`}
+                            className="carousel-item"
                             style={{
+                                flex: "0 0 100%",
                                 height: "100%",
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                opacity: index === currentIndex ? 0 : 1,
-                                transition: isHydrated
-                                    ? "opacity 1s ease-in-out"
-                                    : undefined,
                             }}
                         >
                             <img
                                 src={image.src}
                                 className="img-fluid"
                                 alt={image.alt}
-                                style={{ maxHeight: "100%", objectFit: "cover" }}
+                                style={{
+                                    maxHeight: "100%",
+                                    objectFit: "cover",
+                                    width: "100%", // Make sure the image fits in the container
+                                }}
                             />
                             <div className="carousel-caption">
                                 <div className="text-center p-4" style={{ maxWidth: "900px" }}>
-                                    <h4 className="text-white text-uppercase">
-                                        {image.title}
-                                    </h4>
-                                    <h1 className="display-2 text-capitalize text-white">
-                                        {image.subtitle}
-                                    </h1>
+                                    <h4 className="text-white text-uppercase">{image.title}</h4>
+                                    <h1 className="display-2 text-capitalize text-white">{image.subtitle}</h1>
                                     <p className="text-white">{image.description}</p>
                                     <Link
                                         href="#"
-                                        className="btn btn-primary border-secondary rounded-pill text-white py-3 px-5"
+                                        className="btn btn-primary border-secondary rounded-pill py-3 px-5"
                                     >
                                         More Details
                                     </Link>
@@ -108,17 +110,37 @@ export default function Carousel() {
                     className="carousel-control-prev"
                     type="button"
                     onClick={prevSlide}
+                    style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "10px",
+                        zIndex: 10,
+                        background: "rgba(0, 0, 0, 0.5)",
+                        color: "white",
+                        border: "none",
+                        padding: "10px",
+                        borderRadius: "50%",
+                    }}
                 >
                     <span className="carousel-control-prev-icon" aria-hidden="true" />
-                    <span className="visually-hidden">Previous</span>
                 </button>
                 <button
                     className="carousel-control-next"
                     type="button"
                     onClick={nextSlide}
+                    style={{
+                        position: "absolute",
+                        top: "50%",
+                        right: "10px",
+                        zIndex: 10,
+                        background: "rgba(0, 0, 0, 0.5)",
+                        color: "white",
+                        border: "none",
+                        padding: "10px",
+                        borderRadius: "50%",
+                    }}
                 >
                     <span className="carousel-control-next-icon" aria-hidden="true" />
-                    <span className="visually-hidden">Next</span>
                 </button>
             </div>
         </div>

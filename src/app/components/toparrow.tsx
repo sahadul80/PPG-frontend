@@ -29,10 +29,10 @@ export default function TopArrow() {
         <div>
             <button
                 onClick={scrollToTop}
-                className={`btn btn-primary btn-lg-square back-to-top ${isVisible ? "d-block" : "d-none"}`}
+                className={`bg-transparent rounded-full back-to-top ${isVisible ? "d-block" : "d-none"}`}
             >
-                <div className="feature-icon p-3 mb-4">
-                    <i className="fas fa-atlas fa-4x text-primary">
+                <div className="p-3 mb-4">
+                    <i className="text-primary">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 32 32"

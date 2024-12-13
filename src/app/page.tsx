@@ -13,6 +13,8 @@ import Carousel from "./components/carousel";
 import Navbar from "./components/navbar";
 import Topbar from "./components/topbar";
 import TopArrow from "./components/toparrow";
+import Popup from "./components/popups";
+import ContactCTA from "./components/contactCTA";
 
 export default function Home() {
   return (
@@ -31,6 +33,7 @@ export default function Home() {
           <Footer />
           <Copyright />
           <TopArrow />
+          <ContactCTA />
       </>
   );
 }

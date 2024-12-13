@@ -33,7 +33,7 @@ async function sendVerificationEmail(email: string) {
         from: process.env.EMAIL_USER,
         to: email,
         subject: 'Subscription Verification',
-        text: `Thank you for subscribing! Please verify your email to complete the subscription.`,
+        text: `Thank you for subscribing to People Pulse Global ltd.! Please verify your email to complete the subscription.`,
         html: `
             <p>Thank you for subscribing!</p>
             <p>Please verify your email to complete the subscription.</p>

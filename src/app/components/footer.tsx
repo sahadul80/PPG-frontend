@@ -289,12 +289,11 @@ export default function Footer() {
                                         value={data.email}
                                         onChange={handleInputChange}
                                         placeholder="Enter your email"
-                                        className="w-full px-4 py-2 mb-4 border rounded text-gray-800"
-                                        required
+                                        className="px-4 py-2 mb-4 border rounded"
                                     />
                                     <button
                                         type="submit"
-                                        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+                                        className="py-2 rounded"
                                         disabled={loading}
                                     >
                                         {loading ? "Submitting..." : "Subscribe"}
