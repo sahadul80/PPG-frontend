@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { useState, useEffect } from "react";
+import router from "next/router";
 
 export default function Carousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,6 +24,10 @@ export default function Carousel() {
         },
     ];
 
+    const moreDetails = () => {
+        router.push('/pages/carouselDetails'); // Replace with your folder path
+    };
+
     useEffect(() => {
         setIsHydrated(true); // Ensure hydration before animations start
     }, []);
@@ -36,112 +40,63 @@ export default function Carousel() {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
     };
 
-    // Automatically move to the next slide every 5 seconds
+    // Automatically move to the next slide every 4 seconds
     useEffect(() => {
         if (isHydrated) {
-            const interval = setInterval(nextSlide, 3000); // 3000ms = 3 seconds
+            const interval = setInterval(nextSlide, 4000); // 4000ms = 4 seconds
             return () => clearInterval(interval); // Cleanup the interval on component unmount
         }
     }, [isHydrated]);
 
     return (
-        <div
-            className="carousel-container"
-            style={{
-                width: "100%", // Smaller window size
-                height: "400px", // Fixed height for the carousel
-                overflow: "hidden",
-                position: "relative",
-                margin: "0 auto", // Center the carousel
-            }}
-        >
-            <div id="carouselId" className="carousel" style={{ height: "100%" }}>
+        <div className="relative">
+            <div className="carousel-container relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
                 {/* Carousel Inner */}
                 <div
-                    className="carousel-inner"
-                    style={{
-                        display: "flex",
-                        height: "100%",
-                        transition: "transform 1s ease-in-out",
-                        transform: `translateX(-${currentIndex * 100}%)`, // Horizontal sliding effect
-                    }}
+                    className="carousel-inner flex transition-transform duration-400 ease-in-out w-full h-[50vh] md:h-[60vh]"
+                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                 >
                     {images.map((image, index) => (
                         <div
                             key={index}
-                            className="carousel-item"
-                            style={{
-                                flex: "0 0 100%",
-                                height: "100%",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
+                            className="carousel-item w-full flex-shrink-0 relative"
                         >
                             <img
                                 src={image.src}
-                                className="img-fluid"
+                                className="w-full h-full object-cover"
                                 alt={image.alt}
-                                style={{
-                                    maxHeight: "100%",
-                                    objectFit: "cover",
-                                    width: "100%", // Make sure the image fits in the container
-                                }}
                             />
-                            <div className="carousel-caption">
-                                <div className="text-center p-4" style={{ maxWidth: "900px" }}>
+                            <div className="absolute top-0 left-0 w-full h-[50vh] md:h-[60vh] bg-black bg-opacity-50 flex justify-center items-center">
+                                <div className="text-center p-4 space-y-4">
                                     <h4 className="text-white text-uppercase">{image.title}</h4>
-                                    <h1 className="display-2 text-capitalize text-white">{image.subtitle}</h1>
-                                    <p className="text-white">{image.description}</p>
-                                    <Link
-                                        href="#"
-                                        className="btn btn-primary border-secondary rounded-pill py-3 px-5"
+                                    <h1 className="text-2xl text-capitalize text-white">{image.subtitle}</h1>
+                                    <p className="text-white text-sm">{image.description}</p>
+                                    <button
+                                        onClick={moreDetails}
+                                        className="text-white rounded-full mt-1 px-4 py-2"
                                     >
                                         More Details
-                                    </Link>
+                                    </button>
                                 </div>
                             </div>
+                            {/* Carousel Controls */}
+                            <button
+                                type="button"
+                                onClick={prevSlide}
+                                className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-xl bg-gray-800 bg-opacity-50 rounded-full p-2"
+                            >
+                                &#8592; {/* Left Arrow */}
+                            </button>
+                            <button
+                                type="button"
+                                onClick={nextSlide}
+                                className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-xl bg-gray-800 bg-opacity-50 rounded-full p-2"
+                            >
+                                &#8594; {/* Right Arrow */}
+                            </button>
                         </div>
                     ))}
                 </div>
-
-                {/* Controls */}
-                <button
-                    className="carousel-control-prev"
-                    type="button"
-                    onClick={prevSlide}
-                    style={{
-                        position: "absolute",
-                        top: "50%",
-                        left: "10px",
-                        zIndex: 10,
-                        background: "rgba(0, 0, 0, 0.5)",
-                        color: "white",
-                        border: "none",
-                        padding: "10px",
-                        borderRadius: "50%",
-                    }}
-                >
-                    <span className="carousel-control-prev-icon" aria-hidden="true" />
-                </button>
-                <button
-                    className="carousel-control-next"
-                    type="button"
-                    onClick={nextSlide}
-                    style={{
-                        position: "absolute",
-                        top: "50%",
-                        right: "10px",
-                        zIndex: 10,
-                        background: "rgba(0, 0, 0, 0.5)",
-                        color: "white",
-                        border: "none",
-                        padding: "10px",
-                        borderRadius: "50%",
-                    }}
-                >
-                    <span className="carousel-control-next-icon" aria-hidden="true" />
-                </button>
             </div>
         </div>
     );

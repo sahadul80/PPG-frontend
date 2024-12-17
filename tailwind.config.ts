@@ -11,7 +11,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-      },
+          },
+          fontFamily: {
+              sans: ['AvenirLTPro35Light','Arial','sans-serif']
+          }
     },
   },
   plugins: [],

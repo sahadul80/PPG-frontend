@@ -49,7 +49,7 @@ export default function About() {
                         style={{
                             visibility: isVisibleLeft ? "visible" : "hidden",
                             opacity: isVisibleLeft ? 1 : 0,
-                            transform: isVisibleLeft ? "translateX(0)" : "translateX(-50px)",
+                            transform: isVisibleLeft ? "translateX(0)" : "translateX(-20px)",
                             transition: "all 1.5s ease-out",
                             overflow: "hidden",
                         }}
@@ -74,7 +74,7 @@ export default function About() {
                         style={{
                             visibility: isVisibleRight ? "visible" : "hidden",
                             opacity: isVisibleRight ? 1 : 0,
-                            transform: isVisibleRight ? "translateX(0)" : "translateX(70px)",
+                            transform: isVisibleRight ? "translateX(0)" : "translateX(30px)",
                             transition: "all 2.5s ease-out",
                             overflow: "hidden",
                         }}

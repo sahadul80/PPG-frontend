@@ -11,10 +11,9 @@ import Facts from "./components/counterfacts";
 import About from "./components/about";
 import Carousel from "./components/carousel";
 import Navbar from "./components/navbar";
-import Topbar from "./components/topbar";
 import TopArrow from "./components/toparrow";
-import Popup from "./components/popups";
 import ContactCTA from "./components/contactCTA";
+import Topbar from "./components/topbar";
 
 export default function Home() {
   return (

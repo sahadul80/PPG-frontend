@@ -4,115 +4,66 @@ import toast, { Toaster } from "react-hot-toast";
 
 export default function Footer() {
 
-    const isValidEmail = (email: string) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const [data, setData] = useState({ email: '' });
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState('');
-    const [error, setError] = useState('');
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setData({ ...data, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-        setError('');
-        setMessage('');
-
-        try {
-            const response = await fetch('/api/subscribers', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email: data.email }),
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                setMessage('You have successfully subscribed!');
-                setData({ email: '' });
-                toast.success(message);
-            } else {
-                const result = await response.json();
-                setError(result.message);
-                toast.error(error);
-            }
-        } catch (err) {
-            setError('Failed to connect to the server. Please try again.');
-            toast.error(error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
     return (
         <>
             <Toaster />
-            <div
-                className="container-fluid footer py-5 fadeIn animate__animated animate__fadeIn"
-                data-wow-delay="0.2s"
-            >
-                <div className="container py-5">
-                    <div className="row g-5">
-                        {/* Contact Info */}
-                        <div className="col-md-6 col-lg-6 col-xl-3">
-                            <div className="footer-item flex flex-col">
-                                <h4 className="text-secondary mb-4">Contact Info</h4>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M12 2a8 8 0 0 0-7.992 8A12.816 12.816 0 0 0 12 22a12.816 12.816 0 0 0 7.988-12A8 8 0 0 0 12 2zm0 11a3 3 0 1 1 3-3 3 3 0 0 1-3 3z" />
-                                        </svg>
-                                    </i> 123 Street, New
-                                    York, USA
-                                </Link>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
-                                        </svg>
-                                    </i> info@example.com
-                                </Link>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M21.384,17.752a2.108,2.108,0,0,1-.522,3.359,7.543,7.543,0,0,1-5.476.642C10.5,20.523,3.477,13.5,2.247,8.614a7.543,7.543,0,0,1,.642-5.476,2.108,2.108,0,0,1,3.359-.522L8.333,4.7a2.094,2.094,0,0,1,.445,2.328A3.877,3.877,0,0,1,8,8.2c-2.384,2.384,5.417,10.185,7.8,7.8a3.877,3.877,0,0,1,1.173-.781,2.092,2.092,0,0,1,2.328.445Z" />
-                                        </svg>
-                                    </i> +012 345 67890
-                                </Link>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M21 9h-3V6a1.116 1.116 0 0 0-.292-.7l-3-3A1.127 1.127 0 0 0 14 2H7a1 1 0 0 0-1 1v6H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h3v2a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-2h3a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1zm-5 11H8v-3h8zm0-11H8V4h5v2a1 1 0 0 0 1 1h2z" />
-                                        </svg>
-                                    </i> +012 345 67890
-                                </Link>
+            <div className="footer-container fadeIn animate__animated animate__fadeIn">
+                <div className="footer-columns">
+                    {/* Column 1: Contact Info */}
+                    <div className="footer-column">
+                        <div className="footer-item flex flex-col">
+                            <h4 className="text-secondary mb-4">Contact Info</h4>
+                            <Link href="#" className="">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
+                                    >
+                                        <path d="M12 2a8 8 0 0 0-7.992 8A12.816 12.816 0 0 0 12 22a12.816 12.816 0 0 0 7.988-12A8 8 0 0 0 12 2zm0 11a3 3 0 1 1 3-3 3 3 0 0 1-3 3z" />
+                                    </svg>
+                                </i> 123 Street, New
+                                York, USA
+                            </Link>
+                            <Link href="#" className="d-flex align-items-center">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
+                                    >
+                                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
+                                    </svg>
+                                </i> info@example.com
+                            </Link>
+                            <Link href="#" className="d-flexalign-items-center">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
+                                    >
+                                        <path d="M21.384,17.752a2.108,2.108,0,0,1-.522,3.359,7.543,7.543,0,0,1-5.476.642C10.5,20.523,3.477,13.5,2.247,8.614a7.543,7.543,0,0,1,.642-5.476,2.108,2.108,0,0,1,3.359-.522L8.333,4.7a2.094,2.094,0,0,1,.445,2.328A3.877,3.877,0,0,1,8,8.2c-2.384,2.384,5.417,10.185,7.8,7.8a3.877,3.877,0,0,1,1.173-.781,2.092,2.092,0,0,1,2.328.445Z" />
+                                    </svg>
+                                </i> +012 345 67890
+                            </Link>
+
+                            <Link href="#" className="d-flex align-items-center">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
+                                    >
+                                        <path d="M21 9h-3V6a1.116 1.116 0 0 0-.292-.7l-3-3A1.127 1.127 0 0 0 14 2H7a1 1 0 0 0-1 1v6H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h3v2a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-2h3a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1zm-5 11H8v-3h8zm0-11H8V4h5v2a1 1 0 0 0 1 1h2z" />
+                                    </svg>
+                                </i> +012 345 67890
+                            </Link>
+                            <div className="flex justify-between">
                                 <div className="d-inline-flex align-items-center" style={{ height: '45px' }}>
                                     <Link className="d-flex align-items-center" href="">
                                         <i className="p-2">
@@ -177,133 +128,146 @@ export default function Footer() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Opening Time */}
-                        <div className="col-md-6 col-lg-6 col-xl-3">
-                            <div className="footer-item flex flex-col">
-                                <h4 className="text-secondary mb-4">Opening Time</h4>
-                                <div className="mb-3">
-                                    <h6 className="text-muted mb-0">Mon - Friday:</h6>
-                                    <p className="text-white mb-0">09.00 am to 07.00 pm</p>
-                                </div>
-                                <div className="mb-3">
-                                    <h6 className="text-muted mb-0">Saturday:</h6>
-                                    <p className="text-white mb-0">10.00 am to 05.00 pm</p>
-                                </div>
-                                <div className="mb-3">
-                                    <h6 className="text-muted mb-0">Vacation:</h6>
-                                    <p className="text-white mb-0">Sunday is our vacation</p>
-                                </div>
+                    </div>
+                    {/* Column 2: Links */}
+                    <div className="footer-column">
+                        <div className="footer-item flex flex-col">
+                            <h4 className="">Opening Time</h4>
+                            <div className="">
+                                <h6 className="text-muted mb-0">Mon - Friday:</h6>
+                                <p className="text-white mb-0">09.00 am to 07.00 pm</p>
+                            </div>
+                            <div className="mb-3">
+                                <h6 className="text-muted mb-0">Saturday:</h6>
+                                <p className="text-white mb-0">10.00 am to 05.00 pm</p>
+                            </div>
+                            <div className="mb-3">
+                                <h6 className="text-muted mb-0">Vacation:</h6>
+                                <p className="text-white mb-0">Sunday is our vacation</p>
                             </div>
                         </div>
-                        <div className="col-md-6 col-lg-6 col-xl-3">
-                            <div className="footer-item d-flex flex-column">
-                                <h4 className="text-secondary mb-4">Our Services</h4>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                        </svg>
-                                    </i> Business
-                                </Link>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                        </svg>
-                                    </i> Evaluation
-                                </Link>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                        </svg>
-                                    </i> Migrate
-                                </Link>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                        </svg>
-                                    </i> Study
-                                </Link>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                        </svg>
-                                    </i> Counselling
-                                </Link>
-                                <Link href="#" className="d-flex align-items-center">
-                                    <i className="me-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                            style={{ width: '20px', height: '20px' }}
-                                        >
-                                            <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                        </svg>
-                                    </i> Work / Career
-                                </Link>
-                            </div>
-                        </div>
+                    </div>
 
-                        {/* Newsletter */}
-                        <div className="col-md-6 col-lg-6 col-xl-3">
-                            <div className="footer-item">
-                                <h4 className="text-secondary mb-4">Newsletter</h4>
-                                <p className="text-white mb-3">
-                                    Subscribe to our newsletter for updates and offers.
-                                </p>
-                                <h4 className="text-xl font-bold mb-4">Subscribe to Our Newsletter</h4>
-                                <form onSubmit={handleSubmit}>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={data.email}
-                                        onChange={handleInputChange}
-                                        placeholder="Enter your email"
-                                        className="px-4 py-2 mb-4 border rounded"
-                                    />
-                                    <button
-                                        type="submit"
-                                        className="py-2 rounded"
-                                        disabled={loading}
+                    <div className="footer-column">
+                        <div className="footer-item d-flex flex-column">
+                            <h4 className="text-secondary mb-4">Our Services</h4>
+                            <Link href="#" className="d-flex align-items-center">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
                                     >
-                                        {loading ? "Submitting..." : "Subscribe"}
-                                    </button>
-                                </form>
-                            </div>
+                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
+                                    </svg>
+                                </i> Business
+                            </Link>
+                            <Link href="#" className="d-flex align-items-center">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
+                                    >
+                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
+                                    </svg>
+                                </i> Evaluation
+                            </Link>
+                            <Link href="#" className="d-flex align-items-center">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
+                                    >
+                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
+                                    </svg>
+                                </i> Migrate
+                            </Link>
+                            <Link href="#" className="d-flex align-items-center">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
+                                    >
+                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
+                                    </svg>
+                                </i> Study
+                            </Link>
+                            <Link href="#" className="d-flex align-items-center">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
+                                    >
+                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
+                                    </svg>
+                                </i> Counselling
+                            </Link>
+                            <Link href="#" className="d-flex align-items-center">
+                                <i className="me-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ width: '20px', height: '20px' }}
+                                    >
+                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
+                                    </svg>
+                                </i> Work / Career
+                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
+            <style jsx>{`
+                .footer-container {
+                    background: #f9f9f9;
+                    padding: 20px;
+                }
+                .footer-columns {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 20px;
+                }
+                .footer-column {
+                    padding: 10px;
+                }
+                h4 {
+                    margin-bottom: 10px;
+                }
+                input {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+                button {
+                    padding: 10px 15px;
+                    background-color: #007bff;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                button:disabled {
+                    background-color: #ccc;
+                }
+                .success-message {
+                    color: green;
+                }
+                .error-message {
+                    color: red;
+                }
+            `}</style>
         </>
     );
 }

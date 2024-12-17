@@ -2,21 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+    font-family: 'AvenirLTPro35Light';
+    src: url('/fonts/AvenirLTPro35Light.woff2') format('woff2'), url('/fonts/AvenirLTPro35Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url('/fonts/Gotham-Light.woff2') format('woff2'), url('/fonts/Gotham-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     /* Color Palette */
     --primary-bg: #f8fafc; /* Background/Main Content */
     --secondary-bg: #d9eafd; /* Secondary Background or Highlights */
-    --accent: #bcccdc; /* Accent Color for Borders, Dividers */
-    --text-color: #9aa6b2; /* Main Text Color */
+    --accent: #99b2c1; /* Darker Accent Color for Buttons, Borders, Dividers */
+    --text-color: #6c7c88; /* Darker Text Color */
     --muted-text: #bcccdc; /* Muted Text or Placeholder Text */
 }
 
 body {
     background-color: var(--primary-bg);
     color: var(--text-color);
-    font-family: 'Arial', sans-serif;
+    font-family: 'AvenirLTPro35Light', 'Gotham-Light', sans-serif !important;
     margin: 0;
     padding: 0;
+    overflow: auto;
 }
 
 header,
@@ -64,6 +80,30 @@ a {
 
     a:hover {
         color: var(--accent);
+        cursor: pointer;
+    }
+
+.normal {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+    .normal:hover {
+        color: none;
+        text-decoration: none;
+    }
+
+.rnorm {
+    color: var(--accent);
+}
+
+.reverse {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+    .reverse:hover {
+        color: var(--text-color);
     }
 
 .card {
@@ -262,8 +302,9 @@ a {
 
 
 /*** Topbar Start ***/
-.fixed-top .container-fluid {
+.container-fluid {
     transition: 0.5s;
+    padding: 0;
 }
 
 .topbar {
@@ -272,48 +313,49 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap; /* Prevent wrapping */
 }
 
-/* General styles for topbar layout */
 .topbar-left,
-.topbar-socials,
 .topbar-right {
     display: flex;
     align-items: center;
-    gap: 10px; /* Consistent spacing */
+    gap: 2px; /* Reduced gap */
 }
 
-    /* Styling links inside sections */
-    .topbar-left a,
-    .topbar-socials a,
-    .topbar-right a {
-        margin-right: 5px;
+    .topbar-right .relative {
+        position: relative;
     }
 
-/* Remove conflicting container styles */
-.container-fluid {
-    padding: 0;
+.search-input {
+    flex-grow: 1;
+    border: none;
+    padding: 3px;
+    font-size: 12px;
+    background-color: #f0f0f0;
+    border-radius: 9999px;
 }
 
-/* Handle responsiveness for smaller screens */
-@media (max-width: 768px) {
-    .topbar {
-        flex-direction: column; /* Optional for smaller screens */
-        align-items: center;
-        padding: 10px;
+    .search-input:focus {
+        outline: none;
     }
 
-    .topbar-left,
-    .topbar-socials,
-    .topbar-right {
-        flex-wrap: wrap; /* Allow wrapping on smaller screens */
-        justify-content: center;
-    }
+/* Input field styles */
+.topbar-right .relative input {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.search-results-list {
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .overlay {
-    position: fixed; /* Or absolute, depending on the context */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -322,11 +364,33 @@ a {
     z-index: 9999; /* High z-index to ensure it is on top */
     display: flex;
     justify-content: center;
-    align-items: center; /* Center content inside the overlay */
+    align-items: center;
 }
 
+/* Spinner Animation */
+.w-2.h-2 {
+    animation: spin 1s linear infinite;
+}
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .topbar {
+        flex-direction: row;
+        align-items: center;
+    }
+}
 /*** Topbar End ***/
+
+
 
 
 
@@ -482,7 +546,6 @@ a {
     background: transparent;
     border: 1px solid var(--bs-primary);
     border-radius: 50%;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -652,9 +715,6 @@ a {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .carousel-header {
-        height: 700px;
-    }
 
         .carousel-header .carousel-control-prev .carousel-control-prev-icon,
         .carousel-header .carousel-control-next .carousel-control-next-icon {
@@ -1159,6 +1219,7 @@ a {
 /*** Footer Start ***/
 .footer {
     background: var(--bs-primary);
+    overflow: hidden;
 }
 
     .footer .footer-item a {
@@ -1176,6 +1237,13 @@ a {
         color: var(--bs-secondary);
     }
 
+@media (max-width: 768px) {
+    .topbar {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
 /*** Footer End ***/
 
 /*** copyright Start ***/
@@ -1184,3 +1252,81 @@ a {
     background: var(--bs-secondary) !important;
 }
 /*** copyright end ***/
+
+/* CSS for Office Card */
+.office-card {
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Space inside the card */
+    margin-bottom: 20px; /* Space between cards */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for hover effect */
+}
+
+    .office-card:hover {
+        transform: translateY(-5px); /* Lift card on hover */
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Darker shadow for hover effect */
+    }
+
+    .office-card h3 {
+        font-size: 1rem; /* Slightly larger font for the office name */
+        margin-bottom: 5px; /* Space between name and branch */
+        color: #333; /* Darker text for readability */
+    }
+
+    .office-card p {
+        font-size: .75rem; /* Slightly larger text for the branch */
+        margin-bottom: 10px; /* Space between branch and the button */
+        color: #555; /* Slightly lighter text for branch */
+    }
+
+    .office-card button {
+        padding: 0.5rem 1.9rem;
+    }
+
+.call-button {
+    color: white; /* White text */
+    font-size: 1rem; /* Standard font size */
+    padding: 10px 15px; /* Space inside the button */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Loading spinner */
+.loading-spinner {
+    border: 4px solid #f3f3f3; /* Light gray */
+    border-top: 4px solid var(--primary-bg); /* Blue color */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+/* Define spinning animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Center the loading spinner */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+}
+
+.contact-container {
+    max-height: 75vh; /* Set a max height to 80% of the viewport height */
+    overflow-y: auto; /* Allow vertical scrolling if the content exceeds max height */
+    border-radius: 8px; /* Optional: Add some rounded corners */
+    
+}

@@ -8,28 +8,34 @@ export default function Navbar() {
         setIsMenuOpen(!isMenuOpen);
     };
 
+
+
     return (
         <div className="bg-white px-4 lg:px-5 py-3 shadow-md sticky top-0 z-50">
             <nav className="container mx-auto flex items-center justify-between">
-                <Link href="/" className="flex items-center">
-                    <h1 className="text-2xl font-bold text-primary">People</h1>
+                <a href="/" className="flex items-center normal">
+                    <h1 className="text-2xl font-bold normal">People</h1>
                     <Image
                         src="/img/brand-logo.png"
                         alt="Brand Logo"
-                        width={50}
-                        height={50}
+                        width={30}
+                        height={30}
                         className="mr-2"
                     />
-                    <h1 className="text-2xl font-bold text-secondary">Pulse</h1>
-                </Link>
+                    <h1 className="text-2xl font-bold rnorm">Pulse</h1>
+                </a>
 
                 <button
                     onClick={toggleMenu}
                     className="lg:hidden navbar-toggler flex items-center justify-center focus:outline-none"
                 >
-                    <span className="bar"></span>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        style={{ width: '20px', height: '20px' }}
+                    >
+                        <path d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z" />
+                    </svg>
                 </button>
 
                 
@@ -52,7 +58,7 @@ export default function Navbar() {
                             Service
                         </Link>
                         <div className="hidden group-hover:block lg:absolute bg-white shadow-lg py-2 w-48 rounded">
-                            <Link href="/service/admission" className="block px-4 py-2 hover:bg-gray-100">
+                            <Link href="/service/admission" className="block px-4 py-2">
                                 Admission
                             </Link>
                             <Link href="/service/accomodation" className="block px-4 py-2">

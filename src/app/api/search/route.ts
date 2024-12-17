@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { searchCsv } from '@/app/lib/csvReadUtils';
+import { searchCsv } from '@/app/lib/csvSearchUtils';
 
 export async function GET(req: Request) {
     const url = new URL(req.url);
