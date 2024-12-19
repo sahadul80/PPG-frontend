@@ -14,6 +14,9 @@ import Navbar from "./components/navbar";
 import TopArrow from "./components/toparrow";
 import ContactCTA from "./components/contactCTA";
 import Topbar from "./components/topbar";
+import SpaceFrontier from "./components/frontair";
+import TeamUpdate from "./components/teamUpdate";
+import MarqueeUpdate from "./components/marqueeUpdate";
 
 export default function Home() {
   return (
@@ -21,14 +24,15 @@ export default function Home() {
           <Topbar />
           <Navbar />
           <Carousel />
-          <About />
+          <MarqueeUpdate />
+          <SpaceFrontier />
           <Facts />
           <Service />
           <Features />
           <Country />
           <Testimonial />
           <Training />
-          <Contacts />
+          <TeamUpdate />
           <Footer />
           <Copyright />
           <TopArrow />

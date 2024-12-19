@@ -125,7 +125,7 @@ export default function Testimonial() {
                 </div>
 
                 {/* Navigation Buttons */}
-                <div className="d-flex justify-content-center mt-4">
+                <div className="flex justify-center mt-4">
                     <button
                         className="btn btn-secondary mx-2"
                         onClick={handlePrev}

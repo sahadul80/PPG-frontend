@@ -32,7 +32,7 @@ export default function Footer() {
                                 <li>Weekend: 10am - 3pm</li>
                             </ul>
 
-                            <ul className="mt-8 flex gap-6">
+                            <ul className="mt-8 flex gap-6 flex justify-center">
                                 <li>
                                     <a
                                         href="#"
