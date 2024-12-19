@@ -1,4 +1,5 @@
 import { getSession } from "../../lib/session";
+
 export async function POST(req: Request) {
     const session = await getSession();
 

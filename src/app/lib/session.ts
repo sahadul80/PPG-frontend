@@ -107,7 +107,7 @@ export async function authenticateUser(username: string, password: string) {
         }
 
         // Return the user object if authentication is successful
-        return { username: user.username };
+        return user;
     } catch (error) {
         console.error("Authentication failed:", error);
         throw error;

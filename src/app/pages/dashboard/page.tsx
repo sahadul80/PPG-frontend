@@ -1,39 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
+import Calender from "../../components/calender";
 
 export default function Dashboard() {
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         async function fetchSession() {
-            try {
-                const res = await fetch("/api/session", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                });
+            const userName = localStorage.getItem("sessionToken");
+            setUser(userName);
 
-                if (res.ok) {
-                    const session = await res.json();
-                    setUser(session.userId); // Update based on your session structure
-                } else {
-                    // Redirect to login if session is not found
-                    window.location.href = "/pages/login";
-                }
-            } catch (error) {
-                console.error("Error fetching session:", error);
+            if (!userName) {
                 window.location.href = "/pages/login";
+                return;
             }
         }
 
         fetchSession();
     }, []);
 
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+
     async function handleLogout() {
         try {
-            await fetch("/api/logout", { method: "POST" });
+            localStorage.removeItem("sessionToken");
             window.location.href = "/pages/login";
         } catch (error) {
             console.error("Error during logout:", error);
@@ -42,17 +37,18 @@ export default function Dashboard() {
 
     return (
         <div className="flex min-h-screen bg-gray-100">
+            <Toaster />
             {/* Right-Side Navigation Panel */}
             <aside className="w-64">
                 <div className="p-6">
-                    <h2 className="text-lg font-semibold">Navigation</h2>
+                    <h2 className="text-lg font-semibold">Dashboard</h2>
                 </div>
                 <nav className="space-y-2 px-6">
                     <a
-                        href="/"
+                        href="/CMS"
                         className="block px-4 py-2 rounded"
                     >
-                        Dashboard
+                        CMS
                     </a>
                     <a
                         href="/profile"
@@ -61,7 +57,7 @@ export default function Dashboard() {
                         Profile
                     </a>
                     <a
-                        href="/settings"
+                        href="/"
                         className="block px-4 py-2 rounded"
                     >
                         Home
@@ -74,7 +70,7 @@ export default function Dashboard() {
                 {/* Top Bar */}
                 <header className="flex items-center justify-between bg-white shadow px-6 py-4">
                     <h1 className="text-xl font-semibold text-gray-800">
-                        Welcome, {user}!
+                        Welcome, {user ? user : "Guest"}!
                     </h1>
                     <div className="flex space-x-4">
                         <a
@@ -93,7 +89,8 @@ export default function Dashboard() {
                 </header>
 
                 {/* Main Dashboard Content */}
-                <main className="p-6">
+                <main className="p-4">
+                    <Calender />
                     <h2 className="text-2xl font-bold text-gray-800 mb-4">
                         Dashboard Overview
                     </h2>

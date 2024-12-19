@@ -1,273 +1,203 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import Image from "next/image";
 
 export default function Footer() {
 
     return (
         <>
-            <Toaster />
-            <div className="footer-container fadeIn animate__animated animate__fadeIn">
-                <div className="footer-columns">
-                    {/* Column 1: Contact Info */}
-                    <div className="footer-column">
-                        <div className="footer-item flex flex-col">
-                            <h4 className="text-secondary mb-4">Contact Info</h4>
-                            <Link href="#" className="">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
-                                    >
-                                        <path d="M12 2a8 8 0 0 0-7.992 8A12.816 12.816 0 0 0 12 22a12.816 12.816 0 0 0 7.988-12A8 8 0 0 0 12 2zm0 11a3 3 0 1 1 3-3 3 3 0 0 1-3 3z" />
-                                    </svg>
-                                </i> 123 Street, New
-                                York, USA
-                            </Link>
-                            <Link href="#" className="d-flex align-items-center">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
-                                    >
-                                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
-                                    </svg>
-                                </i> info@example.com
-                            </Link>
-                            <Link href="#" className="d-flexalign-items-center">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
-                                    >
-                                        <path d="M21.384,17.752a2.108,2.108,0,0,1-.522,3.359,7.543,7.543,0,0,1-5.476.642C10.5,20.523,3.477,13.5,2.247,8.614a7.543,7.543,0,0,1,.642-5.476,2.108,2.108,0,0,1,3.359-.522L8.333,4.7a2.094,2.094,0,0,1,.445,2.328A3.877,3.877,0,0,1,8,8.2c-2.384,2.384,5.417,10.185,7.8,7.8a3.877,3.877,0,0,1,1.173-.781,2.092,2.092,0,0,1,2.328.445Z" />
-                                    </svg>
-                                </i> +012 345 67890
-                            </Link>
+            <footer className="bg-white lg:grid lg:grid-cols-5">
+                <div className="relative block h-32 lg:col-span-2 lg:h-full">
+                    <img
+                        src="https://images.unsplash.com/photo-1642370324100-324b21fab3a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+                        alt=""
+                        className="absolute inset-0 h-full w-full object-cover"
+                    />
+                </div>
 
-                            <Link href="#" className="d-flex align-items-center">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
+                <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
+                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                        <div>
+                            <p>
+                                <span className="text-xs uppercase tracking-wide text-gray-500"> Call us </span>
+
+                                <a href="#" className="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl">
+                                    0123456789
+                                </a>
+                            </p>
+
+                            <ul className="mt-8 space-y-1 text-sm text-gray-700">
+                                <li>Monday to Friday: 10am - 5pm</li>
+                                <li>Weekend: 10am - 3pm</li>
+                            </ul>
+
+                            <ul className="mt-8 flex gap-6">
+                                <li>
+                                    <a
+                                        href="#"
+                                        rel="noreferrer"
+                                        target="_blank"
+                                        className="text-gray-700 transition hover:opacity-75"
                                     >
-                                        <path d="M21 9h-3V6a1.116 1.116 0 0 0-.292-.7l-3-3A1.127 1.127 0 0 0 14 2H7a1 1 0 0 0-1 1v6H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h3v2a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-2h3a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1zm-5 11H8v-3h8zm0-11H8V4h5v2a1 1 0 0 0 1 1h2z" />
-                                    </svg>
-                                </i> +012 345 67890
-                            </Link>
-                            <div className="flex justify-between">
-                                <div className="d-inline-flex align-items-center" style={{ height: '45px' }}>
-                                    <Link className="d-flex align-items-center" href="">
-                                        <i className="p-2">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor"
-                                                viewBox="0 0 512 462.799"
-                                                style={{ width: '20px', height: '20px' }}
-                                            >
-                                                <path d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z" />
-                                            </svg>
-                                        </i>
-                                    </Link>
-                                    <Link className="d-flex align-items-center" href="">
-                                        <i className="p-2">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor"
-                                                viewBox="0 0 24 24"
-                                                style={{ width: '20px', height: '20px' }}
-                                            >
-                                                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.326V22.68c0 .733.593 1.32 1.325 1.32H12.82V14.725h-3.1v-3.638h3.1V8.414c0-3.067 1.875-4.748 4.616-4.748 1.312 0 2.444.097 2.77.141v3.22l-1.902.001c-1.492 0-1.777.71-1.777 1.745v2.29h3.555l-.463 3.638h-3.092V24h6.066c.733 0 1.325-.588 1.325-1.32V1.326C24 .594 23.408 0 22.675 0z" />
-                                            </svg>
-                                        </i>
-                                    </Link>
-                                    <Link className="d-flex align-items-center" href="">
-                                        <i className="p-2">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor"
-                                                viewBox="0 0 24 24"
-                                                style={{ width: '20px', height: '20px' }}
-                                            >
-                                                <path d="M22.23 0H1.77C.79 0 0 .78 0 1.77v20.46C0 23.21.79 24 1.77 24h20.46c.98 0 1.77-.79 1.77-1.77V1.77C24 .79 23.21 0 22.23 0zM7.12 20.45H3.56V9.03h3.56v11.42zM5.34 7.47c-1.14 0-2.06-.92-2.06-2.05 0-1.13.92-2.05 2.06-2.05 1.13 0 2.05.92 2.05 2.05-.01 1.13-.92 2.05-2.05 2.05zm15.1 12.98h-3.56v-5.53c0-1.32-.03-3.02-1.84-3.02-1.84 0-2.13 1.43-2.13 2.91v5.64H9.38V9.03h3.42v1.56h.05c.48-.91 1.66-1.86 3.42-1.86 3.66 0 4.34 2.41 4.34 5.56v6.15z" />
-                                            </svg>
-                                        </i>
-                                    </Link>
-                                    <Link className="d-flex align-items-center" href="">
-                                        <i className="p-2">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor"
-                                                viewBox="0 0 24 24"
-                                                style={{ width: '20px', height: '20px' }}
-                                            >
-                                                <path d="M7.75 2h8.5a5.75 5.75 0 015.75 5.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5a4.25 4.25 0 004.25 4.25h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25h-8.5zM12 7.25a4.75 4.75 0 110 9.5 4.75 4.75 0 010-9.5zm0 1.5a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5zM16.5 6a1 1 0 112 0 1 1 0 01-2 0z" />
-                                            </svg>
-                                        </i>
-                                    </Link>
-                                    <Link className="d-flex align-items-center" href="">
-                                        <i className="p-2">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor"
-                                                viewBox="0 0 24 24"
-                                                style={{ width: '20px', height: '20px' }}
-                                            >
-                                                <path d="M23.498 6.186a3.008 3.008 0 00-2.123-2.123C19.935 3.5 12 3.5 12 3.5s-7.935 0-9.375.563A3.008 3.008 0 00.502 6.186C0 7.626 0 12 0 12s0 4.374.502 5.814a3.008 3.008 0 002.123 2.123C4.065 20.5 12 20.5 12 20.5s7.935 0 9.375-.563a3.008 3.008 0 002.123-2.123C24 16.374 24 12 24 12s0-4.374-.502-5.814zM9.75 15.75v-7.5l6.375 3.75-6.375 3.75z" />
-                                            </svg>
-                                        </i>
-                                    </Link>
-                                </div>
+                                        <span className="sr-only">Facebook</span>
+
+                                        <svg className="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="#"
+                                        rel="noreferrer"
+                                        target="_blank"
+                                        className="text-gray-700 transition hover:opacity-75"
+                                    >
+                                        <span className="sr-only">Instagram</span>
+
+                                        <svg className="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="#"
+                                        rel="noreferrer"
+                                        target="_blank"
+                                        className="text-gray-700 transition hover:opacity-75"
+                                    >
+                                        <span className="sr-only">Twitter</span>
+
+                                        <svg className="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="#"
+                                        rel="noreferrer"
+                                        target="_blank"
+                                        className="text-gray-700 transition hover:opacity-75"
+                                    >
+                                        <span className="sr-only">GitHub</span>
+
+                                        <svg className="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="#"
+                                        rel="noreferrer"
+                                        target="_blank"
+                                        className="text-gray-700 transition hover:opacity-75"
+                                    >
+                                        <span className="sr-only">Dribbble</span>
+
+                                        <svg className="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                                <p className="font-medium text-gray-900">Services</p>
+
+                                <ul className="mt-6 space-y-4 text-sm">
+                                    <li>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> 1on1 Coaching </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> Company Review </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> Accounts Review </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> HR Consulting </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> SEO Optimisation </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <p className="font-medium text-gray-900">Company</p>
+
+                                <ul className="mt-6 space-y-4 text-sm">
+                                    <li>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> About </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> Meet the Team </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" className="text-gray-700 transition hover:opacity-75"> Accounts Review </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    {/* Column 2: Links */}
-                    <div className="footer-column">
-                        <div className="footer-item flex flex-col">
-                            <h4 className="">Opening Time</h4>
-                            <div className="">
-                                <h6 className="text-muted mb-0">Mon - Friday:</h6>
-                                <p className="text-white mb-0">09.00 am to 07.00 pm</p>
-                            </div>
-                            <div className="mb-3">
-                                <h6 className="text-muted mb-0">Saturday:</h6>
-                                <p className="text-white mb-0">10.00 am to 05.00 pm</p>
-                            </div>
-                            <div className="mb-3">
-                                <h6 className="text-muted mb-0">Vacation:</h6>
-                                <p className="text-white mb-0">Sunday is our vacation</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div className="footer-column">
-                        <div className="footer-item d-flex flex-column">
-                            <h4 className="text-secondary mb-4">Our Services</h4>
-                            <Link href="#" className="d-flex align-items-center">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
-                                    >
-                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                    </svg>
-                                </i> Business
-                            </Link>
-                            <Link href="#" className="d-flex align-items-center">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
-                                    >
-                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                    </svg>
-                                </i> Evaluation
-                            </Link>
-                            <Link href="#" className="d-flex align-items-center">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
-                                    >
-                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                    </svg>
-                                </i> Migrate
-                            </Link>
-                            <Link href="#" className="d-flex align-items-center">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
-                                    >
-                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                    </svg>
-                                </i> Study
-                            </Link>
-                            <Link href="#" className="d-flex align-items-center">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
-                                    >
-                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                    </svg>
-                                </i> Counselling
-                            </Link>
-                            <Link href="#" className="d-flex align-items-center">
-                                <i className="me-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ width: '20px', height: '20px' }}
-                                    >
-                                        <path d="M4.38 12.19 8.57 8 4.38 3.81l1.53-1.52L11.62 8l-5.71 5.71-1.53-1.52z" />
-                                    </svg>
-                                </i> Work / Career
-                            </Link>
+                    <div className="mt-12 border-t border-gray-100 pt-12">
+                        <div className="sm:flex sm:items-center sm:justify-between">
+                            <ul className="flex flex-wrap gap-4 text-xs">
+                                <li>
+                                    <a href="#" className="text-gray-500 transition hover:opacity-75"> Terms & Conditions </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" className="text-gray-500 transition hover:opacity-75"> Privacy Policy </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" className="text-gray-500 transition hover:opacity-75"> Cookies </a>
+                                </li>
+                            </ul>
+
+                            <p className="mt-8 text-xs text-gray-500 sm:mt-0">
+                                &copy; 2022. People Pulse Global. All rights reserved.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <style jsx>{`
-                .footer-container {
-                    background: #f9f9f9;
-                    padding: 20px;
-                }
-                .footer-columns {
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 20px;
-                }
-                .footer-column {
-                    padding: 10px;
-                }
-                h4 {
-                    margin-bottom: 10px;
-                }
-                input {
-                    width: 100%;
-                    padding: 10px;
-                    margin-bottom: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
-                }
-                button {
-                    padding: 10px 15px;
-                    background-color: #007bff;
-                    color: #fff;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
-                button:disabled {
-                    background-color: #ccc;
-                }
-                .success-message {
-                    color: green;
-                }
-                .error-message {
-                    color: red;
-                }
-            `}</style>
+            </footer>
         </>
     );
 }
