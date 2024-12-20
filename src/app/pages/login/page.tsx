@@ -4,6 +4,7 @@ import { useState } from "react";
 import Topbar from "../../components/topbar";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function LoginPage() {
     const [username, setUsername] = useState("");
@@ -29,6 +30,7 @@ export default function LoginPage() {
             } else {
                 const { message } = await response.json();
                 setError(message || "Login failed");
+                toast.error(error);
             }
         } catch (err) {
             setError("An error occurred. Please try again.");
@@ -48,6 +50,7 @@ export default function LoginPage() {
         if (!res.ok) {
             const { message } = await res.json();
             setError(message);
+            toast.error(error);
             return;
         }
 
@@ -58,7 +61,7 @@ export default function LoginPage() {
         <div>
             <Topbar />
             <Navbar />
-
+            <Toaster />
             <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-lg text-center">
                     <h1 className="text-2xl font-bold sm:text-3xl">User Login!</h1>
