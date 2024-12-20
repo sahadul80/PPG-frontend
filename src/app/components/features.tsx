@@ -4,19 +4,15 @@ import React from 'react';
 export default function Features() {
     return (
         <div className="container-fluid features overflow-hidden py-5">
-            <div className="container">
+            <div className="container mx-auto px-6 py-6">
                 <div className="section-title text-center mb-5">
                     <div className="sub-style">
-                        <h5 className="sub-title text-primary px-3">Why Choose Us</h5>
+                        <h5 className="text-2xl font-bold text-center mb-6">Why Choose Us</h5>
                     </div>
                     <h1 className="display-5 mb-4">Offer Tailor Made Services That Our Client Requires</h1>
-                    <p className="mb-0">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!
-                    </p>
                 </div>
-                <div className="row g-4 justify-content-center text-center">
-                    <div className="col-md-6 col-lg-6 col-xl-3">
-                        <div className="feature-item text-center p-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    <div className="feature-item text-center p-4">
                             <div className="feature-icon p-3 mb-4">
                                 <i className="fas fa-atlas fa-4x text-primary">
                                     <svg
@@ -32,16 +28,14 @@ export default function Features() {
                                 </i>
                             </div>
                             <div className="feature-content d-flex flex-column">
-                                <h5 className="mb-3">Cost-Effective</h5>
+                                <h5 className="text-xl mb-3">Cost-Effective</h5>
                                 <p className="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
                                 <Link className="btn btn-secondary rounded-pill" href="#">
                                     Read More
                                     <i className="fas fa-arrow-right ms-2"></i>
                                 </Link>
                             </div>
-                        </div>
                     </div>
-                    <div className="col-md-6 col-lg-6 col-xl-3">
                         <div className="feature-item text-center p-4">
                             <div className="feature-icon p-3 mb-4">
                                 <i className="fas fa-atlas fa-4x text-primary">
@@ -61,7 +55,7 @@ export default function Features() {
                                 </i>
                             </div>
                             <div className="feature-content d-flex flex-column">
-                                <h5 className="mb-3">Visa Assistance</h5>
+                            <h5 className="text-xl mb-3">Visa Assistance</h5>
                                 <p className="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
                                 <Link className="btn btn-secondary rounded-pill" href="#">
                                     Read More
@@ -69,8 +63,6 @@ export default function Features() {
                                 </Link>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-md-6 col-lg-6 col-xl-3">
                         <div className="feature-item text-center p-4">
                             <div className="feature-icon p-3 mb-4">
                                 <i className="fas fa-atlas fa-4x text-primary">
@@ -85,7 +77,7 @@ export default function Features() {
                                 </i>
                             </div>
                             <div className="feature-content d-flex flex-column">
-                                <h5 className="mb-3">Faster Processing</h5>
+                            <h5 className="text-xl mb-3">Faster Processing</h5>
                                 <p className="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
                                 <Link className="btn btn-secondary rounded-pill" href="#">
                                     Read More
@@ -93,8 +85,6 @@ export default function Features() {
                                 </Link>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-md-6 col-lg-6 col-xl-3">
                         <div className="feature-item text-center p-4">
                             <div className="feature-icon p-3 mb-4">
                                 <i className="fas fa-atlas fa-4x text-primary">
@@ -117,7 +107,7 @@ export default function Features() {
                                 </i>
                             </div>
                             <div className="feature-content d-flex flex-column">
-                                <h5 className="mb-3">Direct Interviews</h5>
+                            <h5 className="text-xl mb-3">Direct Interviews</h5>
                                 <p className="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
                                 <Link className="btn btn-secondary rounded-pill" href="#">
                                     Read More
@@ -125,7 +115,6 @@ export default function Features() {
                                 </Link>
                             </div>
                         </div>
-                    </div>
                     <div className="col-12">
                         <Link className="btn btn-primary border-secondary rounded-pill py-3 px-5" href="#">
                             More Features

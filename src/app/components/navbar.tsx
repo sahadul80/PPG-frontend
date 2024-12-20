@@ -7,9 +7,6 @@ export default function Navbar() {
     const toggleMenu = (): void => {
         setIsMenuOpen(!isMenuOpen);
     };
-
-
-
     return (
         <div className="bg-white px-4 lg:px-5 py-3 shadow-md sticky top-0 z-50">
             <nav className="container mx-auto flex items-center justify-between">
@@ -37,22 +34,21 @@ export default function Navbar() {
                         <path d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z" />
                     </svg>
                 </button>
-
-                
-
                 <div
                     className={`bg-white lg:flex lg:items-center lg:space-x-6 ${isMenuOpen ? "block" : "hidden"} absolute lg:static top-16 left-0 right-0`}
                 >
                     <Link href="/" className="nav-link block px-4 py-2 lg:inline lg:px-0">
                         Home
                     </Link>
+                    <Link href="/pages/about" className="nav-link block px-4 py-2 lg:inline lg:px-0">
+                        About
+                    </Link>
                     <Link href="/study" className="nav-link block px-4 py-2 lg:inline lg:px-0">
                         Study
                     </Link>
-
                     <div className="relative group">
                         <Link
-                            href="/"
+                            href="/pages/services"
                             className="nav-link block px-4 py-2 lg:inline lg:px-0"
                         >
                             Service

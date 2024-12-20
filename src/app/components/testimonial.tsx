@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 export default function Testimonial() {
     const testimonials = [
         {
-            img: "img/testimonial-1.jpg",
+            img: "/img/testimonial-1.jpg",
             name: "John Doe",
             profession: "Software Engineer",
             review:
@@ -65,7 +65,7 @@ export default function Testimonial() {
             <div className="container py-5">
                 <div className="section-title text-center mb-5 fade-in">
                     <div className="sub-style">
-                        <h5 className="sub-title text-primary px-3">OUR CLIENT REVIEWS</h5>
+                        <h5 className="text-2xl font-bold text-center mb-6">OUR CLIENT REVIEWS</h5>
                     </div>
                     <h1 className="display-5 mb-4">What Our Clients Say</h1>
                     <p className="mb-0">
@@ -130,8 +130,7 @@ export default function Testimonial() {
                         className="btn btn-secondary mx-2"
                         onClick={handlePrev}
                     >
-                        Previous
-                    </button>
+                        Previous                    </button>
                     <button
                         className="btn btn-secondary mx-2"
                         onClick={handleNext}

@@ -17,6 +17,7 @@ import Topbar from "./components/topbar";
 import SpaceFrontier from "./components/frontair";
 import TeamUpdate from "./components/teamUpdate";
 import MarqueeUpdate from "./components/marqueeUpdate";
+import CountryUpdate from "./components/countryUpdate";
 
 export default function Home() {
   return (
@@ -29,7 +30,7 @@ export default function Home() {
           <Facts />
           <Service />
           <Features />
-          <Country />
+          <CountryUpdate />
           <Testimonial />
           <Training />
           <TeamUpdate />

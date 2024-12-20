@@ -25,7 +25,7 @@ const MarqueeUpdate = () => {
     return (
         <>
             <h1 style={{
-                fontSize: "2rem",
+                fontSize: "1.5rem",
                 fontWeight: "bold",
                 textAlign: "center",
                 margin: "0 auto",
@@ -33,7 +33,7 @@ const MarqueeUpdate = () => {
                 top: "75%",
             }}
             >
-                Our Academic Partners
+                OUR ACADEMIC PARTNERS
             </h1>
 
             < Marquee items={items} duration={20} />;

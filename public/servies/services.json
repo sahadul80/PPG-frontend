@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Web Development",
+    "description": "Build modern and responsive websites with our expert team.",
+    "icon": "/img/service-1.jpg",
+    "link": "/services/web-development"
+  },
+  {
+    "title": "App Development",
+    "description": "Create robust mobile applications for Android and iOS platforms.",
+    "icon": "/img/service-2.jpg",
+    "link": "/services/app-development"
+  },
+  {
+    "title": "Digital Marketing",
+    "description": "Promote your brand with our cutting-edge digital marketing strategies.",
+    "icon": "/img/service-3.jpg",
+    "link": "/services/digital-marketing"
+  },
+  {
+    "title": "Digital Marketing",
+    "description": "Promote your brand with our cutting-edge digital marketing strategies.",
+    "icon": "/img/service-4.jpg",
+    "link": "/services/digital-marketing"
+  }
+]
