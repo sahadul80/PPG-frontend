@@ -70,7 +70,7 @@ export default function LoginPage() {
 
                         <div className="relative">
                             <input
-                                onChange={(e) => setUsername(e.target.value)}
+                                onChange={(e) => setUsername(e.target.value.toLowerCase())}
                                 type="text"
                                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter username"
@@ -100,7 +100,7 @@ export default function LoginPage() {
 
                         <div className="relative">
                             <input
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value.toLowerCase())}
                                 type="password"
                                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter password"
