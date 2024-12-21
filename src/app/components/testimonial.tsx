@@ -61,7 +61,7 @@ export default function Testimonial() {
     };
 
     return (
-        <div className="container-fluid testimonial overflow-hidden pb-5" style={{ position: "relative", background: "#f7f7f7" }}>
+        <div className="container-fluid testimonial overflow-hidden flex justify-center pb-5">
             <div className="container py-5">
                 <div className="section-title text-center mb-5 fade-in">
                     <div className="sub-style">

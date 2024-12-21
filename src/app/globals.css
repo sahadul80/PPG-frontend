@@ -995,6 +995,12 @@ a {
 
 
 /*** Country Start ***/
+
+.country-section {
+    background-image: url('/img/rsz_1rsz_solid256griddiagonalchecker_16_gray.png');
+    background-repeat: repeat;
+}
+
 .country .country-item {
     position: relative;
 }
@@ -1175,6 +1181,10 @@ a {
 
 
 /*** Contact Start ***/
+.stat-section {
+    background-image: url('/img/rsz_11rsz_solid256griddiagonal1_32_black.png');
+    background-repeat: repeat;
+}
 .contact .office .office-item {
     text-align: center;
     border-radius: 10px;
@@ -1216,26 +1226,7 @@ a {
 /*** Contact End ***/
 
 
-/*** Footer Start ***/
-.footer {
-    background: var(--bs-primary);
-    overflow: hidden;
-}
-
-    .footer .footer-item a {
-        line-height: 30px;
-        color: var(--bs-white);
-        transition: 0.5s;
-    }
-
-    .footer .footer-item p {
-        line-height: 30px;
-    }
-
-    .footer .footer-item a:hover {
-        letter-spacing: 2px;
-        color: var(--bs-secondary);
-    }
+/*** Topbar Start ***/
 
 @media (max-width: 768px) {
     .topbar {
@@ -1244,7 +1235,16 @@ a {
     }
 }
 
-/*** Footer End ***/
+/*** Topbar End ***/
+
+/*Footer start*/
+
+.footer-section {
+    background-image: url('/img/dotF80clear256.png');
+    background-repeat: repeat;
+}
+
+/*Footer start*/
 
 /*** copyright Start ***/
 .copyright {
@@ -1397,19 +1397,8 @@ a {
     position: relative;
     padding: 20px 0;
     text-align: center;
-}
-
-.pattern-layer {
-    background-image: url('/img/worldmap.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: .2;
+    background-image: url('/img/rsz_11rsz_solid256griddiagonal1_32_black.png');
+    background-repeat: repeat;
 }
 
 .auto-container {

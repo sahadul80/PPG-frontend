@@ -42,7 +42,6 @@ const coachingBlocks: CoachingBlock[] = [
 const CoachingSection: React.FC = () => {
     return (
         <section className="coaching-section">
-            <div className="pattern-layer"></div>
             <div className="auto-container">
                 <div className="sec-title centred">
                     <h2>OUR COACHING</h2>

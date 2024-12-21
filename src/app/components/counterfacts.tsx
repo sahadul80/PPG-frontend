@@ -1,31 +1,48 @@
 import { SetStateAction, useEffect, useState } from "react";
 
 export default function Facts() {
-    const [visaCategories, setVisaCategories] = useState(0);
-    const [teamMembers, setTeamMembers] = useState(0);
-    const [visaProcess, setVisaProcess] = useState(0);
-    const [successRates, setSuccessRates] = useState(0);
+    const [visaCategories, setVisaCategories] = useState('');
+    const [teamMembers, setTeamMembers] = useState('');
+    const [visaProcess, setVisaProcess] = useState('');
+    const [successRates, setSuccessRates] = useState('');
 
-    const updateCounter = (target: number, setState: { (value: SetStateAction<number>): void; (value: SetStateAction<number>): void; (value: SetStateAction<number>): void; (value: SetStateAction<number>): void; (arg0: number): void; }) => {
+    const updateCounter = (targetStr: string, setState: { (value: SetStateAction<string>): void; (value: SetStateAction<string>): void; (value: SetStateAction<string>): void; (value: SetStateAction<string>): void; (arg0: string): void; }) => {
+
         let count = 0;
+        let dn = 0;
+        let target = parseInt(targetStr)
+
+        if (target > 1000) {
+            dn = target / 100;
+            
+        } else {
+            dn = target
+        }
         const interval = setInterval(() => {
-            if (count < target) {
+            if (count < dn) {
                 count++;
-                setState(count);
-            } else {
+                
+                if (target > 1000) {
+                    setState((count/10).toString() + ' k')
+                } else {setState(count.toString())};
+            }
+            else {
                 clearInterval(interval);
             }
-        }, 20); // Adjust speed of counting
+        }, (9800 / dn ) ); // Adjust speed of counting
     };
 
     useEffect(() => {
-        updateCounter(31, setVisaCategories);
-        updateCounter(377, setTeamMembers);
-        updateCounter(4900, setVisaProcess); // For K (multiply by 1000)
-        updateCounter(98, setSuccessRates);
+        updateCounter('31', setVisaCategories);
+        updateCounter('377', setTeamMembers);
+        updateCounter('4900', setVisaProcess); // For K (multiply by 1000)
+        updateCounter('98', setSuccessRates);
     }, []);
 
     return (
+        <>
+        <div className="stat-section">
+        
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Trusted by Visa Processiong</h2>
@@ -109,6 +126,8 @@ export default function Facts() {
                     </dd>
                 </div>
             </dl>
-        </div>
+                </div>
+            </div>
+        </>
     );
 }

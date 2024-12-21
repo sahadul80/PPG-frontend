@@ -1,7 +1,6 @@
 import React from "react";
 import Countries from "./country";
 import Link from "next/link";
-
 const countryData = [
     {
         name: "Bangladesh",
@@ -32,6 +31,7 @@ const countryData = [
 const CountryUpdate: React.FC = () => {
     return (
         <>
+            <div className="country-section">
             <div className="container mx-auto px-6 py-6">
                 <h2 className="text-2xl font-bold text-center mb-6">COUNTRIES WE OFFER</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -42,6 +42,7 @@ const CountryUpdate: React.FC = () => {
                 <Link className="rounded-pill py-3 px-5" href="#">
                     More Countries
                 </Link>
+                </div>
             </div>
         </>
     );
