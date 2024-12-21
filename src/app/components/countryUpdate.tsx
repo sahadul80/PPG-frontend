@@ -12,7 +12,7 @@ const countryData = [
     {
         name: "Uinted States",
         description: "Experience the diverse landscapes and cultures in the USA.",
-        image: "img/usa.jpg",
+        image: "img/usaland.jpg",
         link: "countries-details.html",
     },
     {
