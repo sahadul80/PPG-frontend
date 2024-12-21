@@ -11,7 +11,7 @@ export default function Features() {
                     </div>
                     <h1 className="display-5 mb-4">Offer Tailor Made Services That Our Client Requires</h1>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                     <div className="feature-item text-center p-4">
                             <div className="feature-icon p-3 mb-4">
                                 <i className="fas fa-atlas fa-4x text-primary">
@@ -115,11 +115,12 @@ export default function Features() {
                                 </Link>
                             </div>
                         </div>
-                    <div className="col-12">
-                        <Link className="btn btn-primary border-secondary rounded-pill py-3 px-5" href="#">
-                            More Features
-                        </Link>
-                    </div>
+                </div>
+
+                <div className="text-center text-bold text-xl p-6 col-12">
+                    <Link className="rounded-pill py-3 px-5" href="#">
+                        More Features
+                    </Link>
                 </div>
             </div>
         </div>
