@@ -95,29 +95,15 @@ const ContactForm: React.FC = () => {
     };
 
     return (
-        <div className="flex justify-center py-20">
+        <div className="py-20">
             {/* Form Heading */}
             <div className="mx-10 max-w-l text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact Us</h2>
                 <p className="mt-2 text-lg leading-8 text-gray-600">
                     Feel free to ask your questions here. You will be contacted soon. Stay updated!
                 </p>
-                <div className="bg-light rounded">
-                    <img
-                        src="img/about-2.png"
-                        className="img-fluid w-100"
-                        style={{ marginBottom: "-7px" }}
-                        alt="Image"
-                    />
-                    <img
-                        src="img/about-3.jpg"
-                        className="img-fluid w-100 border-bottom border-5 border-primary"
-                        style={{ borderTopRightRadius: "300px", borderTopLeftRadius: "300px" }}
-                        alt="Image"
-                    />
-                </div>
             </div>
-            <div className="bg-light rounded p-10">
+            <div className="bg-light rounded">
                 {/* Form Fields */}
                 <form onSubmit={handleSubmit} className="mx-auto mt-8 max-w-xl sm:mt-10">
                     <div className="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
@@ -204,7 +190,7 @@ const ContactForm: React.FC = () => {
                                     id="phoneNumber"
                                     value={formData.phoneNumber}
                                     onChange={handleChange}
-                                    className="block w-full rounded-md border px-3 py-1"
+                                    className="block w-full rounded border px-3 py-1"
                                 />
                             </div>
                             {errors.phoneNumber && <p className="text-red-500 text-sm">{errors.phoneNumber}</p>}
@@ -220,7 +206,7 @@ const ContactForm: React.FC = () => {
                                 rows={4}
                                 value={formData.message}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border px-3 py-1"
+                                className="block w-full rounded border px-3 py-1"
                             ></textarea>
                             {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
                         </div>
@@ -249,7 +235,7 @@ const ContactForm: React.FC = () => {
                     <div className="mt-5">
                         <button
                             type="submit"
-                            className="px-4 py-2 text-white rounded"
+                            className="block w-full text-white rounded"
                         >
                             Let's talk
                         </button>
