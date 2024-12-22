@@ -1,5 +1,6 @@
+"use client"
 import { SetStateAction, useEffect, useState } from "react";
-
+import Image from "next/image";
 export default function Facts() {
     const [visaCategories, setVisaCategories] = useState('');
     const [teamMembers, setTeamMembers] = useState('');

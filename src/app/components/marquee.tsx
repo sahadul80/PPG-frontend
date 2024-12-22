@@ -1,5 +1,6 @@
+"use client"
 import React from "react";
-
+import Image from "next/image";
 type MarqueeProps = {
     items: Array<{ src: string; alt: string; height?: number; margin?: string }>;
     duration?: number; // Duration of animation in seconds

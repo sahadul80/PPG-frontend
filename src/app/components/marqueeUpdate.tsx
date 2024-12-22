@@ -1,5 +1,6 @@
+"use client"
 import Marquee from "./marquee";
-
+import Image from "next/image";
 
 const items = [
     { src: "/img/academic_partners/aiub_logo.png", alt: "AIUB" },
@@ -24,15 +25,7 @@ const items = [
 const MarqueeUpdate = () => {
     return (
         <>
-            <h1 style={{
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-                textAlign: "center",
-                margin: "0 auto",
-                position: "absolute",
-                top: "75%",
-            }}
-            >
+            <h1 className="text-2xl text-center font-bold text-gray-900 mt-8">
                 OUR ACADEMIC PARTNERS
             </h1>
 

@@ -6,6 +6,7 @@ import Topbar from "../../components/topbar";
 import Testimonial from "../../components/testimonial";
 import TeamUpdate from "../../components/teamUpdate";
 import Footer from "../../components/footer";
+import Image from "next/image";
 
 type Service = {
     title: string;

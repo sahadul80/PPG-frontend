@@ -1,5 +1,6 @@
+"use client"
 import React, { useState, useRef } from "react";
-
+import Image from "next/image";
 export default function ChatBot() {
     const [isChatOpen, setIsChatOpen] = useState(false);
     const [messages, setMessages] = useState<{ text: string; sender: "user" | "bot" }[]>([]);

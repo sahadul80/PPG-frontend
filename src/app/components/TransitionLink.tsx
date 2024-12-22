@@ -2,11 +2,11 @@
 import Link, { LinkProps } from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 interface TransitionLinkProps extends LinkProps {
     children: React.ReactNode;
     href: string;
-    className?: string; // Ensure className is properly typed
+    className?: string;
 }
 
 function sleep(ms: number): Promise<void> {
@@ -16,8 +16,8 @@ function sleep(ms: number): Promise<void> {
 export const TransitionLink: React.FC<TransitionLinkProps> = ({
     children,
     href,
-    className, // Destructure className here
-    ...props // Destructure the rest of the props
+    className,
+    ...props
 }) => {
     const router = useRouter();
 
@@ -26,14 +26,20 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
     ) => {
         e.preventDefault();
         const body = document.querySelector("body");
+        const overlay = document.createElement("div");
+        overlay.classList.add("page-transition-overlay");
+        overlay.innerHTML = `<image src="/img/brand-logo.png" alt="Loading" class="loading-logo" />`;
 
-        body?.classList.add("page-transition");
+        document.body.appendChild(overlay); // Add overlay to body
 
-        await sleep(300);
+        body?.classList.add("page-transition", "page-transition-active");
+
+        await sleep(250); // Delay before navigation
         router.push(href);
-        await sleep(300);
+        await sleep(250); // Keep the overlay visible briefly
 
-        body?.classList.remove("page-transition");
+        body?.classList.remove("page-transition", "page-transition-active");
+        overlay.remove(); // Remove the overlay
     };
 
     return (

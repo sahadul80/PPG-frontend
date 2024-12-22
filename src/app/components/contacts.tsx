@@ -1,6 +1,7 @@
+"use client"
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
+import Image from "next/image";
 export default function Contacts() {
     // Prevent rendering on the server side by using a mounted state
     const [isMounted, setIsMounted] = useState(false);

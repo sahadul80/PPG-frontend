@@ -1,5 +1,6 @@
+"use client"
 import React from "react";
-
+import Image from "next/image";
 // Define the type for each country card
 interface Country {
     name: string;

@@ -1,6 +1,7 @@
+"use client"
 import { useState, useEffect } from "react";
 import router from "next/router";
-
+import Image from "next/image";
 export default function Carousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHydrated, setIsHydrated] = useState(false); // Ensure hydration

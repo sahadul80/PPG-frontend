@@ -1,5 +1,6 @@
+"use client"
 import React, { useState } from 'react';
-
+import Image from "next/image";
 export default function Chat() {
     const [messages, setMessages] = useState<{ sender: 'user' | 'bot'; text: string }[]>([]);
     const [input, setInput] = useState('');

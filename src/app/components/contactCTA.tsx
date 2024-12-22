@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import CookieConsentWithChat from "./CookieConsentWithChat";
 import ContactOffice from "./contactOffice";
-
+import Image from "next/image";
 export default function ContactCTA() {
     const [activePopup, setActivePopup] = useState<string | null>(null); // null, "subscribe", "chat", or "call"
 

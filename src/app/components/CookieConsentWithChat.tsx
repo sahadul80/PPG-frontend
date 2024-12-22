@@ -1,7 +1,8 @@
+"use client"
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Chat from './chat';
-import ChatBot from './chatBot';
+import Image from "next/image";
 
 const GA_MEASUREMENT_ID = 'G-MPF0P0E6DK'; // Replace this with your GA4 Measurement ID
 

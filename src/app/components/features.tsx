@@ -1,6 +1,7 @@
+"use client"
 import Link from 'next/link';
 import React from 'react';
-
+import Image from "next/image";
 export default function Features() {
     return (
         <div className="container-fluid features overflow-hidden py-5">

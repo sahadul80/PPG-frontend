@@ -1,5 +1,6 @@
+"use clent"
 import { useEffect, useState } from "react";
-
+import Image from "next/image";
 export default function About() {
     const [isVisibleLeft, setIsVisibleLeft] = useState(false);
     const [isVisibleRight, setIsVisibleRight] = useState(false);

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import Calender from "../../components/calender";
+import Image from "next/image";
 
 export default function Dashboard() {
     const [user, setUser] = useState<string | null>(null);

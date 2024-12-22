@@ -1,6 +1,7 @@
+"use client"
 import React from "react";
 import ServiceCard from "./serviceCard";
-
+import Image from "next/image";
 type Service = {
     title: string;
     description: string;

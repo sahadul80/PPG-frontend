@@ -1,59 +1,27 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Team from "./team";
 
-const teamMembers = [
-    {
-        id: 1,
-        name: "Sahadul Haque",
-        role: "Founder CEO",
-        image: "https://tailone.tailwindtemplate.net/src/img/dummy/avatar1.png",
-        socialLinks: {
-            twitter: "https://twitter.com",
-            facebook: "https://facebook.com",
-            instagram: "https://instagram.com",
-            linkedin: "https://linkedin.com",
-        },
-    },
-    {
-        id: 2,
-        name: "Sarah Daeva",
-        role: "Marketing",
-        image: "https://tailone.tailwindtemplate.net/src/img/dummy/avatar3.png",
-        socialLinks: {
-            twitter: "https://twitter.com",
-            facebook: "https://facebook.com",
-            instagram: "https://instagram.com",
-            linkedin: "https://linkedin.com",
-        },
-    },
-    {
-        id: 3,
-        name: "Abdullah Al Noman",
-        role: "Developer",
-        image: "https://tailone.tailwindtemplate.net/src/img/dummy/avatar2.png",
-        socialLinks: {
-            twitter: "https://twitter.com",
-            facebook: "https://facebook.com",
-            instagram: "https://instagram.com",
-            linkedin: "https://linkedin.com",
-        },
-    },
-
-    {
-        id: 4,
-        name: "Mohtashin Nishat",
-        role: "Engineeer",
-        image: "https://tailone.tailwindtemplate.net/src/img/dummy/avatar4.png",
-        socialLinks: {
-            twitter: "https://twitter.com",
-            facebook: "https://facebook.com",
-            instagram: "https://instagram.com",
-            linkedin: "https://linkedin.com",
-        },
-    },
-];
-
 const TeamUpdate: React.FC = () => {
+    const [teamMembers, setTeamMembers] = useState([]);
+
+    useEffect(() => {
+        const fetchTeamMembers = async () => {
+            try {
+                const response = await fetch("/team/team.json"); // Ensure team.json is in the public folder
+                if (!response.ok) {
+                    throw new Error("Failed to fetch team data");
+                }
+                const data = await response.json();
+                setTeamMembers(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchTeamMembers();
+    }, []);
+
     return (
         <>
             <div>
