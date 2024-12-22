@@ -80,7 +80,7 @@ const ContactForm: React.FC = () => {
         <div className="p-10">
             <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
                 <div
-                    className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+                    className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg]"
                     style={{
                         clipPath:
                             "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
@@ -92,7 +92,7 @@ const ContactForm: React.FC = () => {
                     <div>
                         <label
                             htmlFor="firstName"
-                            className="block text-sm font-semibold leading-6 text-black"
+                            className="block text-sm font-semibold leading-6"
                         >
                             First name
                         </label>
@@ -103,14 +103,14 @@ const ContactForm: React.FC = () => {
                                 id="firstName"
                                 value={formData.firstName}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm shadow-blue-500 ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm shadow-gray-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
                     <div>
                         <label
                             htmlFor="lastName"
-                            className="block text-sm font-semibold leading-6 text-black"
+                            className="block text-sm font-semibold leading-6"
                         >
                             Last name
                         </label>
@@ -121,14 +121,14 @@ const ContactForm: React.FC = () => {
                                 id="lastName"
                                 value={formData.lastName}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm ring-1 ring-inset shadow-blue-500 ring-blue-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm ring-1 ring-inset shadow-gray-500 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
                     <div className="sm:col-span-2">
                         <label
                             htmlFor="company"
-                            className="block text-sm font-semibold leading-6 text-black"
+                            className="block text-sm font-semibold leading-6"
                         >
                             Company
                         </label>
@@ -139,14 +139,14 @@ const ContactForm: React.FC = () => {
                                 id="company"
                                 value={formData.company}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm ring-1 ring-inset shadow-blue-500 ring-blue-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm ring-1 ring-inset shadow-gray-500 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
                     <div className="sm:col-span-2">
                         <label
                             htmlFor="email"
-                            className="block text-sm font-semibold leading-6 text-red-600"
+                            className="block text-sm font-semibold leading-6"
                         >
                             Email
                         </label>
@@ -157,14 +157,14 @@ const ContactForm: React.FC = () => {
                                 id="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm ring-1 ring-inset shadow-blue-500 ring-blue-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm ring-1 ring-inset shadow-gray-500 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
                     <div className="sm:col-span-2">
                         <label
                             htmlFor="phoneNumber"
-                            className="block text-sm font-semibold leading-6 text-green-600"
+                            className="block text-sm font-semibold leading-6"
                         >
                             Phone number
                         </label>
@@ -175,14 +175,14 @@ const ContactForm: React.FC = () => {
                                 id="phoneNumber"
                                 value={formData.phoneNumber}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm ring-1 ring-inset shadow-blue-500 ring-blue-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 px-3 py-1 text-gray-900 shadow-sm ring-1 ring-inset shadow-gray-500 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
                     <div className="sm:col-span-2">
                         <label
                             htmlFor="message"
-                            className="block text-sm font-semibold leading-6 text-green-600"
+                            className="block text-sm font-semibold leading-6"
                         >
                             Message
                         </label>

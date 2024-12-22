@@ -28,7 +28,7 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
         const body = document.querySelector("body");
         const overlay = document.createElement("div");
         overlay.classList.add("page-transition-overlay");
-        overlay.innerHTML = `<image src="/img/brand-logo.png" alt="Loading" class="loading-logo" />`;
+        overlay.innerHTML = `<image src="/img/ppg_logo.png" alt="Loading" class="loading-logo" />`;
 
         document.body.appendChild(overlay); // Add overlay to body
 

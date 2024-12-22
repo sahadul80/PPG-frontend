@@ -36,7 +36,7 @@ export default function Navbar() {
                 >
                     <h1 className="text-3xl font-bold">People</h1>
                     <Image
-                        src="/img/brand-logo.png"
+                        src="/img/ppg_logo.png"
                         alt="Brand Logo"
                         width={30}
                         height={30}
