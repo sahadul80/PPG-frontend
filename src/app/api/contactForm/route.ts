@@ -1,4 +1,4 @@
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import path from 'path';
 
 interface ContactFormData {
@@ -9,11 +9,13 @@ interface ContactFormData {
     phoneNumber: string;
     message: string;
     agreeToPolicies: boolean;
-    timestamp?: string; // Add the timestamp property as optional
+    timestamp?: string;
 }
 
 export async function POST(req: Request) {
-    const body = await req.json();
+    try {
+        const body: ContactFormData = await req.json();
+
         const {
             firstName,
             lastName,
@@ -22,32 +24,39 @@ export async function POST(req: Request) {
             phoneNumber,
             message,
             agreeToPolicies,
-        }: ContactFormData = body;
+        } = body;
 
-        // Define the path to the JSON file where the data will be saved
-        const filePath = path.join(process.cwd(), 'public','contactForm', 'contactForm.json');
+        // Define the path to the JSON file
+        const filePath = path.join(process.cwd(), 'public', 'contactForm', 'contactForm.json');
 
-        try {
-            // Read the existing data from the JSON file
-            const fileData = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf-8') : '[]';
-            const contactData: ContactFormData[] = JSON.parse(fileData);
+        // Read the existing data from the JSON file
+        const fileData = await fs.readFile(filePath, 'utf-8').catch(() => '[]');
+        const contactData: ContactFormData[] = JSON.parse(fileData);
 
-            // Append the new form data to the existing data
-            contactData.push({
-                firstName,
-                lastName,
-                company,
-                email,
-                phoneNumber,
-                message,
-                agreeToPolicies,
-                timestamp: new Date().toISOString(), // Add timestamp here
-            });
+        // Append the new data
+        contactData.push({
+            firstName,
+            lastName,
+            company,
+            email,
+            phoneNumber,
+            message,
+            agreeToPolicies,
+            timestamp: new Date().toISOString(),
+        });
 
-            // Write the updated data back to the JSON file
-            fs.writeFileSync(filePath, JSON.stringify(contactData, null, 2));
+        // Write the updated data back to the JSON file
+        await fs.writeFile(filePath, JSON.stringify(contactData, null, 2));
 
-        } catch (error) {
-            console.error('Error writing to file:', error);
-        }
+        return new Response(JSON.stringify({ message: 'Data saved successfully' }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    } catch (error) {
+        console.error('Error writing to file:', error);
+        return new Response(JSON.stringify({ error: 'Error writing to file' }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
 }
