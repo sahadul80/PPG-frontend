@@ -40,7 +40,7 @@ export default function Navbar() {
                         alt="Brand Logo"
                         width={30}
                         height={30}
-                        className="mr-2"
+                        className="mr-1 ml-1"
                     />
                     <h1 className="text-3xl font-bold">Pulse</h1>
                 </TransitionLink>

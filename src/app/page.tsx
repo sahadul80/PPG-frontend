@@ -14,6 +14,8 @@ import TeamUpdate from "./components/teamUpdate";
 import MarqueeUpdate from "./components/marqueeUpdate";
 import CountryUpdate from "./components/countryUpdate";
 import CoachingSection from "./components/coachingSection";
+import { TransitionLink } from "./components/TransitionLink";
+import ContactForm from "./components/contactForm";
 
 export default function Home() {
   return (
@@ -26,6 +28,7 @@ export default function Home() {
           <Service />
           <Features />
           <CountryUpdate />
+          <ContactForm />
           <Testimonial />
           <CoachingSection />
           <TeamUpdate />

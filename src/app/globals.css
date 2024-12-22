@@ -204,7 +204,6 @@ a {
 .btn.btn-primary {
     background: var(--bs-secondary) !important;
     color: var(--bs-white) !important;
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     transition: 0.5s;
 }
@@ -218,7 +217,6 @@ a {
 .btn.btn-secondary {
     background: transparent;
     color: var(--bs-secondary);
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     border: none;
     transition: 0.5s;
