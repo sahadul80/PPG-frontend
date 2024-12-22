@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
 
@@ -13,8 +12,8 @@ interface ContactFormData {
     timestamp?: string; // Add the timestamp property as optional
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'POST') {
+export async function POST(req: Request) {
+    const body = await req.json();
         const {
             firstName,
             lastName,
@@ -23,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             phoneNumber,
             message,
             agreeToPolicies,
-        }: ContactFormData = req.body;
+        }: ContactFormData = body;
 
         // Define the path to the JSON file where the data will be saved
         const filePath = path.join(process.cwd(), 'public','contactForm', 'contactForm.json');
@@ -48,13 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             // Write the updated data back to the JSON file
             fs.writeFileSync(filePath, JSON.stringify(contactData, null, 2));
 
-            res.status(200).json({ message: 'Data submitted successfully!' });
         } catch (error) {
             console.error('Error writing to file:', error);
-            res.status(500).json({ message: 'Failed to save data.' });
         }
-    } else {
-        // Handle any other HTTP methods
-        res.status(405).json({ message: 'Method Not Allowed' });
-    }
 }
