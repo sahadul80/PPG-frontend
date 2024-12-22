@@ -95,7 +95,7 @@ const ContactForm: React.FC = () => {
     };
 
     return (
-        <div className="py-20">
+        <div className="py-8">
             {/* Form Heading */}
             <div className="mx-10 max-w-l text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact Us</h2>
@@ -105,7 +105,7 @@ const ContactForm: React.FC = () => {
             </div>
             <div className="bg-light rounded">
                 {/* Form Fields */}
-                <form onSubmit={handleSubmit} className="mx-auto mt-8 max-w-xl sm:mt-10">
+                <form onSubmit={handleSubmit} className="mx-auto max-w-xl p-5">
                     <div className="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
                         {/* First Name */}
                         <div>
