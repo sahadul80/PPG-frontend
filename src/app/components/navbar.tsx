@@ -1,16 +1,48 @@
+"use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { TransitionLink } from "./TransitionLink";
+import { usePathname } from "next/navigation";  // Import usePathname
+
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    const [activeLink, setActiveLink] = useState<string>("home");  // Default active link is "home"
+    const pathname = usePathname();  // Use the usePathname hook
 
     const toggleMenu = (): void => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    // Update active link based on the current path
+    useEffect(() => {
+        if (pathname === "/") {
+            setActiveLink("home");
+        } else if (pathname === "/pages/about") {
+            setActiveLink("about");
+        } else if (pathname === "/pages/services") {
+            setActiveLink("services");
+        } else if (pathname === "/pages/achievements") {
+            setActiveLink("achievements");
+        } else if (pathname === "/pages/career") {
+            setActiveLink("career");
+        } else if (pathname === "/pages/events") {
+            setActiveLink("events");
+        }
+    }, [pathname]);  // Depend on pathname to update on route change
+
+    // Update active link when a navigation item is clicked
+    const handleLinkClick = (link: string): void => {
+        setActiveLink(link);
+    };
+
     return (
         <div className="bg-white px-4 lg:px-5 py-3 shadow-md sticky top-0 z-50">
             <nav className="container mx-auto flex items-center justify-between">
-                <a href="/" className="flex items-center normal">
+                <TransitionLink
+                    href="/"
+                    onClick={() => handleLinkClick("home")}
+                    className="flex items-center py-2 px-4 rounded transition duration-300"
+                >
                     <h1 className="text-2xl font-bold normal">People</h1>
                     <Image
                         src="/img/brand-logo.png"
@@ -20,7 +52,7 @@ export default function Navbar() {
                         className="mr-2"
                     />
                     <h1 className="text-2xl font-bold rnorm">Pulse</h1>
-                </a>
+                </TransitionLink>
 
                 <button
                     onClick={toggleMenu}
@@ -34,56 +66,52 @@ export default function Navbar() {
                         <path d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z" />
                     </svg>
                 </button>
-                <div
-                    className={`bg-white lg:flex lg:items-center lg:space-x-6 ${isMenuOpen ? "block" : "hidden"} absolute lg:static top-16 left-0 right-0`}
-                >
-                    <Link href="/" className="nav-link block px-4 py-2 lg:inline lg:px-0">
-                        Home
-                    </Link>
-                    <Link href="/pages/about" className="nav-link block px-4 py-2 lg:inline lg:px-0">
-                        About
-                    </Link>
-                    <Link href="/study" className="nav-link block px-4 py-2 lg:inline lg:px-0">
-                        Study
-                    </Link>
-                    <div className="relative group">
-                        <Link
-                            href="/pages/services"
-                            className="nav-link block px-4 py-2 lg:inline lg:px-0"
-                        >
-                            Service
-                        </Link>
-                        <div className="hidden group-hover:block lg:absolute bg-white shadow-lg py-2 w-48 rounded">
-                            <Link href="/service/admission" className="block px-4 py-2">
-                                Admission
-                            </Link>
-                            <Link href="/service/accomodation" className="block px-4 py-2">
-                                Accommodation
-                            </Link>
-                            <Link href="/service/partners" className="block px-4 py-2">
-                                Partners
-                            </Link>
-                            <Link href="/service/visit-visa" className="block px-4 py-2">
-                                Visit Visa
-                            </Link>
-                            <Link href="/service/residential-visa" className="block px-4 py-2">
-                                Residential Visa
-                            </Link>
-                        </div>
-                    </div>
 
-                    <Link href="/career" className="nav-link block px-4 py-2 lg:inline lg:px-0">
+                <div
+                    className={`bg-white lg:flex lg:items-center lg:space-x-6 ${isMenuOpen ? "block" : "hidden"} absolute lg:static top-16 left-0 right-0 flex-col lg:flex-row space-y-4 lg:space-y-0`}
+                >
+                    <TransitionLink
+                        href="/"
+                        onClick={() => handleLinkClick("home")}
+                        className={`nav-link py-2 px-4 rounded transition duration-300 ${activeLink === "home" ? "text-blue-500 underline" : "text-gray-700 hover:text-blue-500"}`}
+                    >
+                        Home
+                    </TransitionLink>
+                    <TransitionLink
+                        href="/pages/about"
+                        onClick={() => handleLinkClick("about")}
+                        className={`nav-link py-2 px-4 rounded transition duration-300 ${activeLink === "about" ? "text-blue-500 underline" : "text-gray-700 hover:text-blue-500"}`}
+                    >
+                        About
+                    </TransitionLink>
+                    <TransitionLink
+                        href="/pages/services"
+                        onClick={() => handleLinkClick("services")}
+                        className={`nav-link py-2 px-4 rounded transition duration-300 ${activeLink === "services" ? "text-blue-500 underline" : "text-gray-700 hover:text-blue-500"}`}
+                    >
+                        Service
+                    </TransitionLink>
+                    <TransitionLink
+                        href="/pages/achievements"
+                        onClick={() => handleLinkClick("achievements")}
+                        className={`nav-link py-2 px-4 rounded transition duration-300 ${activeLink === "achievements" ? "text-blue-500 underline" : "text-gray-700 hover:text-blue-500"}`}
+                    >
+                        Achievements
+                    </TransitionLink>
+                    <TransitionLink
+                        href="/pages/career"
+                        onClick={() => handleLinkClick("career")}
+                        className={`nav-link py-2 px-4 rounded transition duration-300 ${activeLink === "career" ? "text-blue-500 underline" : "text-gray-700 hover:text-blue-500"}`}
+                    >
                         Career
-                    </Link>
-                    <Link href="/achievement" className="nav-link block px-4 py-2 lg:inline lg:px-0">
-                        Achievement
-                    </Link>
-                    <Link href="/branches" className="nav-link block px-4 py-2 lg:inline lg:px-0">
-                        Branches
-                    </Link>
-                    <Link href="/events" className="nav-link block px-4 py-2 lg:inline lg:px-0">
+                    </TransitionLink>
+                    <TransitionLink
+                        href="/pages/events"
+                        onClick={() => handleLinkClick("events")}
+                        className={`nav-link py-2 px-4 rounded transition duration-300 ${activeLink === "events" ? "text-blue-500 underline" : "text-gray-700 hover:text-blue-500"}`}
+                    >
                         Events
-                    </Link>
+                    </TransitionLink>
                 </div>
             </nav>
         </div>

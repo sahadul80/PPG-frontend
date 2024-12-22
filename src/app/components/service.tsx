@@ -74,7 +74,7 @@ export default function Service() {
                                 {category.title}
                             </h2>
                             <p className="text-base leading-relaxed mt-2">{category.description}</p>
-                            <a className="text-indigo-400 inline-flex items-center mt-3" href="#">
+                            <a className="inline-flex items-center mt-3" href="#">
                                 Learn More
                                 <svg
                                     fill="none"
@@ -105,7 +105,7 @@ export default function Service() {
                             className="py-2 px-6 rounded"
                             onClick={handleViewMore}
                         >
-                            View More
+                            More Categories
                         </button>
                     )}
                 </div>

@@ -3,16 +3,16 @@ import path from 'path';
 import fs from 'fs/promises';
 
 export async function GET() {
-    const jsonFilePath = path.join(process.cwd(), 'public', 'offices', 'offices.json');
+    const jsonFilePath = path.join(process.cwd(), 'public', 'testimonials', 'testimonials.json');
     try {
         const data = await fs.readFile(jsonFilePath, 'utf-8');
-        const offices = JSON.parse(data);
-        console.log(offices);
-        return NextResponse.json({ offices });
+        const testimonials = JSON.parse(data);
+        console.log(testimonials);
+        return NextResponse.json({ testimonials });
     } catch (error: unknown) {
         if (error instanceof Error) {
             return NextResponse.json(
-                { message: 'Error retrieving offices', error: error.message },
+                { message: 'Error retrieving testimonials', error: error.message },
                 { status: 500 }
             );
         }

@@ -29,7 +29,7 @@ export default function Facts() {
             else {
                 clearInterval(interval);
             }
-        }, (9800 / dn ) ); // Adjust speed of counting
+        }, (2400 / dn ) ); // Adjust speed of counting
     };
 
     useEffect(() => {

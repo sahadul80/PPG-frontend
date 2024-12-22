@@ -1,36 +1,54 @@
 import { useState, useEffect } from "react";
 
+type Testimonial = {
+    img: string;
+    name: string;
+    profession: string;
+    review: string;
+    rating: number;
+};
+
 export default function Testimonial() {
-    const testimonials = [
-        {
-            img: "/img/testimonial-1.jpg",
-            name: "John Doe",
-            profession: "Software Engineer",
-            review:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            rating: 5,
-        },
-        {
-            img: "img/testimonial-2.jpg",
-            name: "Jane Smith",
-            profession: "Designer",
-            review:
-                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            rating: 4,
-        },
-        {
-            img: "img/testimonial-3.jpg",
-            name: "Mark Wilson",
-            profession: "Marketing Specialist",
-            review:
-                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            rating: 5,
-        },
-    ];
-
+    const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-    // Change testimonial every 3 seconds
+    // Fetch testimonials from the API
+    useEffect(() => {
+        const fetchTestimonials = async () => {
+            try {
+                const response = await fetch(`/api/testimonials`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log("Fetched data:", data);  // Log the response data to inspect it
+
+                if (Array.isArray(data)) {
+                    setTestimonials(data);  // Directly set if it's an array
+                } else if (data.testimonials && Array.isArray(data.testimonials)) {
+                    setTestimonials(data.testimonials);  // If data is wrapped in 'testimonials' key
+                } else {
+                    throw new Error("Fetched data is not in an expected format");
+                }
+            } catch (err) {
+                setError(err instanceof Error ? err.message : 'An unknown error occurred');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTestimonials();
+    }, []);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % Math.ceil(testimonials.length / 2));
@@ -59,6 +77,14 @@ export default function Testimonial() {
             </>
         );
     };
+
+    if (loading) {
+        return <div>Loading testimonials...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className="container-fluid testimonial overflow-hidden flex justify-center pb-5">
@@ -130,7 +156,8 @@ export default function Testimonial() {
                         className="btn btn-secondary mx-2"
                         onClick={handlePrev}
                     >
-                        Previous                    </button>
+                        Previous
+                    </button>
                     <button
                         className="btn btn-secondary mx-2"
                         onClick={handleNext}
