@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link";
 import React, { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
 
 export default function Footer() {
@@ -178,7 +177,7 @@ export default function Footer() {
 
                     <div className="mt-12 border-t border-gray-100 pt-12">
                         <div className="sm:flex sm:items-center sm:justify-between">
-                            <ul className="flex flex-wrap gap-4 text-xs">
+                            <ul className="flex flex-wrap items-center gap-4 text-xs">
                                 <li>
                                     <a href="#" className="text-gray-500 transition hover:opacity-75"> Terms & Conditions </a>
                                 </li>
@@ -193,7 +192,7 @@ export default function Footer() {
                             </ul>
 
                             <p className="mt-8 text-xs text-gray-500 sm:mt-0">
-                                &copy; 2022. People Pulse Global. All rights reserved.
+                                &copy; 2024. People Pulse Global. All rights reserved.
                             </p>
                         </div>
                     </div>

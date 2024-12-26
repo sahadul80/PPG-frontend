@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { TransitionLink } from "./TransitionLink";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -14,16 +15,67 @@ export default function Navbar() {
     };
 
     useEffect(() => {
-        if (pathname === "/") setActiveLink("home");
-        else if (pathname === "/pages/about") setActiveLink("about");
-        else if (pathname === "/pages/services") setActiveLink("services");
-        else if (pathname === "/pages/achievements") setActiveLink("achievements");
-        else if (pathname === "/pages/career") setActiveLink("career");
-        else if (pathname === "/pages/events") setActiveLink("events");
+        if (pathname === "/") {
+            setActiveLink("home");
+        } else if (pathname.startsWith("/pages/about")) {
+            setActiveLink("why-us");
+        } else if (pathname.startsWith("/pages/services")) {
+            setActiveLink("services");
+        } else if (pathname.startsWith("/pages/branches")) {
+            setActiveLink("branches");
+        } else if (pathname.startsWith("/pages/blogs&news")) {
+            setActiveLink("blogs-&-news");
+        } else if (pathname.startsWith("/pages/events")) {
+            setActiveLink("events");
+        } else {
+            setActiveLink("");
+        }
     }, [pathname]);
 
     const handleLinkClick = (link: string): void => {
         setActiveLink(link);
+    };
+
+    const dropdownItems = {
+        "why-us": [
+            { name: "Who We Are", href: "/pages/about/who-we-are" },
+            { name: "Message from CCO", href: "/pages/about/cco-message" },
+            { name: "Message from CEO", href: "/pages/about/ceo-message" },
+            { name: "Message from Chairman", href: "/pages/about/chairman-message" },
+            { name: "Job Opportunities", href: "/pages/about/job-opportunities" },
+            { name: "Achievements", href: "/pages/about/achievements" },
+            { name: "Professional Recognition", href: "/pages/about/recognition" },
+            { name: "Testimonials", href: "/pages/about/testimonials" },
+        ],
+        "services": [
+            { name: "Visa Categories", href: "/pages/services/visa-categories" },
+            { name: "Offered Countries", href: "/pages/services/offered-countries" },
+            { name: "Student Admission", href: "/pages/services/student-admission" },
+            { name: "Student Accommodation", href: "/pages/services/student-accommodation" },
+            { name: "Partner University", href: "/pages/services/partner-university" },
+            { name: "School/College & Private Institutions", href: "/pages/services/schools-colleges" },
+            { name: "Government & Private Companies", href: "/pages/services/gov-private" },
+            { name: "Advice for Parents", href: "/pages/services/advice-parents" },
+            { name: "End-to-End Services", href: "/pages/services/end-to-end" },
+        ],
+        "branches": [
+            { name: "UK Head Office", href: "/pages/branches/uk-office" },
+            { name: "Global Branches", href: "/pages/branches/global" },
+        ],
+        "events": [
+            { name: "Education Expo", href: "/pages/events/expo" },
+            { name: "Education Fair", href: "/pages/events/fair" },
+            { name: "Open Days", href: "/pages/events/open-days" },
+            { name: "Assessment Day", href: "/pages/events/assessment" },
+            { name: "Album", href: "/pages/events/album" },
+            { name: "Campus Visits", href: "/pages/events/campus-visits" },
+            { name: "Seminars", href: "/pages/events/seminars" },
+            { name: "School Visits", href: "/pages/events/school-visits" },
+        ],
+        "blogs-&-news": [
+            { name: "Blogs", href: "/pages/blogs&news/blogs" },
+            { name: "News", href: "/pages/blogs&news/news" },
+        ],
     };
 
     return (
@@ -34,20 +86,19 @@ export default function Navbar() {
                     onClick={() => handleLinkClick("home")}
                     className="flex items-center border-b border-transparent p-3 text-sm font-medium text-gray-500 hover:text-gray-700"
                 >
-                    <h1 className="text-3xl font-bold">People</h1>
+                    <h1 className="text-2xl font-bold tracking-tighter">people</h1>
                     <Image
                         src="/img/ppg_logo.png"
                         alt="Brand Logo"
                         width={30}
                         height={30}
-                        className="mr-1 ml-1"
                     />
-                    <h1 className="text-3xl font-bold">Pulse</h1>
+                    <h1 className="text-2xl font-bold tracking-tighter">pulse</h1>
                 </TransitionLink>
 
                 <button
                     onClick={toggleMenu}
-                    className="lg:hidden flex items-center justify-center focus:outline-none p-3 text-gray-500 hover:text-gray-700"
+                    className="lg:hidden flex items-center justify-center rounded-full focus:outline-none p-3 text-gray-600"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -65,63 +116,38 @@ export default function Navbar() {
                     <TransitionLink
                         href="/"
                         onClick={() => handleLinkClick("home")}
-                        className={`nav-link p-3 text-l font-bold ${activeLink === "home"
-                                ? "text-sky-600 border-b-2 border-sky-600"
-                                : "text-gray-500 hover:text-gray-700"
+                        className={`nav-link p-3 font-bold ${activeLink === "home"
+                            ? "text-sky-600 border-b-2 border-sky-600"
+                            : "text-gray-500 hover:text-gray-700"
                             }`}
                     >
-                        Home
+                        home
                     </TransitionLink>
-                    <TransitionLink
-                        href="/pages/about"
-                        onClick={() => handleLinkClick("about")}
-                        className={`nav-link p-3 text-l font-bold ${activeLink === "about"
-                                ? "text-sky-600 border-b-2 border-sky-600"
-                                : "text-gray-500 hover:text-gray-700"
-                            }`}
-                    >
-                        About
-                    </TransitionLink>
-                    <TransitionLink
-                        href="/pages/services"
-                        onClick={() => handleLinkClick("services")}
-                        className={`nav-link p-3 text-l font-bold ${activeLink === "services"
-                                ? "text-sky-600 border-b-2 border-sky-600"
-                                : "text-gray-500 hover:text-gray-700"
-                            }`}
-                    >
-                        Services
-                    </TransitionLink>
-                    <TransitionLink
-                        href="/pages/achievements"
-                        onClick={() => handleLinkClick("achievements")}
-                        className={`nav-link p-3 text-l font-bold ${activeLink === "achievements"
-                                ? "text-sky-600 border-b-2 border-sky-600"
-                                : "text-gray-500 hover:text-gray-700"
-                            }`}
-                    >
-                        Achievements
-                    </TransitionLink>
-                    <TransitionLink
-                        href="/pages/career"
-                        onClick={() => handleLinkClick("career")}
-                        className={`nav-link p-3 text-l font-bold ${activeLink === "career"
-                                ? "text-sky-600 border-b-2 border-sky-600"
-                                : "text-gray-500 hover:text-gray-700"
-                            }`}
-                    >
-                        Career
-                    </TransitionLink>
-                    <TransitionLink
-                        href="/pages/events"
-                        onClick={() => handleLinkClick("events")}
-                        className={`nav-link p-3 text-l font-bold ${activeLink === "events"
-                                ? "text-sky-600 border-b-2 border-sky-600"
-                                : "text-gray-500 hover:text-gray-700"
-                            }`}
-                    >
-                        Events
-                    </TransitionLink>
+                    {Object.keys(dropdownItems).map((key) => (
+                        <div key={key} className="relative group">
+                            <Link
+                                href="#"
+                                onClick={(e) => e.preventDefault()}
+                                className={`nav-link p-3 font-bold ${activeLink === key
+                                    ? "text-sky-600 border-b-2 border-sky-600"
+                                    : "text-gray-500 hover:text-gray-700"
+                                    }`}
+                            >
+                                {key.replace(/-/g, " ")}
+                            </Link>
+                            <div className="absolute hidden group-hover:block bg-white shadow-md rounded mt-2 z-50">
+                                {dropdownItems[key as keyof typeof dropdownItems].map((item) => (
+                                    <TransitionLink
+                                        key={item.name}
+                                        href={item.href}
+                                        className="block px-8 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    >
+                                        {item.name}
+                                    </TransitionLink>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </nav>
         </div>

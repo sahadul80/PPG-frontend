@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 interface FormData {
     firstName: string;
@@ -73,7 +74,7 @@ const ContactForm: React.FC = () => {
             });
 
             if (response.ok) {
-                alert("Data submitted successfully!");
+                toast.success("Data submitted successfully!");
                 setFormData({
                     firstName: "",
                     lastName: "",
@@ -86,16 +87,17 @@ const ContactForm: React.FC = () => {
                 });
                 setErrors({});
             } else {
-                alert("Failed to submit data.");
+                toast.error("Failed to submit data.");
             }
         } catch (error) {
             console.error("Error submitting data:", error);
-            alert("An error occurred while submitting data.");
+            toast.error("An error occurred while submitting data.");
         }
     };
 
     return (
-        <div className="py-8">
+        <div className="coaching-section py-8">
+            <Toaster />
             {/* Form Heading */}
             <div className="mx-10 max-w-l text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact Us</h2>
