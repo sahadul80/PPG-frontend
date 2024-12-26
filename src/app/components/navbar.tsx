@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { TransitionLink } from "./TransitionLink";
 import { usePathname } from "next/navigation";
@@ -8,6 +8,8 @@ import Link from "next/link";
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     const [activeLink, setActiveLink] = useState<string>("home");
+    const [dropdownOpen, setDropdownOpen] = useState<string | null>(null); // State for active dropdown
+    const [isHoveringDropdown, setIsHoveringDropdown] = useState<boolean>(false); // Track hover state
     const pathname = usePathname();
 
     const toggleMenu = (): void => {
@@ -34,6 +36,24 @@ export default function Navbar() {
 
     const handleLinkClick = (link: string): void => {
         setActiveLink(link);
+    };
+
+    const handleDropdownToggle = (key: string): void => {
+        setDropdownOpen((prev) => (prev === key ? null : key));
+    };
+
+    const handleMouseEnter = (key: string) => {
+        setDropdownOpen(key);
+        setIsHoveringDropdown(true);
+    };
+
+    const handleMouseLeave = (key: string) => {
+        setIsHoveringDropdown(false);
+        setTimeout(() => {
+            if (!isHoveringDropdown) {
+                setDropdownOpen(null);
+            }
+        }, 300); // Delay hiding the dropdown for 300ms
     };
 
     const dropdownItems = {
@@ -124,28 +144,39 @@ export default function Navbar() {
                         home
                     </TransitionLink>
                     {Object.keys(dropdownItems).map((key) => (
-                        <div key={key} className="relative group">
+                        <div
+                            key={key}
+                            className="relative"
+                            onMouseEnter={() => handleMouseEnter(key)}
+                            onMouseLeave={() => handleMouseLeave(key)}
+                        >
                             <Link
                                 href="#"
-                                onClick={(e) => e.preventDefault()}
-                                className={`nav-link p-3 font-bold ${activeLink === key
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleDropdownToggle(key); // Toggle dropdown on click
+                                }}
+                                className={`nav-link p-4 font-bold ${activeLink === key
                                     ? "text-sky-600 border-b-2 border-sky-600"
                                     : "text-gray-500 hover:text-gray-700"
                                     }`}
                             >
                                 {key.replace(/-/g, " ")}
                             </Link>
-                            <div className="absolute hidden group-hover:block bg-white shadow-md rounded mt-2 z-50">
-                                {dropdownItems[key as keyof typeof dropdownItems].map((item) => (
-                                    <TransitionLink
-                                        key={item.name}
-                                        href={item.href}
-                                        className="block px-8 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    >
-                                        {item.name}
-                                    </TransitionLink>
-                                ))}
-                            </div>
+                            {dropdownOpen === key && (
+                                <div className="absolute left-0 bg-white shadow-md rounded z-10 w-48 sm:w-56 sm:mt-4">
+                                    {dropdownItems[key as keyof typeof dropdownItems].map((item) => (
+                                        <TransitionLink
+                                            key={item.name}
+                                            href={item.href}
+                                            className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left"
+                                        >
+                                            {item.name}
+                                            <hr></hr>
+                                        </TransitionLink>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
