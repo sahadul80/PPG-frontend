@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { TransitionLink } from "./TransitionLink";
 import { usePathname } from "next/navigation";
@@ -8,8 +8,7 @@ import Link from "next/link";
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     const [activeLink, setActiveLink] = useState<string>("home");
-    const [dropdownOpen, setDropdownOpen] = useState<string | null>(null); // State for active dropdown
-    const [isHoveringDropdown, setIsHoveringDropdown] = useState<boolean>(false); // Track hover state
+    const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
     const pathname = usePathname();
 
     const toggleMenu = (): void => {
@@ -38,22 +37,12 @@ export default function Navbar() {
         setActiveLink(link);
     };
 
-    const handleDropdownToggle = (key: string): void => {
-        setDropdownOpen((prev) => (prev === key ? null : key));
-    };
-
     const handleMouseEnter = (key: string) => {
         setDropdownOpen(key);
-        setIsHoveringDropdown(true);
     };
 
-    const handleMouseLeave = (key: string) => {
-        setIsHoveringDropdown(false);
-        setTimeout(() => {
-            if (!isHoveringDropdown) {
-                setDropdownOpen(null);
-            }
-        }, 300); // Delay hiding the dropdown for 300ms
+    const handleMouseLeave = () => {
+        setDropdownOpen(null);
     };
 
     const dropdownItems = {
@@ -73,8 +62,8 @@ export default function Navbar() {
             { name: "Student Admission", href: "/pages/services/student-admission" },
             { name: "Student Accommodation", href: "/pages/services/student-accommodation" },
             { name: "Partner University", href: "/pages/services/partner-university" },
-            { name: "School/College & Private Institutions", href: "/pages/services/schools-colleges" },
-            { name: "Government & Private Companies", href: "/pages/services/gov-private" },
+            { name: "School/College & Private Institutions", href: "/pages/services/schools-colleges-private-institutions" },
+            { name: "Government & Private Companies", href: "/pages/services/gov-private-companies" },
             { name: "Advice for Parents", href: "/pages/services/advice-parents" },
             { name: "End-to-End Services", href: "/pages/services/end-to-end" },
         ],
@@ -148,13 +137,13 @@ export default function Navbar() {
                             key={key}
                             className="relative"
                             onMouseEnter={() => handleMouseEnter(key)}
-                            onMouseLeave={() => handleMouseLeave(key)}
+                            onMouseLeave={handleMouseLeave}
                         >
                             <Link
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    handleDropdownToggle(key); // Toggle dropdown on click
+                                    setDropdownOpen(dropdownOpen === key ? null : key);
                                 }}
                                 className={`nav-link p-4 font-bold ${activeLink === key
                                     ? "text-sky-600 border-b-2 border-sky-600"
@@ -164,7 +153,7 @@ export default function Navbar() {
                                 {key.replace(/-/g, " ")}
                             </Link>
                             {dropdownOpen === key && (
-                                <div className="absolute left-0 bg-white shadow-md rounded z-10 w-48 sm:w-56 sm:mt-4">
+                                <div className="absolute left-0 bg-white shadow-md rounded z-10 w-48 sm:w-56 sm:mt-1">
                                     {dropdownItems[key as keyof typeof dropdownItems].map((item) => (
                                         <TransitionLink
                                             key={item.name}
@@ -172,7 +161,7 @@ export default function Navbar() {
                                             className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left"
                                         >
                                             {item.name}
-                                            <hr></hr>
+                                            <hr />
                                         </TransitionLink>
                                     ))}
                                 </div>
