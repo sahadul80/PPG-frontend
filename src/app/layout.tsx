@@ -55,24 +55,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {/* Favicon */}
                 <link rel="icon" href="/favicon.ico" />
 
-                {/* Google Analytics */}
-                <Script
-                    strategy="afterInteractive"
-                    src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_MEASUREMENT_ID"
-                />
-                <Script
-                    id="google-analytics"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
-                            gtag('js', new Date());
-                            gtag('config', 'YOUR_GA_MEASUREMENT_ID');
-                        `,
-                    }}
-                />
-
                 {/* Structured Data for SEO */}
                 <Script
                     type="application/ld+json"

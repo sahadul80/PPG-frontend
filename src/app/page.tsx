@@ -3,7 +3,6 @@ import Footer from "./components/footer";
 import Copyright from "./components/copyright";
 import Testimonial from "./components/testimonial";
 import Features from "./components/features";
-import Service from "./components/service";
 import Facts from "./components/counterfacts";
 import Carousel from "./components/carousel";
 import Navbar from "./components/navbar";
@@ -14,8 +13,8 @@ import TeamUpdate from "./components/teamUpdate";
 import MarqueeUpdate from "./components/marqueeUpdate";
 import CountryUpdate from "./components/countryUpdate";
 import CoachingSection from "./components/coachingSection";
-import { TransitionLink } from "./components/TransitionLink";
 import ContactForm from "./components/contactForm";
+import VisaCategories from "./components/visaCategories";
 
 export default function Home() {
   return (
@@ -25,12 +24,10 @@ export default function Home() {
           <Carousel />
           <MarqueeUpdate />
           <Facts />
-          <Service />
+          <VisaCategories />
           <Features />
-          <CountryUpdate />
           <ContactForm />
           <Testimonial />
-          <CoachingSection />
           <TeamUpdate />
           <Footer />
           <Copyright />

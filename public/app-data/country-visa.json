@@ -1,0 +1,410 @@
+{
+  "country_name": "United Kingdom",
+  "visa_categories": [
+    {
+      "type": "Visitor Visas",
+      "subtypes": [
+        {
+          "name": "Standard Visitor Visa",
+          "description": "For tourism, business visits, or short-term studies.",
+          "eligibility": "Sufficient funds, intention to leave the UK after the visit.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 100
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 6 months",
+          "image": {
+            "path": "/img/standard_visitor_visa.jpg",
+            "alt": "Standard Visitor Visa"
+          }
+        },
+        {
+          "name": "Family Visitor Visa",
+          "description": "For visiting family members in the UK.",
+          "eligibility": "Proof of relationship, sufficient funds, intention to return home.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 100
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 6 months",
+          "image": {
+            "path": "/img/family_visitor_visa.jpg",
+            "alt": "Family Visitor Visa"
+          }
+        },
+        {
+          "name": "Child Visitor Visa",
+          "description": "For children under 18 visiting the UK.",
+          "eligibility": "Parental consent, sufficient funds, proof of accommodation.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 100
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 6 months",
+          "image": {
+            "path": "/img/child_visitor_visa.jpg",
+            "alt": "Child Visitor Visa"
+          }
+        },
+        {
+          "name": "Business Visitor Visa",
+          "description": "For attending meetings, conferences, or other business-related activities.",
+          "eligibility": "Proof of business activity, sufficient funds, intention to return home.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 100
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 6 months",
+          "image": {
+            "path": "/img/business_visitor_visa.jpg",
+            "alt": "Business Visitor Visa"
+          }
+        },
+        {
+          "name": "Sports Visitor Visa",
+          "description": "For athletes and support staff attending sports events.",
+          "eligibility": "Proof of participation in sports events, sufficient funds.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 100
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 6 months",
+          "image": {
+            "path": "/img/sports_visitor_visa.jpg",
+            "alt": "Sports Visitor Visa"
+          }
+        },
+        {
+          "name": "Entertainer Visitor Visa",
+          "description": "For artists, entertainers, and musicians performing in the UK.",
+          "eligibility": "Proof of participation in cultural events, sufficient funds.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 100
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 6 months",
+          "image": {
+            "path": "/img/entertainer_visitor_visa.jpg",
+            "alt": "Entertainer Visitor Visa"
+          }
+        },
+        {
+          "name": "Marriage Visitor Visa",
+          "description": "For individuals planning to get married or register a civil partnership in the UK.",
+          "eligibility": "Proof of marriage plans, sufficient funds.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 100
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 6 months",
+          "image": {
+            "path": "/img/marriage_visitor_visa.jpg",
+            "alt": "Marriage Visitor Visa"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Work and Business Visas",
+      "subtypes": [
+        {
+          "name": "Skilled Worker Visa",
+          "description": "For individuals offered a job in the UK by an approved employer.",
+          "eligibility": "Job offer, sponsorship, and meeting skill requirements.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 610
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 5 years",
+          "image": {
+            "path": "/img/skilled_worker_visa.jpg",
+            "alt": "Skilled Worker Visa"
+          }
+        },
+        {
+          "name": "Health and Care Worker Visa",
+          "description": "For medical professionals to work in the NHS or adult social care.",
+          "eligibility": "Job offer in healthcare, sponsorship.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 232
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 5 years",
+          "image": {
+            "path": "/img/health_care_worker_visa.jpg",
+            "alt": "Health and Care Worker Visa"
+          }
+        },
+        {
+          "name": "Temporary Worker Visa",
+          "description": "For short-term work, including charity, creative, or seasonal work.",
+          "eligibility": "Sponsorship and proof of work.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 244
+          },
+          "processing_time": "3 weeks",
+          "validity": "6 months to 2 years",
+          "image": {
+            "path": "/img/temporary_worker_visa.jpg",
+            "alt": "Temporary Worker Visa"
+          }
+        },
+        {
+          "name": "High Potential Individual Visa",
+          "description": "For graduates from top global universities to work in the UK.",
+          "eligibility": "Degree from an eligible university, sufficient funds.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 715
+          },
+          "processing_time": "3 weeks",
+          "validity": "2-3 years",
+          "image": {
+            "path": "/img/high_potential_visa.jpg",
+            "alt": "High Potential Individual Visa"
+          }
+        },
+        {
+          "name": "Innovator Visa",
+          "description": "For experienced businesspersons establishing an innovative business.",
+          "eligibility": "Business endorsement, sufficient funds.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 1021
+          },
+          "processing_time": "3 weeks",
+          "validity": "3 years",
+          "image": {
+            "path": "/img/innovator_visa.jpg",
+            "alt": "Innovator Visa"
+          }
+        },
+        {
+          "name": "Start-up Visa",
+          "description": "For individuals starting a new business in the UK for the first time.",
+          "eligibility": "Business endorsement, sufficient funds.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 363
+          },
+          "processing_time": "3 weeks",
+          "validity": "2 years",
+          "image": {
+            "path": "/img/startup_visa.jpg",
+            "alt": "Start-up Visa"
+          }
+        },
+        {
+          "name": "Global Business Mobility Visa",
+          "description": "For overseas businesses transferring staff to the UK.",
+          "eligibility": "Sponsorship, proof of work.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 259
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 5 years",
+          "image": {
+            "path": "/img/global_business_mobility_visa.jpg",
+            "alt": "Global Business Mobility Visa"
+          }
+        },
+        {
+          "name": "International Sportsperson Visa",
+          "description": "For elite athletes and coaches coming to the UK to take part in a sporting event.",
+          "eligibility": "Proof of sporting achievement, sponsorship.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 255
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 3 years",
+          "image": {
+            "path": "/img/international_sportsperson_visa.jpg",
+            "alt": "International Sportsperson Visa"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Student Visas",
+      "subtypes": [
+        {
+          "name": "Student Visa",
+          "description": "For individuals pursuing higher education in the UK.",
+          "eligibility": "Offer from a licensed UK educational institution, sufficient funds, and English proficiency.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 363
+          },
+          "processing_time": "3 weeks",
+          "validity": "Duration of the course plus 4 months",
+          "image": {
+            "path": "/img/student_visa.jpg",
+            "alt": "Student Visa"
+          }
+        },
+        {
+          "name": "Child Student Visa",
+          "description": "For children aged 4 to 17 to study at an independent school in the UK.",
+          "eligibility": "Offer from a UK school, parental consent, and sufficient funds.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 363
+          },
+          "processing_time": "3 weeks",
+          "validity": "Duration of the course",
+          "image": {
+            "path": "/img/child_student_visa.jpg",
+            "alt": "Child Student Visa"
+          }
+        },
+        {
+          "name": "Short-term Study Visa",
+          "description": "For studying English language courses up to 11 months.",
+          "eligibility": "Offer from a UK institution, sufficient funds, and intention to leave after the course.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 200
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 11 months",
+          "image": {
+            "path": "/img/short_term_study_visa.jpg",
+            "alt": "Short-term Study Visa"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Settlement Visas",
+      "subtypes": [
+        {
+          "name": "Family Visa",
+          "description": "For individuals wishing to live with their family members in the UK.",
+          "eligibility": "Proof of relationship, adequate income, sponsorship.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 1523
+          },
+          "processing_time": "3 months",
+          "validity": "Indefinite Leave to Remain (ILR)",
+          "image": {
+            "path": "/img/family_visa.jpg",
+            "alt": "Family Visa"
+          }
+        },
+        {
+          "name": "Partner Visa",
+          "description": "For individuals wishing to live with their partner in the UK.",
+          "eligibility": "Proof of relationship, sufficient income.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 1523
+          },
+          "processing_time": "3 months",
+          "validity": "Indefinite Leave to Remain (ILR)",
+          "image": {
+            "path": "/img/partner_visa.jpg",
+            "alt": "Partner Visa"
+          }
+        },
+        {
+          "name": "Indefinite Leave to Remain (ILR)",
+          "description": "For individuals who have lived in the UK for a certain period and wish to settle.",
+          "eligibility": "Minimum residency requirement, good character, knowledge of language and life in the UK.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 2394
+          },
+          "processing_time": "Up to 6 months",
+          "validity": "Indefinite",
+          "image": {
+            "path": "/img/ilr_visa.jpg",
+            "alt": "Indefinite Leave to Remain (ILR)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Transit Visas",
+      "subtypes": [
+        {
+          "name": "Direct Airside Transit Visa (DATV)",
+          "description": "For travelers transiting through UK airports.",
+          "eligibility": "Valid flight ticket, proof of onward travel.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 35
+          },
+          "processing_time": "2-3 weeks",
+          "validity": "Up to 24 hours",
+          "image": {
+            "path": "/img/airside_transit_visa.jpg",
+            "alt": "Direct Airside Transit Visa"
+          }
+        },
+        {
+          "name": "Visitor in Transit Visa",
+          "description": "For travelers wishing to enter the UK while transiting.",
+          "eligibility": "Valid flight ticket, proof of onward travel.",
+          "fee": {
+            "currency": "GBP",
+            "amount": 64
+          },
+          "processing_time": "3 weeks",
+          "validity": "Up to 48 hours",
+          "image": {
+            "path": "/img/visitor_transit_visa.jpg",
+            "alt": "Visitor in Transit Visa"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Asylum and Refugee Visas",
+      "subtypes": [
+        {
+          "name": "Asylum Visa",
+          "description": "For individuals seeking asylum in the UK due to fear of persecution.",
+          "eligibility": "Proof of persecution in home country.",
+          "fee": {
+            "currency": "GBP",
+            "amount": "Free"
+          },
+          "processing_time": "Up to 6 months",
+          "validity": "Indefinite Leave to Remain (ILR)",
+          "image": {
+            "path": "/img/asylum_visa.jpg",
+            "alt": "Asylum Visa"
+          }
+        },
+        {
+          "name": "Refugee Family Reunion Visa",
+          "description": "For family members of refugees in the UK.",
+          "eligibility": "Proof of relationship to the refugee.",
+          "fee": {
+            "currency": "GBP",
+            "amount": "Free"
+          },
+          "processing_time": "6 months",
+          "validity": "Indefinite Leave to Remain (ILR)",
+          "image": {
+            "path": "/img/refugee_family_reunion_visa.jpg",
+            "alt": "Refugee Family Reunion Visa"
+          }
+        }
+      ]
+    }
+  ]
+}

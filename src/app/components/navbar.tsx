@@ -58,7 +58,6 @@ export default function Navbar() {
         ],
         "services": [
             { name: "Visa Categories", href: "/pages/services/visa-categories" },
-            { name: "Offered Countries", href: "/pages/services/offered-countries" },
             { name: "Student Admission", href: "/pages/services/student-admission" },
             { name: "Student Accommodation", href: "/pages/services/student-accommodation" },
             { name: "Partner University", href: "/pages/services/partner-university" },
