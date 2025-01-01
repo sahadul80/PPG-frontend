@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     description: "People Pulse Global Ltd. specializes in fast and reliable visa processing services globally.",
     openGraph: {
         title: "People Pulse Global Ltd.",
-        description: "Visa Processing Site",
-        url: "https://ppg-frontend-coral.vercel.app/",
+        description: "Visa Processing Site UK",
+        url: "https://www.peoplepulseglobal.com/",
         siteName: "People Pulse Global Ltd.",
         type: "website",
         images: [
             {
-                url: "https://ppg-frontend-coral.vercel.app/img/ppg_logo.png", // Replace with your logo URL
+                url: "https://www.peoplepulseglobal.com/img/ppg_logo.png", // Replace with your logo URL
                 width: 800,
                 height: 600,
                 alt: "People Pulse Global Logo",
@@ -42,15 +42,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {/* Open Graph Meta Tags */}
                 <meta property="og:title" content="People Pulse Global Ltd." />
                 <meta property="og:description" content="Visa Processing Site" />
-                <meta property="og:image" content="https://ppg-frontend-coral.vercel.app/img/ppg_logo.png" />
-                <meta property="og:url" content="https://ppg-frontend-coral.vercel.app/" />
+                <meta property="og:image" content="https://www.peoplepulseglobal.com/img/ppg_logo.png" />
+                <meta property="og:url" content="https://www.peoplepulseglobal.com/" />
                 <meta property="og:type" content="website" />
 
                 {/* Twitter Meta Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="People Pulse Global Ltd." />
                 <meta name="twitter:description" content="Visa Processing Site" />
-                <meta name="twitter:image" content="https://ppg-frontend-coral.vercel.app/img/ppg_logo.png" />
+                <meta name="twitter:image" content="https://www.peoplepulseglobal.com/img/ppg_logo.png" />
 
                 {/* Favicon */}
                 <link rel="icon" href="/favicon.ico" />
@@ -63,12 +63,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             "@context": "https://schema.org",
                             "@type": "Organization",
                             "name": "People Pulse Global Ltd.",
-                            "url": "https://ppg-frontend-coral.vercel.app/",
-                            "logo": "https://ppg-frontend-coral.vercel.app/img/ppg_logo.png",
+                            "url": "https://www.peoplepulseglobal.com/",
+                            "logo": "https://www.peoplepulseglobal.com/img/ppg_logo.png",
                             "contactPoint": {
                                 "@type": "ContactPoint",
-                                "telephone": "+1-800-555-5555",
-                                "contactType": "Customer Service",
+                                "telephone": "+447438914638",
+                                "contactType": "Consultation",
                             },
                         }),
                     }}
