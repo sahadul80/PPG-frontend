@@ -7,7 +7,9 @@ interface ContactFormData {
     company: string;
     email: string;
     phoneNumber: string;
-    message: string;
+    countryCode: string;
+    communicationMedium: string;
+    reason: string;
     agreeToPolicies: boolean;
     timestamp?: string;
 }
@@ -22,7 +24,9 @@ export async function POST(req: Request) {
             company,
             email,
             phoneNumber,
-            message,
+            countryCode,
+            communicationMedium,
+            reason,
             agreeToPolicies,
         } = body;
 
@@ -40,7 +44,9 @@ export async function POST(req: Request) {
             company,
             email,
             phoneNumber,
-            message,
+            countryCode,
+            communicationMedium,
+            reason,
             agreeToPolicies,
             timestamp: new Date().toISOString(),
         });

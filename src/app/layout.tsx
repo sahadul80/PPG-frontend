@@ -16,7 +16,7 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "https://www.peoplepulseglobal.com/img/ppg_logo.png", // Replace with your logo URL
+                url: "https://www.peoplepulseglobal.com/img/ppg_logo.png", 
                 width: 800,
                 height: 600,
                 alt: "People Pulse Global Logo",
