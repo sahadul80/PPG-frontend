@@ -33,9 +33,17 @@ export async function POST(req: Request) {
         // Define the path to the JSON file
         const filePath = path.join(process.cwd(), 'public', 'contactForm', 'contactForm.json');
 
-        // Read the existing data from the JSON file
-        const fileData = await fs.readFile(filePath, 'utf-8').catch(() => '[]');
-        const contactData: ContactFormData[] = JSON.parse(fileData);
+        // Check if the file exists
+        let contactData: ContactFormData[] = [];
+        try {
+            const fileData = await fs.readFile(filePath, 'utf-8');
+            contactData = JSON.parse(fileData);
+        } catch (err) {
+            // File does not exist; create a new one
+            console.log('File does not exist, creating a new file.');
+            await fs.mkdir(path.dirname(filePath), { recursive: true });
+            contactData = [];
+        }
 
         // Append the new data
         contactData.push({
