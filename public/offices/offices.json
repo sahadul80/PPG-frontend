@@ -1,27 +1,7 @@
 [
   {
-    "branch": "Headquarters",
-    "name": "John Doe",
-    "phone": "+1234567890"
-  },
-  {
-    "branch": "North Branch",
-    "name": "Jane Smith",
-    "phone": "+0987654321"
-  },
-  {
-    "branch": "East Branch",
-    "name": "Emily Davis",
-    "phone": "+1122334455"
-  },
-  {
-    "branch": "South Branch",
-    "name": "Michael Brown",
-    "phone": "+2233445566"
-  },
-  {
-    "branch": "West Branch",
-    "name": "Olivia Wilson",
-    "phone": "+3344556677"
+    "branch": "UK Headquarters",
+    "name": "Milon",
+    "phone": "+4474 3891 4638"
   }
 ]

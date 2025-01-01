@@ -22,8 +22,8 @@ export default function Footer() {
                             <p>
                                 <span className="text-xs uppercase tracking-wide text-gray-500"> Call us </span>
 
-                                <a href="#" className="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl">
-                                    0123456789
+                                <a href="tel:+447438914638" className="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl">
+                                    +447438914638
                                 </a>
                             </p>
 
@@ -192,7 +192,7 @@ export default function Footer() {
                             </ul>
 
                             <p className="mt-8 text-xs text-gray-500 sm:mt-0">
-                                &copy; 2024. People Pulse Global. All rights reserved.
+                                &copy; 2024. People Pulse Global. All rights reserved. A Scarlet Lab Production.
                             </p>
                         </div>
                     </div>

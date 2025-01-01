@@ -117,12 +117,6 @@ export default function Features() {
                             </div>
                         </div>
                 </div>
-
-                <div className="text-center text-bold text-xl p-6 col-12">
-                    <Link className="rounded-pill py-3 px-5" href="#">
-                        More Features
-                    </Link>
-                </div>
             </div>
         </div>
     );
