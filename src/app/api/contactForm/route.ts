@@ -1,22 +1,10 @@
-import { promises as fs } from 'fs';
-import path from 'path';
+import { NextRequest } from 'next/server'; // Correct import for Next.js
+import { AppDataSource } from '../../lib/data-source';
+import { ContactFormEntity } from '../../lib/entities/ContactForm';
 
-interface ContactFormData {
-    firstName: string;
-    lastName: string;
-    company: string;
-    email: string;
-    phoneNumber: string;
-    countryCode: string;
-    communicationMedium: string;
-    reason: string;
-    agreeToPolicies: boolean;
-    timestamp?: string;
-}
-
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     try {
-        const body: ContactFormData = await req.json();
+        const body = await req.json(); // Parsing JSON body
 
         const {
             firstName,
@@ -30,47 +18,38 @@ export async function POST(req: Request) {
             agreeToPolicies,
         } = body;
 
-        // Define the path to the JSON file
-        const filePath = path.join(process.cwd(), 'public', 'contactForm', 'contactForm.json');
+        // Create a new instance of the ContactForm entity
+        const contactFormRepository = AppDataSource.getRepository(ContactFormEntity);
+        const contactForm = new ContactFormEntity();
 
-        // Check if the file exists
-        let contactData: ContactFormData[] = [];
-        try {
-            const fileData = await fs.readFile(filePath, 'utf-8');
-            contactData = JSON.parse(fileData);
-        } catch (err) {
-            // File does not exist; create a new one
-            console.log('File does not exist, creating a new file.');
-            await fs.mkdir(path.dirname(filePath), { recursive: true });
-            contactData = [];
-        }
+        contactForm.firstName = firstName;
+        contactForm.lastName = lastName;
+        contactForm.company = company;
+        contactForm.email = email;
+        contactForm.phoneNumber = phoneNumber;
+        contactForm.countryCode = countryCode;
+        contactForm.communicationMedium = communicationMedium;
+        contactForm.reason = reason;
+        contactForm.agreeToPolicies = agreeToPolicies;
 
-        // Append the new data
-        contactData.push({
-            firstName,
-            lastName,
-            company,
-            email,
-            phoneNumber,
-            countryCode,
-            communicationMedium,
-            reason,
-            agreeToPolicies,
-            timestamp: new Date().toISOString(),
-        });
+        // Save the contact form data to the database
+        await contactFormRepository.save(contactForm);
 
-        // Write the updated data back to the JSON file
-        await fs.writeFile(filePath, JSON.stringify(contactData, null, 2));
-
-        return new Response(JSON.stringify({ message: 'Data saved successfully' }), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        return new Response(
+            JSON.stringify({ message: 'Data saved successfully' }),
+            {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' },
+            }
+        );
     } catch (error) {
-        console.error('Error writing to file:', error);
-        return new Response(JSON.stringify({ error: 'Error writing to file' }), {
-            status: 500,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        console.error('Error saving data:', error);
+        return new Response(
+            JSON.stringify({ error: 'Error saving data' }),
+            {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' },
+            }
+        );
     }
 }

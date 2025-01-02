@@ -104,7 +104,7 @@ const ContactForm: React.FC = () => {
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default form submission behavior
         if (!validate()) return;
 
         try {
