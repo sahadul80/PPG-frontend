@@ -1,10 +1,10 @@
-import { NextRequest } from 'next/server'; // Correct import for Next.js
+import { NextRequest } from 'next/server';  // Correct import for Next.js
 import { AppDataSource } from '../../lib/data-source';
 import { ContactFormEntity } from '../../lib/entities/ContactForm';
 
 export async function POST(req: NextRequest) {
     try {
-        const body = await req.json(); // Parsing JSON body
+        const body = await req.json();  // Parsing JSON body
 
         const {
             firstName,
@@ -18,8 +18,10 @@ export async function POST(req: NextRequest) {
             agreeToPolicies,
         } = body;
 
-        // Create a new instance of the ContactForm entity
+        // Ensure the database connection is established before performing any database actions
         const contactFormRepository = AppDataSource.getRepository(ContactFormEntity);
+
+        // Create a new instance of the ContactForm entity
         const contactForm = new ContactFormEntity();
 
         contactForm.firstName = firstName;
