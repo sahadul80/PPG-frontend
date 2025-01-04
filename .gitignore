@@ -36,3 +36,5 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+src/app/lib/service_acc.json
