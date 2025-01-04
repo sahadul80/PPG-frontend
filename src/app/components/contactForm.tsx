@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -61,7 +61,6 @@ const ContactForm: React.FC = () => {
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
-    const [loading, setLoading] = useState<boolean>(false);
 
     const validate = (): boolean => {
         const newErrors: FormErrors = {};
@@ -96,19 +95,20 @@ const ContactForm: React.FC = () => {
     };
 
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value.replace(/[^0-9]/g, ""); // Allow only numeric input
+        // Allow only numeric input
+        const value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
         setFormData((prev) => ({
             ...prev,
             phoneNumber: value,
         }));
     };
 
+    const [submitting, setSubmitting] = useState<boolean>(false);
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault(); // Prevent default form submission behavior
+        e.preventDefault();
         if (!validate()) return;
-
-        setLoading(true);
-
+        setSubmitting(true); 
         try {
             const response = await fetch("/api/contactForm", {
                 method: "POST",
@@ -139,7 +139,7 @@ const ContactForm: React.FC = () => {
             console.error("Error submitting data:", error);
             toast.error("An error occurred while submitting data.");
         } finally {
-            setLoading(false);
+            setSubmitting(false); // Reset submitting state after submission
         }
     };
 
@@ -237,8 +237,8 @@ const ContactForm: React.FC = () => {
                                     name="phoneNumber"
                                     id="phoneNumber"
                                     value={formData.phoneNumber}
-                                    onChange={handlePhoneChange}
-                                    maxLength={15}
+                                    onChange={handlePhoneChange} // Handle numeric input
+                                    maxLength={15} // Limiting input length
                                     className="block w-full rounded-md border px-3 py-1"
                                 />
                             </div>
@@ -318,9 +318,8 @@ const ContactForm: React.FC = () => {
                         <button
                             type="submit"
                             className="block w-full text-white rounded py-2"
-                            disabled={loading}
                         >
-                            {loading ? "Submitting..." : "Let's talk"}
+                            {submitting ? "Submitting..." : "Let's talk"}
                         </button>
                     </div>
                 </form>
@@ -329,4 +328,4 @@ const ContactForm: React.FC = () => {
     );
 };
 
-export default ContactForm
+export default ContactForm;

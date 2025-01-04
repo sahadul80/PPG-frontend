@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
-import path from 'path';
-import { readFileSync } from 'fs';
 
+// Allowed origins
 const allowedOrigins = [
     'http://localhost:8000', // Local development
     'https://www.peoplepulseglobal.com', // Production domain
@@ -12,13 +11,27 @@ const allowedOrigins = [
 const SPREADSHEET_ID = '1_Bj6b81BO0U5Vy7sZ8KfGm3jh58GUa458hNaEg03las';
 const SHEET_NAME = 'contact_form';
 
-// Load Service Account credentials
-const serviceAccountKeyPath = path.resolve(process.cwd(), 'src/app/lib/service_acc.json');
-const credentials = JSON.parse(readFileSync(serviceAccountKeyPath, 'utf8'));
+// Load Service Account credentials from environment variables
+const credentials = process.env.CREDIT; // Ensure this contains your JSON as a string
+
+if (!credentials) {
+    console.error('Service account credentials are missing');
+    process.exit(1); // Stop execution if no credentials found
+}
+
+// Parse the credentials string into a JSON object
+let parsedCredentials;
+try {
+    parsedCredentials = JSON.parse(credentials);
+    console.log('Credentials:', parsedCredentials);
+} catch (error) {
+    console.error('Error parsing credentials:', error);
+    process.exit(1); // Stop execution if parsing fails
+}
 
 // Initialize Google Sheets API client
 const auth = new google.auth.GoogleAuth({
-    credentials,
+    credentials: parsedCredentials,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 const sheets = google.sheets({ version: 'v4', auth });

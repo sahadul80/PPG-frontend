@@ -1,17 +1,30 @@
 import { google } from 'googleapis';
-import path from 'path';
 import nodemailer from 'nodemailer';
-import { readFileSync } from 'fs';
 
 // Google Sheets API setup
 const SPREADSHEET_ID = '1Dsdltd0YswaVD-OVppdQsZTiVThE_uBm0BET-XdDCsg'; // Replace with your sheet ID
 const SHEET_NAME = 'subscribers'; // Update with your sheet name
 
-const serviceAccountKeyPath = path.resolve(process.cwd(), 'src', 'app', 'lib', 'service_acc.json');
-const credentials = JSON.parse(readFileSync(serviceAccountKeyPath, 'utf8'));
+// Load Service Account credentials from environment variables
+const credentials = process.env.CREDIT; // Ensure this contains your JSON as a string
+
+if (!credentials) {
+    console.error('Service account credentials are missing');
+    process.exit(1); // Stop execution if no credentials found
+}
+
+// Parse the credentials string into a JSON object
+let parsedCredentials;
+try {
+    parsedCredentials = JSON.parse(credentials);
+    console.log('Credentials:', parsedCredentials);
+} catch (error) {
+    console.error('Error parsing credentials:', error);
+    process.exit(1); // Stop execution if parsing fails
+}
 
 const auth = new google.auth.GoogleAuth({
-    credentials,
+    credentials: parsedCredentials,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
@@ -43,7 +56,11 @@ async function sendVerificationEmail(email: string) {
         from: process.env.EMAIL_USER,
         to: email,
         subject: 'Subscription Verification',
-        text: `Thank you for subscribing to People Pulse Global ltd.! You will be updated with our latest services.`,
+        text: `Thank you for subscribing to People Pulse Global ltd.! Please verify your email to complete the subscription.`,
+        html: `
+            <p>Thank you for subscribing!</p>
+            <p>Please verify your email to complete the subscription.</p>
+        `,
     };
 
     return transporter.sendMail(mailOptions);
@@ -80,7 +97,7 @@ export async function getAllSubscribers() {
             range: `${SHEET_NAME}!A2:A`, // Assuming emails are in column A starting from A2
         });
         if (response.data.values) {
-            response.data.values.forEach((row: any) => {
+            response.data.values.forEach((row) => {
                 subscribers.push({ email: row[0] });
             });
         }
