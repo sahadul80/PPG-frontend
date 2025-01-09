@@ -75,7 +75,7 @@ export default function ContactOffice() {
             <h2 className="p-2">Contact Our Offices</h2>
             {offices.map((office) => (
                 <div key={office.branch} className="flex justify-between office-card">
-                    <h3>{office.branch}</h3>
+                    <p className="font-bold">{office.branch}</p>
                     <p>{office.name}</p>
                     <button>
                         <Link href={`tel:${office.phone}`} className="call-button">
