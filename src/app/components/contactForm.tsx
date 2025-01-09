@@ -224,7 +224,7 @@ const ContactForm: React.FC = () => {
                                     name="countryCode"
                                     value={formData.countryCode}
                                     onChange={handleChange}
-                                    className="block w-1/4 rounded-md border px-3 py-1"
+                                    className="block w-1/2 rounded-md border px-3 py-1"
                                 >
                                     {countryCodes.map(({ code, label }) => (
                                         <option key={code} value={code}>

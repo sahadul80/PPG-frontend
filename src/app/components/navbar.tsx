@@ -16,8 +16,8 @@ export default function Navbar() {
     };
 
     useEffect(() => {
-        if (pathname === "/") {
-            setActiveLink("home");
+        if (pathname.startsWith("/pages/study")) {
+            setActiveLink("study");
         } else if (pathname.startsWith("/pages/about")) {
             setActiveLink("why-us");
         } else if (pathname.startsWith("/pages/services")) {
@@ -29,7 +29,7 @@ export default function Navbar() {
         } else if (pathname.startsWith("/pages/events")) {
             setActiveLink("events");
         } else {
-            setActiveLink("");
+            setActiveLink("home");
         }
     }, [pathname]);
 
@@ -46,6 +46,14 @@ export default function Navbar() {
     };
 
     const dropdownItems = {
+        "study": [
+            { name: "Find a Course", href: "/pages/study/find-a-course" },
+            { name: "Find University", href: "/pages/study/find-university" },
+            { name: "University Ranking", href: "/pages/study/university-ranking" },
+            { name: "Scholarships", href: "/pages/study/scholarships" },
+            { name: "Help & Support", href: "/pages/study/help-&-support" },
+            { name: "Application Process", href: "/pages/study/application-process" },
+        ],
         "why-us": [
             { name: "Who We Are", href: "/pages/about/who-we-are" },
             { name: "Message from CCO", href: "/pages/about/cco-message" },
