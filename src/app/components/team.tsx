@@ -73,7 +73,7 @@ const Team: React.FC<TeamProps> = ({ members }) => {
                                         alt={`${member.name}'s avatar`}
                                         width={150}
                                         height={150}
-                                        className="max-w-full h-auto mx-auto rounded-full bg-gray-50"
+                                        className="max-w-150px max-h-150px mx-auto rounded-full bg-gray-50"
                                     />
                                 </div>
                                 <div className="pt-6 text-center">

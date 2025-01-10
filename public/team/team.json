@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Shahin Miah",
     "role": "Chairman",
-    "image": "/img/ppg_chairman.png",
+    "image": "/img/ppg_chairman_up.png",
     "socialLinks": {
       "twitter": "https://twitter.com",
       "facebook": "https://facebook.com",
@@ -14,7 +14,7 @@
   {
     "id": 2,
     "name": "Md Milon",
-    "role": "",
+    "role": "Partner",
     "image": "https://tailone.tailwindtemplate.net/src/img/dummy/avatar1.png",
     "socialLinks": {
       "twitter": "https://twitter.com",
@@ -26,7 +26,7 @@
   {
     "id": 3,
     "name": "Noman Naeem",
-    "role": "",
+    "role": "Partner",
     "image": "https://tailone.tailwindtemplate.net/src/img/dummy/avatar4.png",
     "socialLinks": {
       "twitter": "https://twitter.com",

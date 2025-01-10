@@ -77,7 +77,7 @@ export default function ContactOffice() {
                 <div key={office.branch} className="flex justify-between office-card">
                     <h3 className="font-bold">{office.branch}</h3>
                     <p>{office.name}</p>
-                    <a href={`tel:${office.phone}`} className="text-white px-4 py-2 rounded bg-gray-500 hover:bg-gray-600">
+                    <a href={`tel:${office.phone}`} className="text-white px-4 py-1 rounded bg-gray-500 hover:bg-gray-600">
                         Call
                     </a>
                 </div>
