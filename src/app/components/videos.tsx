@@ -116,7 +116,7 @@ const VideoList: React.FC = () => {
                             )}
                         </div>
                         <div className="p-4">
-                            <h4 className="font-semibold text-lg">{video.title}</h4>
+                            <h4 className="font-semibold text-sm">{video.title}</h4>
                         </div>
                     </div>
                 ))}
