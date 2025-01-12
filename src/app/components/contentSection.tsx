@@ -1,12 +1,13 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Loading from "./loading";
 
 export default function ContentSection() {
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [activeIndex, setActiveIndex] = useState<number | null>(null); // Track which title is clicked
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,7 +37,26 @@ export default function ContentSection() {
     }
 
     const toggleDescription = (index: number) => {
-        setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+        setActiveIndex((prevIndex) => {
+            const newIndex = prevIndex === index ? null : index;
+            if (newIndex !== null) {
+                const element = serviceRefs.current[newIndex];
+                if (element) {
+                    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                    const viewportHeight = window.innerHeight;
+                    const elementHeight = element.offsetHeight;
+
+                    // Calculate the scroll position to center the element in the viewport
+                    const scrollToPosition = elementPosition - (viewportHeight / 2) + (elementHeight / 2);
+
+                    window.scrollTo({
+                        top: scrollToPosition,
+                        behavior: "smooth",
+                    });
+                }
+            }
+            return newIndex;
+        });
     };
 
     const renderContent = (content: string) => {
@@ -46,7 +66,6 @@ export default function ContentSection() {
             kw.toLowerCase()
         );
 
-        // Process the content to handle keywords, emails, URLs, and newlines
         return content.split('\n').map((line, lineIndex) => (
             <span key={lineIndex}>
                 {line.split(/\s+/).map((word, wordIndex) => {
@@ -108,6 +127,9 @@ export default function ContentSection() {
                     {data.services.map((service: any, index: number) => (
                         <div
                             key={index}
+                            ref={(el) => {
+                                serviceRefs.current[index] = el;
+                            }}
                             className="bg-gray-100 p-2 rounded-lg shadow-md"
                         >
                             <h3
