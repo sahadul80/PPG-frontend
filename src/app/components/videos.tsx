@@ -1,9 +1,9 @@
-"use client"
-import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+"use client";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
-const PLAYLIST_ID = 'PL8ua8rCMPoxBXg_tRadxIkD39ptiZNT6y';
+const PLAYLIST_ID = "PL1pf33qWCkmgP99SlSUveQu9KDtmreQH1";
 
 interface Video {
     id: string;
@@ -12,7 +12,7 @@ interface Video {
 
 const VideoList: React.FC = () => {
     const [videos, setVideos] = useState<Video[]>([]);
-    const [searchTerm, setSearchTerm] = useState<string>('');
+    const [searchTerm, setSearchTerm] = useState<string>("");
     const [visibleVideos, setVisibleVideos] = useState<number>(3);
     const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
 
@@ -23,7 +23,7 @@ const VideoList: React.FC = () => {
     const fetchVideos = async () => {
         try {
             if (!API_KEY) {
-                console.error('Missing API Key');
+                console.error("Missing API Key");
                 return;
             }
 
@@ -32,7 +32,7 @@ const VideoList: React.FC = () => {
                 endpoint = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${encodeURIComponent(searchTerm)}&key=${API_KEY}`;
             }
 
-            console.log('Requesting URL:', endpoint);
+            console.log("Requesting URL:", endpoint);
 
             const response = await axios.get(endpoint);
             const videoData = response.data.items.map((item: any) => ({
@@ -41,7 +41,7 @@ const VideoList: React.FC = () => {
             }));
             setVideos(videoData);
         } catch (error) {
-            console.error('Error fetching videos:', error);
+            console.error("Error fetching videos:", error);
         }
     };
 
@@ -55,10 +55,23 @@ const VideoList: React.FC = () => {
     };
 
     const showLess = () => {
-        setVisibleVideos((prev) => (prev > 3 ? prev - 3 : 3));
+        setVisibleVideos(3); // Always show 3 videos on "Show Less"
     };
 
     const handleVideoClick = (videoId: string) => {
+        if (playingVideoId) {
+            // Pause the currently playing video
+            const currentIframe = document.querySelector(
+                `iframe[src*="${playingVideoId}"]`
+            ) as HTMLIFrameElement | null;
+            if (currentIframe?.contentWindow) {
+                currentIframe.contentWindow.postMessage(
+                    '{"event":"command","func":"pauseVideo","args":""}',
+                    "*"
+                );
+            }
+        }
+
         if (playingVideoId === videoId) {
             setPlayingVideoId(null); // Pause the video if the same one is clicked again
         } else {
@@ -67,7 +80,10 @@ const VideoList: React.FC = () => {
     };
 
     return (
-        <div className="p-6">
+        <div className="country-section p-6">
+            <div className="flex justify-center mb-6">
+                <h3 className="text-dark text-2xl font-bold">Video Tutorial Guide</h3>
+            </div>
             <div className="flex justify-center mb-6">
                 <input
                     className="input input-bordered input-secondary w-full max-w-md mr-4"
@@ -76,7 +92,9 @@ const VideoList: React.FC = () => {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button className="btn btn-secondary" onClick={handleSearch}>Search</button>
+                <button className="btn btn-secondary" onClick={handleSearch}>
+                    Search
+                </button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {videos.slice(0, visibleVideos).map((video) => (
@@ -85,7 +103,7 @@ const VideoList: React.FC = () => {
                             <iframe
                                 width="100%"
                                 height="200"
-                                src={`https://www.youtube.com/embed/${video.id}?autoplay=${playingVideoId === video.id ? 1 : 0}`}
+                                src={`https://www.youtube.com/embed/${video.id}?enablejsapi=1&autoplay=${playingVideoId === video.id ? 1 : 0}`}
                                 allowFullScreen
                                 title={video.title}
                                 className="rounded-t-lg"
@@ -105,10 +123,14 @@ const VideoList: React.FC = () => {
             </div>
             <div className="flex justify-center mt-6">
                 {visibleVideos < videos.length && (
-                    <button className="btn btn-primary mr-4" onClick={showMore}>Show More</button>
+                    <button className="btn btn-primary mr-4" onClick={showMore}>
+                        Show More
+                    </button>
                 )}
                 {visibleVideos > 3 && (
-                    <button className="btn btn-secondary" onClick={showLess}>Show Less</button>
+                    <button className="btn btn-secondary" onClick={showLess}>
+                        Show Less
+                    </button>
                 )}
             </div>
         </div>
