@@ -45,6 +45,10 @@ export default function Navbar() {
         setDropdownOpen(null);
     };
 
+    const isSubmenuActive = (submenuHref: string): boolean => {
+        return pathname === submenuHref;
+    };
+
     const dropdownItems = {
         "study": [
             { name: "Find a Course", href: "/pages/study/find-a-course" },
@@ -165,7 +169,8 @@ export default function Navbar() {
                                         <TransitionLink
                                             key={item.name}
                                             href={item.href}
-                                            className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left"
+                                            className={`block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left ${isSubmenuActive(item.href) ? "bg-gray-100" : ""
+                                                }`}
                                         >
                                             {item.name}
                                             <hr />

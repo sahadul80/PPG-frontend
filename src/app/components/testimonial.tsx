@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import Loading from "./loading";
 
 type Testimonial = {
     img: string;
@@ -81,7 +82,7 @@ export default function Testimonial() {
     };
 
     if (loading) {
-        return <div>Loading testimonials...</div>;
+        return <Loading />;
     }
 
     if (error) {

@@ -1,4 +1,6 @@
+"use client"
 import { useEffect, useState } from "react";
+import Loading from "./loading";
 
 export default function ContentSection() {
     const [data, setData] = useState<any>(null);
@@ -26,7 +28,7 @@ export default function ContentSection() {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loading />;
     }
 
     if (error) {

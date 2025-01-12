@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { TransitionLink } from "./TransitionLink";
+import Loading from "./loading";
 
 interface VisaCategory {
     type: string;
@@ -42,7 +43,7 @@ export default function VisaCategories() {
         setVisibleCount((prevCount) => Math.max(prevCount - itemsPerPage, 3));
     };
 
-    if (loading) return <TransitionLink href="" className="text-center mt-4">Loading...</TransitionLink>;
+    if (loading) return <Loading />;
     if (error) return <div className="text-center mt-4 text-red-600">{error}</div>;
 
     return (

@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import Loading from "./loading";
 
 interface FormData {
     firstName: string;
@@ -146,12 +147,16 @@ const ContactForm: React.FC = () => {
     return (
         <div className="coaching-section py-8">
             <Toaster />
-            <div className="mx-10 max-w-l text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact Us</h2>
-                <p className="mt-2 text-lg leading-8 text-gray-600">
-                    Feel free to ask your questions here. You will be contacted soon. Stay updated!
-                </p>
-            </div>
+            {submitting ? (
+                <Loading /> // Show the Loading component while submitting
+            ) : (
+                <div className="mx-10 max-w-l text-center">
+                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact Us</h2>
+                    <p className="mt-2 text-lg leading-8 text-gray-600">
+                        Feel free to ask your questions here. You will be contacted soon. Stay updated!
+                    </p>
+                </div>
+            )}
             <div className="bg-light rounded">
                 <form onSubmit={handleSubmit} className="mx-auto max-w-xl p-5">
                     <div className="grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-2">
