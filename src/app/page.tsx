@@ -11,10 +11,9 @@ import ContactCTA from "./components/contactCTA";
 import Topbar from "./components/topbar";
 import TeamUpdate from "./components/teamUpdate";
 import MarqueeUpdate from "./components/marqueeUpdate";
-import CountryUpdate from "./components/countryUpdate";
-import CoachingSection from "./components/coachingSection";
 import ContactForm from "./components/contactForm";
 import VisaCategories from "./components/visaCategories";
+import VideoList from "./components/videos";
 
 export default function Home() {
   return (
@@ -27,6 +26,7 @@ export default function Home() {
           <VisaCategories />
           <Features />
           <ContactForm />
+          <VideoList />
           <Testimonial />
           <TeamUpdate />
           <Footer />
