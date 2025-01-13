@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState, useRef } from "react";
 import Loading from "./loading";
 
@@ -6,7 +6,7 @@ export default function ContentSection() {
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const [openIndices, setOpenIndices] = useState<number[]>([0]); // First title open by default
     const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
@@ -37,25 +37,21 @@ export default function ContentSection() {
     }
 
     const toggleDescription = (index: number) => {
-        setActiveIndex((prevIndex) => {
-            const newIndex = prevIndex === index ? null : index;
-            if (newIndex !== null) {
-                const element = serviceRefs.current[newIndex];
-                if (element) {
-                    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-                    const viewportHeight = window.innerHeight;
-                    const elementHeight = element.offsetHeight;
+        setOpenIndices((prevIndices) => {
+            const newIndices = prevIndices.includes(index)
+                ? prevIndices.filter((i) => i !== index) // Close the title if open
+                : [...prevIndices, index]; // Open the title
 
-                    // Calculate the scroll position to center the element in the viewport
-                    const scrollToPosition = elementPosition - (viewportHeight / 2) + (elementHeight / 2);
-
-                    window.scrollTo({
-                        top: scrollToPosition,
-                        behavior: "smooth",
-                    });
-                }
+            // Scroll to the toggled element
+            const element = serviceRefs.current[index];
+            if (element) {
+                element.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
             }
-            return newIndex;
+
+            return newIndices;
         });
     };
 
@@ -75,7 +71,7 @@ export default function ContentSection() {
                             <a
                                 key={wordIndex}
                                 href={`mailto:${word}`}
-                                className="text-blue-500 underline cursor-pointer"
+                                className="text-blue-500 underline cursor-pointer break-words"
                             >
                                 {word}
                             </a>
@@ -88,7 +84,7 @@ export default function ContentSection() {
                                 href={url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-500 underline cursor-pointer"
+                                className="text-blue-500 underline cursor-pointer break-words"
                             >
                                 {word}
                             </a>
@@ -98,7 +94,7 @@ export default function ContentSection() {
                             <a
                                 key={wordIndex}
                                 href={`/${word.replace(/\s+/g, '-').toLowerCase()}`}
-                                className="text-green-600 underline cursor-pointer"
+                                className="text-green-600 underline cursor-pointer break-words"
                             >
                                 {word}
                             </a>
@@ -115,7 +111,7 @@ export default function ContentSection() {
     return (
         <section className="py-6 bg-white">
             <div className="container mx-auto px-4">
-                <h2 className="text-xl font-bold text-center mb-8">
+                <h2 className="text-2xl font-bold text-center mb-8">
                     {data.title}
                 </h2>
 
@@ -124,27 +120,32 @@ export default function ContentSection() {
                 </p>
 
                 <div className="space-y-4">
-                    {data.services.map((service: any, index: number) => (
-                        <div
-                            key={index}
-                            ref={(el) => {
-                                serviceRefs.current[index] = el;
-                            }}
-                            className="bg-gray-100 p-2 rounded-lg shadow-md"
-                        >
-                            <h3
-                                className="text-l font-semibold mb-4 cursor-pointer"
-                                onClick={() => toggleDescription(index)}
+                    {data.services.map((service: any, index: number) => {
+                        const isOpen = openIndices.includes(index);
+                        return (
+                            <div
+                                key={index}
+                                ref={(el) => {
+                                    serviceRefs.current[index] = el;
+                                }}
+                                className={`p-4 rounded-lg shadow-md transition-all ${isOpen ? 'bg-[#d9eafd]' : 'bg-[#f0f7ff]'
+                                    }`}
                             >
-                                {service.title}
-                            </h3>
-                            {activeIndex === index && (
-                                <p className="text-gray-700">
-                                    {renderContent(service.description)}
-                                </p>
-                            )}
-                        </div>
-                    ))}
+                                <h3
+                                    className={`text-l font-semibold mb-4 cursor-pointer ${isOpen ? 'text-[#2a6ebd]' : 'text-[#3768a8]'
+                                        }`}
+                                    onClick={() => toggleDescription(index)}
+                                >
+                                    {service.title}
+                                </h3>
+                                {isOpen && (
+                                    <p className="text-gray-700 break-words">
+                                        {renderContent(service.description)}
+                                    </p>
+                                )}
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>

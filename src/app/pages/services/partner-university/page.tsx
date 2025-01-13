@@ -14,7 +14,7 @@ export default function PartnerUniPage() {
             <Navbar />
             <div className="container mx-auto px-2 py-2">
                 <div className="flex flex-col md:flex-row gap-6">
-                    <div className="md:w-2/3 p-6">
+                    <div className="md:w-2/3 bg-white p-4 rounded-lg shadow-lg">
                         <p className="mb-4">
                             Our service is not limited to the students only but also we provide a number of services for the universities that we are associated with. Our services for universities are as follows:
                         </p>
@@ -30,12 +30,12 @@ export default function PartnerUniPage() {
                         </ul>
                         <p className="mb-4">All services are completely free for students and our partners.</p>
 
-                        <h2 className="text-xl font-bold text-blue-700 mb-2">Our Promotion</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">Our Promotion</h2>
                         <p className="mb-4">
                             We do International Newspaper advertisements covering all regions that we work in, Facebook advertisements, Google advertisements, Local TV advertisements, Flyer distribution, Text Marketing, Email marketing, Facebook pages with about 2,44,628+ fans, Google+, YouTube, Twitter, Instagram, Pinterest, Blog, and Skype.
                         </p>
 
-                        <h2 className="text-xl font-bold text-blue-700 mb-2">CRM System</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">CRM System</h2>
                         <p className="mb-4">
                             To manage our students, we have an online system for partner institutes like the EMS data management system (CRM), Centurus|One, Student and Partner Management System, Project Management System, and Express email marketing tool for the email campaign.
                         </p>

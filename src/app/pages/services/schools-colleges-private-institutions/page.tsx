@@ -14,11 +14,11 @@ export default function InstitutionPage() {
             <Navbar />
             <div className="container mx-auto px-2 py-2">
                 <div className="flex flex-col md:flex-row gap-6">
-                    <div className="md:w-2/3 p-6">
+                    <div className="md:w-2/3 bg-white p-4 rounded-lg shadow-lg">
                         <p className="mb-4">
                             There are many schools and colleges across the world that want to be visited by well-renowned UK universities academic or international teams, so Study in the UK services are always in demand. They want to create opportunities for their students to study at popular universities around the world, and UK universities are one of the great choices.
                         </p>
-                        <h2 className="text-xl font-bold text-blue-700 mb-2">Play</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">Play</h2>
                         <p className="mb-4">
                             We provide study-abroad services to schools and colleges around the world that want to get in touch with one of our partner universities. We can make an arrangement between your institute and the UK university without any charges. You can find a list of our partner universities on the{" "}
                             <Link href="../study/find-university" legacyBehavior>
@@ -26,7 +26,7 @@ export default function InstitutionPage() {
                             </Link>{" "}
                             page. Please contact us for further information.
                         </p>
-                        <h2 className="text-xl font-bold text-blue-700 mb-2">Contact Us</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">Contact Us</h2>
                         <p className="mb-4">
                             Md Milon <br />
                             Partner <br />
