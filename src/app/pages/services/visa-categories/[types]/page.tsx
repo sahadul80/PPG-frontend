@@ -7,6 +7,7 @@ import Topbar from "../../../../components/topbar";
 import ContactForm from "../../../../components/contactForm";
 import ContactCTA from "../../../../components/contactCTA";
 import TopArrow from "../../../../components/toparrow";
+import Loading from "../../../../components/loading";
 
 // Define the structure of the visa data
 interface VisaSubtype {
@@ -56,7 +57,7 @@ export default function VisaTypePage() {
     }, [types]);
 
     if (!visaData) {
-        return <p>Loading...</p>;
+        return <Loading />;
     }
 
     // Handle showing more cards
