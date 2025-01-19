@@ -23,7 +23,7 @@ export default function Footer() {
                                 <span className="text-xs uppercase tracking-wide text-gray-500"> Call us </span>
 
                                 <a href="tel:+447438914638" className="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl">
-                                    +447438914638
+                                    +447438555898
                                 </a>
                             </p>
 
