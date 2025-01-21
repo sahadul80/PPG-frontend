@@ -19,6 +19,7 @@ import VisaCategories from "./components/visaCategories";
 import VideoList from "./components/videos";
 import Loading from "./components/loading";
 import TopArrow from "./components/toparrow";
+import Sidebar from "./components/sider";
 
 // Animate section when it enters the viewport
 const SectionWithAnimation = ({ children, id }: { children: React.ReactNode, id: string }) => {
@@ -39,7 +40,7 @@ const SectionWithAnimation = ({ children, id }: { children: React.ReactNode, id:
 };
 
 // Lazy load component using Intersection Observer
-const LazyLoadComponent = ({ Component }: { Component: React.ElementType }) => {
+const LazyLoadComponent = ({ Component, ...props }: { Component: React.ElementType, [key: string]: any }) => {
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 0.3,
@@ -47,7 +48,7 @@ const LazyLoadComponent = ({ Component }: { Component: React.ElementType }) => {
 
     return (
         <div ref={ref}>
-            {inView ? <Component /> : <div className="p-4 text-center"><Loading /></div>}
+            {inView ? <Component {...props} /> : <div className="p-4 text-center"><Loading /></div>}
         </div>
     );
 };
@@ -136,7 +137,14 @@ export default function Home() {
             </SectionWithAnimation>
 
             <div className="scroll-section" id="Contact-Us">
-                <LazyLoadComponent Component={ContactForm} />
+                <div className="flex flex-col md:flex-row gap-6">
+                    <div className="md:w-2/3">
+                        <LazyLoadComponent Component={ContactForm} />
+                    </div>
+                    <div className="md:w-1/3">
+                        <LazyLoadComponent Component={Sidebar} style={{ transform: 'scale(0.2)', transformOrigin: 'top left' }} />
+                    </div>
+                </div>
             </div>
 
             <SectionWithAnimation id="Video-Tutorials">

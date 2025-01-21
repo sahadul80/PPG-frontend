@@ -5,6 +5,7 @@ type TeamMember = {
     id: number;
     name: string;
     role: string;
+    mail: string;
     image: string;
     socialLinks: {
         twitter?: string;
@@ -79,6 +80,11 @@ const Team: React.FC<TeamProps> = ({ members }) => {
                                 <div className="pt-6 text-center">
                                     <p className="text-lg leading-normal font-bold mb-1">{member.name}</p>
                                     <p className="text-gray-500 leading-relaxed font-light">{member.role}</p>
+                                    <p className="text-gray-500 leading-relaxed font-light">
+                                        <a href={`mailto:${member.mail}`} className="hover:underline">
+                                            {member.mail}
+                                        </a>
+                                    </p>
                                     {/* Social Links */}
                                     <div className="mt-2 mb-5 space-x-2">
                                         {member.socialLinks.twitter && (

@@ -7,7 +7,7 @@ import { TransitionLink } from "./TransitionLink";
 
 interface VisaCategory {
     type: string;
-    subtypes: { name: string; image: { path: string; alt: string } }[];
+    subtypes: { name: string; image: { path: string; alt: string; } }[];
 }
 
 export default function VisaCategories() {
