@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { TransitionLink } from "./TransitionLink";
 import Loading from "./loading";
+import { TransitionLink } from "./TransitionLink";
 
 interface VisaCategory {
     type: string;
@@ -16,24 +16,25 @@ export default function VisaCategories() {
     const [error, setError] = useState<string | null>(null);
     const [visibleCount, setVisibleCount] = useState(3); // Initial number of categories to show
     const itemsPerPage = 3; // Number of categories to add when "View More" is clicked
+    const [isNavigating, setIsNavigating] = useState(false); // State for navigation loading
     const router = useRouter();
 
     useEffect(() => {
-        async function fetchVisaCategories() {
-            try {
-                const response = await fetch("/api/visa");
-                if (!response.ok) throw new Error("Failed to fetch visa categories.");
-                const data = await response.json();
-                setVisaCategories(data.visa_categories);
-            } catch (err) {
-                setError((err as Error).message);
-            } finally {
-                setLoading(false);
-            }
-        }
-
         fetchVisaCategories();
     }, []);
+
+    const fetchVisaCategories = async () => {
+        try {
+            const response = await fetch("/api/visa");
+            if (!response.ok) throw new Error("Failed to fetch visa categories.");
+            const data = await response.json();
+            setVisaCategories(data.visa_categories);
+        } catch (err) {
+            setError((err as Error).message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleViewMore = () => {
         setVisibleCount((prevCount) => Math.min(prevCount + itemsPerPage, visaCategories.length));
@@ -43,7 +44,20 @@ export default function VisaCategories() {
         setVisibleCount((prevCount) => Math.max(prevCount - itemsPerPage, 3));
     };
 
-    if (loading) return <Loading />;
+    const handleCategoryClick = async (categoryType: string) => {
+        setIsNavigating(true);
+        try {
+            await router.push(
+                `/pages/services/visa-categories/${categoryType
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}`
+            );
+        } finally {
+            setIsNavigating(false); // Ensure to reset the navigation state
+        }
+    };
+
+    if (loading || isNavigating) return <Loading />;
     if (error) return <div className="text-center mt-4 text-red-600">{error}</div>;
 
     return (
@@ -67,13 +81,7 @@ export default function VisaCategories() {
                         <div
                             key={index}
                             className="p-4 md:w-1/3 sm:mb-0 mb-6 group cursor-pointer"
-                            onClick={() =>
-                                router.push(
-                                    `/pages/services/visa-categories/${category.type
-                                        .toLowerCase()
-                                        .replace(/\s+/g, "-")}` // fixed the path without '/pages'
-                                )
-                            }
+                            onClick={() => handleCategoryClick(category.type)}
                         >
                             <div className="rounded-lg h-64 overflow-hidden relative">
                                 <Image
@@ -81,7 +89,7 @@ export default function VisaCategories() {
                                     className="object-cover object-center h-full w-full group-hover:scale-105 transition-transform duration-300"
                                     src={category.subtypes[0]?.image?.path || "/img/default_visa.jpg"}
                                     width={250} // Set a fixed width
-                                    height={175} // Set a fixed height
+                                    height={250} // Set a fixed height
                                 />
                             </div>
                             <h3 className="text-lg text-center font-semibold mb-2 group-hover:text-green-400 transition-colors duration-300">
