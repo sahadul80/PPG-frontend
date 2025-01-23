@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 
@@ -36,3 +37,43 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+=======
+# Dependencies
+node_modules/
+
+# Build Output
+dist/
+build/
+.next/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime Data
+pids/
+*.pid
+*.pid.lock
+
+# Environment Files
+.env
+.env.local
+.env.development
+.env.production
+
+# Coverage Reports
+coverage/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor Settings
+.vscode/
+.idea/
+*.swp
+>>>>>>> 36f827d (macOS update)
