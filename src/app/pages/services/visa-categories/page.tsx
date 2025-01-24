@@ -10,6 +10,7 @@ import ContactForm from "../../../components/contactForm";
 import VisaCategories from "../../../components/visaCategories";
 import ContactCTA from "../../../components/contactCTA";
 import TopArrow from "../../../components/toparrow";
+import Sidebar from "../../../components/sider";
 
 interface VisaCategory {
     type: string;
@@ -52,6 +53,7 @@ export default function VisaCategoriesPage() {
                         <VisaCategories />
                     </div>
                     <div className="md:w-1/3">
+                        <Sidebar />
                         <ContactForm />
                     </div>
                 </div>

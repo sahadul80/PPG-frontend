@@ -6,6 +6,7 @@ import Topbar from "../../../components/topbar";
 import TopArrow from "../../../components/toparrow";
 import ContactCTA from "../../../components/contactCTA";
 import ContactForm from "../../../components/contactForm";
+import Sidebar from "../../../components/sider";
 
 export default function GPCPage() {
     return (
@@ -46,6 +47,7 @@ export default function GPCPage() {
                         </ul>
                     </div>
                     <div className="md:w-1/3">
+                        <Sidebar />
                         <ContactForm />
                     </div>
                 </div>

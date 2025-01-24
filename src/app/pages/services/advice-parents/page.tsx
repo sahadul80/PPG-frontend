@@ -6,6 +6,7 @@ import Topbar from "../../../components/topbar";
 import TopArrow from "../../../components/toparrow";
 import ContactCTA from "../../../components/contactCTA";
 import ContactForm from "../../../components/contactForm";
+import Sidebar from "../../../components/sider";
 
 export default function AdviceParentsPage() {
     return (
@@ -59,6 +60,7 @@ export default function AdviceParentsPage() {
                         </p>
                     </div>
                     <div className="md:w-1/3">
+                        <Sidebar />
                         <ContactForm />
                     </div>
                 </div>
