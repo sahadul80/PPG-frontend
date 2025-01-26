@@ -35,7 +35,7 @@ export default function Footer() {
                             <ul className="mt-8 flex gap-6 flex justify-center">
                                 <li>
                                     <a
-                                        href="#"
+                                        href="https://www.facebook.com/profile.php?id=61572198874141&rdid=iDbP99cepJ3HpryY&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18ZYpwLi4b%2F"
                                         rel="noreferrer"
                                         target="_blank"
                                         className="text-gray-700 transition hover:opacity-75"
