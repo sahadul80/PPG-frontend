@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import Loading from "./loading";
+import WhatsAppButton from "./whatsapp";
 
 interface FormData {
     firstName: string;
@@ -328,6 +329,11 @@ const ContactForm: React.FC = () => {
                         </button>
                     </div>
                 </form>
+		<WhatsAppButton
+        		phoneNumber="+447438555898" // Replace with actual phone number
+        		message="Hello, I need visa services."
+        		photoURL="/img/whatsapp.png"  // Optional, remove if you want default
+      		/>
             </div>
         </div>
     );
