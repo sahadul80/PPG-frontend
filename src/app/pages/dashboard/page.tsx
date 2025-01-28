@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
+import Calendar from "../../components/calendar";
 import Image from "next/image";
 
 export default function Dashboard() {
@@ -90,6 +91,7 @@ export default function Dashboard() {
 
                 {/* Main Dashboard Content */}
                 <main className="p-4">
+                    <Calendar />
                 </main>
             </div>
         </div>

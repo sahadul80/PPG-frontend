@@ -17,33 +17,6 @@ export default function CountryUpdate() {
     const [visibleCount, setVisibleCount] = useState(4); // Initial number of categories to show
     const [transition, setTransition] = useState<string>(""); // Track the animation direction
     const itemsPerPage = 4; // Number of categories to add when "View More" is clicked
-    const http = require('https');
-
-const options = {
-	method: 'GET',
-	hostname: 'university-college-list-and-rankings.p.rapidapi.com',
-	port: null,
-	path: '/api/universities?countryCode=gh',
-	headers: {
-		'x-rapidapi-key': 'Sign Up for Key',
-		'x-rapidapi-host': 'university-college-list-and-rankings.p.rapidapi.com'
-	}
-};
-
-const req = http.request(options, function (res) {
-	const chunks = [];
-
-	res.on('data', function (chunk) {
-		chunks.push(chunk);
-	});
-
-	res.on('end', function () {
-		const body = Buffer.concat(chunks);
-		console.log(body.toString());
-	});
-});
-
-req.end();
 
     useEffect(() => {
         const fetchCountries = async () => {
