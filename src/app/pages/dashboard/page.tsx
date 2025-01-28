@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
-import Calender from "../../components/calender";
+import Calendar from "../../components/calendar";
 import Image from "next/image";
 
 export default function Dashboard() {
@@ -91,14 +91,7 @@ export default function Dashboard() {
 
                 {/* Main Dashboard Content */}
                 <main className="p-4">
-                    <Calender />
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                        Dashboard Overview
-                    </h2>
-                    <p className="text-gray-600">
-                        This is your main dashboard content. You can add
-                        widgets, charts, and more here!
-                    </p>
+                    <Calendar />
                 </main>
             </div>
         </div>
