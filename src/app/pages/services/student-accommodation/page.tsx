@@ -5,6 +5,7 @@ import Topbar from "../../../components/topbar";
 import ContactCTA from "../../../components/contactCTA";
 import TopArrow from "../../../components/toparrow";
 import ContactForm from "../../../components/contactForm";
+import Sidebar from "../../../components/sider";
 
 export default function StudentAccommodationPage() {
     return (
@@ -69,6 +70,7 @@ export default function StudentAccommodationPage() {
                         </ul>
                     </div>
                     <div className="md:w-1/3">
+                        <Sidebar />
                         <ContactForm />
                     </div>
                 </div>

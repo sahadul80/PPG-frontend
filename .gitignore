@@ -20,6 +20,7 @@ pids/
 *.pid.lock
 
 # Environment Files
+env.env
 .env
 .env.local
 .env.development

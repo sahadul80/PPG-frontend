@@ -6,6 +6,7 @@ import Navbar from "../../../components/navbar";
 import TopArrow from "../../../components/toparrow";
 import Topbar from "../../../components/topbar";
 import Link from "next/link";
+import Sidebar from "../../../components/sider";
 
 export default function PartnerUniPage() {
     return (
@@ -52,6 +53,7 @@ export default function PartnerUniPage() {
                         </p>
                     </div>
                     <div className="md:w-1/3">
+                        <Sidebar />
                         <ContactForm />
                     </div>
                 </div>

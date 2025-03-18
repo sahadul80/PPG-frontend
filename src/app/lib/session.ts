@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 import fs from "fs/promises";
 import path from "path";
 
-const secretKey = process.env.SESSION_SECRET;
+const secretKey = process.env.NEXTAUTH_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 const sessionCookieName = "session";
 

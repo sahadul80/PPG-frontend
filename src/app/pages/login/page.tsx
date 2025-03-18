@@ -5,12 +5,14 @@ import Topbar from "../../components/topbar";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const router = useRouter();
 
     async function handleLogin(event: React.FormEvent) {
         event.preventDefault();
@@ -26,8 +28,9 @@ export default function LoginPage() {
 
             if (response.ok) {
                 const { token } = await response.json(); // Assume API returns a token
-                localStorage.setItem("sessionToken", token); // Store token in localStorage
-                window.location.href = "/pages/dashboard"; // Redirect to dashboard
+                localStorage.setItem("token", token);
+		localStorage.setItem("username", username);
+                router.push("/pages/dashboard"); // Redirect to dashboard
             } else {
                 const { message } = await response.json();
                 setError(message || "Login failed");
@@ -55,7 +58,7 @@ export default function LoginPage() {
             return;
         }
 
-        window.location.href = "/pages/login";
+        router.push("/pages/login");
     }
 
     return (

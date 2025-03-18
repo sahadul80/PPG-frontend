@@ -1,104 +1,134 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Toaster } from "react-hot-toast";
-import Calender from "../../components/calender";
-import Image from "next/image";
+import Calendar from "../../components/calendar";
+import ContactRequests from "../../components/contactRequest";
+import Loading from "@/app/components/loading";
+import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, LogOut } from "lucide-react";
 
 export default function Dashboard() {
     const [user, setUser] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [token, setToken] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const router = useRouter();
+    const [activeLink, setActiveLink] = useState("contactRequest");
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(() => {
-        async function fetchSession() {
-            const userName = localStorage.getItem("sessionToken");
-            setUser(userName);
+        const fetchSession = async () => {
+            const session = localStorage.getItem("token");
+            const sessionUser = localStorage.getItem("username");
 
-            if (!userName) {
-                window.location.href = "/pages/login";
+            if (!session) {
+                router.push("/pages/login");
                 return;
             }
-        }
 
-        fetchSession();
-    }, []);
+            setToken(session);
+            setUser(sessionUser);
+            setIsLoading(false);
+        };
 
-    if (isLoading) {
-        return <p>Loading...</p>;
-    }
+        fetchSession().catch(console.error);
+    }, [router]);
 
-    async function handleLogout() {
-        try {
-            localStorage.removeItem("sessionToken");
-            window.location.href = "/pages/login";
-        } catch (error) {
-            console.error("Error during logout:", error);
-        }
+    if (isLoading) return <Loading />;
+
+    function handleLogout() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        router.push("/pages/login");
     }
 
     return (
         <div className="flex min-h-screen bg-gray-100">
-            <Toaster />
-            {/* Right-Side Navigation Panel */}
-            <aside className="w-64">
-                <div className="p-6">
+            {/* Sidebar - Always Visible on Desktop, Slide-in on Mobile */}
+            <div className="hidden sm:block sm:w-64 bg-white shadow-lg min-h-screen">
+                <div className="p-6 border-b">
                     <h2 className="text-lg font-semibold">Dashboard</h2>
                 </div>
-                <nav className="space-y-2 px-6">
-                    <a
-                        href="/CMS"
-                        className="block px-4 py-2 rounded"
-                    >
-                        CMS
-                    </a>
-                    <a
-                        href="/profile"
-                        className="block px-4 py-2 rounded"
-                    >
-                        Profile
-                    </a>
-                    <a
-                        href="/"
-                        className="block px-4 py-2 rounded"
-                    >
-                        Home
-                    </a>
+                <nav className="space-y-2 px-6 mt-4">
+                    {["contactRequest", "subscribers", "calendar"].map((link) => (
+                        <button
+                            key={link}
+                            onClick={() => setActiveLink(link)}
+                            className={`w-full text-left px-4 py-3 rounded transition-all duration-200 ${
+                                activeLink === link ? "bg-gray-800 text-white font-medium" : "hover:bg-gray-300"
+                            }`}
+                        >
+                            {link === "contactRequest" && "Contact Requests"}
+                            {link === "subscribers" && "Subscribers"}
+                            {link === "calendar" && "Calendar"}
+                        </button>
+                    ))}
                 </nav>
-            </aside>
+            </div>
+
+            {/* Mobile Sidebar */}
+            <AnimatePresence>
+                {isSidebarOpen && (
+                    <motion.aside
+                        initial={{ x: -250 }}
+                        animate={{ x: 0 }}
+                        exit={{ x: -250 }}
+                        transition={{ type: "spring", stiffness: 200 }}
+                        className="fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-40 sm:hidden"
+                    >
+                        <div className="p-6 border-b flex items-center justify-between">
+                            <h2 className="text-lg font-semibold">Dashboard</h2>
+                            <button onClick={() => setIsSidebarOpen(false)} className="sm:hidden">
+                                <X className="h-6 w-6" />
+                            </button>
+                        </div>
+                        <nav className="space-y-2 px-6 mt-4">
+                            {["contactRequest", "subscribers", "calendar"].map((link) => (
+                                <button
+                                    key={link}
+                                    onClick={() => {
+                                        setActiveLink(link);
+                                        setIsSidebarOpen(false);
+                                    }}
+                                    className={`w-full text-left px-4 py-3 rounded transition-all duration-200 ${
+                                        activeLink === link ? "bg-gray-800 text-white font-medium" : "hover:bg-gray-300"
+                                    }`}
+                                >
+                                    {link === "contactRequest" && "Contact Requests"}
+                                    {link === "subscribers" && "Subscribers"}
+                                    {link === "calendar" && "Calendar"}
+                                </button>
+                            ))}
+                        </nav>
+                    </motion.aside>
+                )}
+            </AnimatePresence>
 
             {/* Main Content */}
-            <div className="flex-1">
-                {/* Top Bar */}
-                <header className="flex items-center justify-between bg-white shadow px-6 py-4">
-                    <h1 className="text-xl font-semibold text-gray-800">
-                        Welcome, {user ? user : "Guest"}!
+            <div className="flex-1 min-h-screen flex flex-col">
+                {/* Header (Fixed on Mobile) */}
+                <header className="fixed top-0 left-0 w-full bg-white shadow px-6 py-4 flex items-center justify-between z-30 sm:relative sm:z-0">
+                    {/* Sidebar Toggle Button (Mobile) */}
+                    <button className="sm:hidden" onClick={() => setIsSidebarOpen(true)}>
+                        <Menu className="h-6 w-6" />
+                    </button>
+
+                    {/* Welcome User */}
+                    <h1 className="text-sm sm:text-lg font-semibold text-gray-800 whitespace-nowrap">
+                        Welcome, {user || "Guest"}!
                     </h1>
-                    <div className="flex space-x-4">
-                        <a
-                            href="/settings"
-                            className="px-4 py-2 text-blue-600 border border-blue-600 rounded hover:bg-blue-600 hover:text-white"
-                        >
-                            Settings
-                        </a>
-                        <button
-                            onClick={handleLogout}
-                            className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none"
-                        >
-                            Logout
-                        </button>
-                    </div>
+
+                    {/* Logout Button */}
+                    <button onClick={handleLogout} className="px-3 py-1 text-xs sm:text-sm bg-red-500 text-white hover:bg-red-600 rounded flex items-center">
+                        <LogOut className="w-4 h-4 mr-1" />
+                        Logout
+                    </button>
                 </header>
 
-                {/* Main Dashboard Content */}
-                <main className="p-4">
-                    <Calender />
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                        Dashboard Overview
-                    </h2>
-                    <p className="text-gray-600">
-                        This is your main dashboard content. You can add
-                        widgets, charts, and more here!
-                    </p>
+                {/* Main Content */}
+                <main className="p-4 mt-16 sm:mt-0">
+                    {activeLink === "contactRequest" && <ContactRequests />}
+                    {activeLink === "calendar" && <Calendar />}
                 </main>
             </div>
         </div>

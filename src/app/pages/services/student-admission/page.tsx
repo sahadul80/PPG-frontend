@@ -7,6 +7,7 @@ import ContentSection from "../../../components/contentSection";
 import ContactForm from "../../../components/contactForm";
 import ContactCTA from "../../../components/contactCTA";
 import TopArrow from "../../../components/toparrow";
+import Sidebar from "../../../components/sider";
 
 export default function StudentAdmissionPage() {
     return (
@@ -21,6 +22,7 @@ export default function StudentAdmissionPage() {
                     </div>
                     {/* Contact Form */}
                     <div className="md:w-1/3">
+                        <Sidebar />
                         <ContactForm />
                     </div>
                 </div>

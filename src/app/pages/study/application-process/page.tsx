@@ -18,10 +18,10 @@ export default function ApplicationProcessPage() {
                     <div className="md:w-2/3">
                     
                         <h1 className="text-2xl font-semibold mb-6">
-                            Application Services by AHZ for UK Universities
+                            Application Services by PPG for UK Universities
                         </h1>
                         <p className="mb-4">
-                            At AHZ, we are proud to be one of the leading organizations helping students worldwide achieve their goal of studying in the UK. The UK is renowned for its fantastic education system, and a degree from a UK university is highly valued by employers.
+                            At PPG, we are proud to be one of the leading organizations helping students worldwide achieve their goal of studying in the UK. The UK is renowned for its fantastic education system, and a degree from a UK university is highly valued by employers.
                         </p>
 
                         <h2 className="text-xl font-semibold mt-6 mb-4">Our Services</h2>
@@ -33,7 +33,7 @@ export default function ApplicationProcessPage() {
                             <li>Free academic and career guidance</li>
                         </ul>
 
-                        <h2 className="text-xl font-semibold mt-6 mb-4">Why Choose AHZ?</h2>
+                        <h2 className="text-xl font-semibold mt-6 mb-4">Why Choose PPG?</h2>
                         <p className="mb-4">
                             Our experienced team has helped thousands of students secure places in UK universities. With exclusive partnerships and deep knowledge of the UK application process, we provide comprehensive support, ensuring you have the best chance of success.
                         </p>

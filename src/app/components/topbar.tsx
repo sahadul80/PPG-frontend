@@ -58,8 +58,8 @@ export default function Topbar() {
             <div className="topbar flex justify-between items-center px-2 py-2">
                 {/* Social Icons Section */}
                 <div className="topbar-left flex space-x-1">
-                    <TransitionLink
-                        href="#"
+                    <a
+                        href="https://www.facebook.com/profile.php?id=61572198874141&rdid=iDbP99cepJ3HpryY&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18ZYpwLi4b%2F"
                         className="text-gray-700 transition hover:opacity-75"
                     >
                         <span className="sr-only">Facebook</span>
@@ -71,7 +71,7 @@ export default function Topbar() {
                                 clipRule="evenodd"
                             />
                         </svg>
-                    </TransitionLink>
+                    </a>
                     <TransitionLink
                         href="#"
                         className="text-gray-700 transition hover:opacity-75"

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { TransitionLink } from "./TransitionLink";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);

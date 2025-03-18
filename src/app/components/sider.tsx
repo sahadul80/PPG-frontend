@@ -84,7 +84,7 @@ const Sidebar: React.FC = () => {
                                 <img
                                     src="https://cdn.ahzassociates.co.uk/wp-content/uploads/2023/06/25111447/British-Council-IELTS-Sidebar.png"
                                     alt="britishcouncil"
-                                    className="max-w-[70%] rounded p-4"
+                                    className="max-w-[75%] rounded p-4"
                                 />
                             </div>
                         </a>
@@ -103,7 +103,7 @@ const Sidebar: React.FC = () => {
                                 <img
                                     src="https://cdn.ahzassociates.co.uk/wp-content/uploads/2023/03/20181759/images2.png"
                                     alt="britishcouncil"
-                                    className="max-w-[60%] rounded"
+                                    className="max-w-[70%] rounded"
                                 />
                             </div>
                         </a>
@@ -122,7 +122,7 @@ const Sidebar: React.FC = () => {
                                 <img
                                     src="https://cdn.ahzassociates.co.uk/wp-content/uploads/2023/07/20152333/Trinity-College-London.png"
                                     alt="Trinity-College"
-                                    className="max-w-[70%] rounded"
+                                    className="max-w-[75%] rounded"
                                 />
                             </div>
                         </a>
@@ -141,7 +141,7 @@ const Sidebar: React.FC = () => {
                                 <img
                                     src="https://cdn.ahzassociates.co.uk/wp-content/uploads/2023/03/20181326/image3.png"
                                     alt="Pearson-PTE-Academic"
-                                    className="max-w-[50%] rounded"
+                                    className="max-w-[60%] rounded"
                                 />
                             </div>
                         </a>
@@ -194,7 +194,7 @@ const Sidebar: React.FC = () => {
                                 <img
                                     src="https://cdn.ahzassociates.co.uk/wp-content/uploads/2023/06/14112618/UCAs.png"
                                     alt="ucas"
-                                    className="max-w-[50%] rounded"
+                                    className="max-w-[60%] rounded"
                                 />
                             </div>
                         </a>

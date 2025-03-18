@@ -19,6 +19,7 @@ import VisaCategories from "./components/visaCategories";
 import VideoList from "./components/videos";
 import Loading from "./components/loading";
 import TopArrow from "./components/toparrow";
+import CountryUpdate from "./components/countryUpdate";
 import Sidebar from "./components/sider";
 
 // Animate section when it enters the viewport
@@ -124,17 +125,25 @@ export default function Home() {
                 <Carousel />
             </SectionWithAnimation>
 
-            <LazyLoadComponent Component={MarqueeUpdate} />
-
             <SectionWithAnimation id="Facts">
                 <Facts />
             </SectionWithAnimation>
+
+	    <MarqueeUpdate />
 
             <LazyLoadComponent Component={VisaCategories} />
 
             <SectionWithAnimation id="Features">
                 <Features />
             </SectionWithAnimation>
+
+            <SectionWithAnimation id="Video-Tutorials">
+                <VideoList />
+            </SectionWithAnimation>
+
+            <LazyLoadComponent Component={Testimonial} />
+
+            <LazyLoadComponent Component={CountryUpdate} />
 
             <div className="scroll-section" id="Contact-Us">
                 <div className="flex flex-col md:flex-row gap-6">
@@ -146,12 +155,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-
-            <SectionWithAnimation id="Video-Tutorials">
-                <VideoList />
-            </SectionWithAnimation>
-
-            <LazyLoadComponent Component={Testimonial} />
 
             <SectionWithAnimation id="Our-Team">
                 <TeamUpdate />
