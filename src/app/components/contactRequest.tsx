@@ -69,6 +69,25 @@ export default function ContactRequests() {
         setSearchTerm(e.target.value.toLowerCase());
     };
 
+    const formatPhoneNumber = (phone: string) => {
+        return phone.replace(/\D/g, "");
+    };
+
+    const getContactLink = (item: DashboardDataItem) => {
+        const formattedPhone = formatPhoneNumber(item.phone);
+
+        if (item.communicationMedium === "Email") {
+            return `mailto:${item.email}`;
+        } else if (item.communicationMedium === "Phone") {
+            return `tel:${formattedPhone}`; // Corrected the issue here
+        } else if (item.communicationMedium === "WhatsApp") {
+            // WhatsApp requires phone number in international format
+            return `https://wa.me/${formattedPhone}?text=Hello,%20I%20would%20like%20to%20connect%20with%20you%20regarding%20your%20service.`;
+        } else {
+            return "#"; // fallback
+        }
+    };
+
     if (isLoading) return <Loading />;
 
     const filteredData = dashboardData.filter((item) =>
@@ -76,8 +95,8 @@ export default function ContactRequests() {
     );
 
     return (
-        <div className="p-4">
-            <h2 className="text-xl sm:text-2xl font-semibold mb-4">Contact Submissions</h2>
+        <div>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center">Contact Requests</h2>
 
             {error && (
                 <div className="bg-red-100 text-red-800 p-4 rounded mb-4">{error}</div>
@@ -91,55 +110,24 @@ export default function ContactRequests() {
                 value={searchTerm}
             />
 
-            {/* Desktop Table */}
-            <div className="hidden sm:block overflow-x-auto border border-gray-200 rounded-lg">
-                <div className="max-h-[70vh] overflow-y-auto">
-                    <table className="w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50 sticky top-0 z-10">
-                            <tr>
-                                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">First Name</th>
-                                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Last Name</th>
-                                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Company</th>
-                                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-                                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Phone</th>
-                                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Preference</th>
-                                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Reason</th>
-                                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Policy Accepted</th>
-                            </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                            {filteredData.map((item, index) => (
-                                <tr key={index} className="hover:bg-gray-50 transition-colors">
-                                    <td className="px-4 py-4 text-sm text-gray-900">{item.firstName}</td>
-                                    <td className="px-4 py-4 text-sm text-gray-900">{item.lastName}</td>
-                                    <td className="px-4 py-4 text-sm text-gray-900">{item.company}</td>
-                                    <td className="px-4 py-4 text-sm text-blue-600 hover:underline">
-                                        <a href={`mailto:${item.email}`}>{item.email}</a>
-                                    </td>
-                                    <td className="px-4 py-4 text-sm text-gray-900">{item.phone}</td>
-                                    <td className="px-4 py-4 text-sm text-gray-900">{item.communicationMedium}</td>
-                                    <td className="px-4 py-4 text-sm text-gray-900">{item.reason}</td>
-                                    <td className="px-4 py-4 text-sm">
-                                        {item.agreeToPolicies ? "✔ Accepted" : "✗ Declined"}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
             {/* Mobile View */}
-            <div className="sm:hidden space-y-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 text-sm rounded-lg">
                 {filteredData.map((item, index) => (
-                    <div key={index} className="border border-gray-200 rounded-lg p-4 shadow-md">
-                        <p><strong>Name:</strong> {item.firstName} {item.lastName}</p>
-                        <p><strong>Company:</strong> {item.company}</p>
-                        <p><strong>Email:</strong> <a href={`mailto:${item.email}`} className="text-blue-600 underline">{item.email}</a></p>
-                        <p><strong>Phone:</strong> {item.phone}</p>
-                        <p><strong>Preference:</strong> {item.communicationMedium}</p>
-                        <p><strong>Reason:</strong> {item.reason}</p>
-                        <p><strong>Policy:</strong> {item.agreeToPolicies ? "✔ Accepted" : "✗ Declined"}</p>
+                    <div key={index} className="border border-gray-200 rounded-lg p-4 shadow-lg flex flex-col space-y-4 bg-white hover:transform hover:translate-x-[-8px] hover:translate-y-[-8px]">
+                        <p>Hello, I am <strong>{item.firstName} {item.lastName}</strong>.</p>
+                        <p>I am currently in <strong>{item.company}</strong>.</p>
+                        <p>I want <strong>{item.reason}</strong> service from your agency.</p>
+                        <div className="flex flex-col space-y-2">
+                            <p>You can contact me over <strong>{item.communicationMedium}</strong></p>
+                            <a
+                                href={getContactLink(item)}
+                                className="w-full py-2 px-2 text-center rounded-lg hover:bg-gray-600 transition-colors border-2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <strong>Let's Talk</strong>
+                            </a>
+                        </div>
                     </div>
                 ))}
             </div>
