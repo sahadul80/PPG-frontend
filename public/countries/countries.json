@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Bangladesh",
+    "description": "Welcome to Bamngladesh, the land of cultures, and experiences.",
+    "image": "img/bangladesh.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Uinted States",
+    "description": "Experience the diverse landscapes and cultures in the USA.",
+    "image": "img/usaland.jpg",
+    "link": "countries-details.html"
+  },
+  {
+    "name": "Canada",
+    "description": "Discover the rich history and vibrant culture of Canada.",
+    "image": "img/canada.jpg",
+    "link": "countries-details.html"
+  },
+  {
+    "name": "United Kingdom",
+    "description": "Discover the rich history and vibrant culture of India.",
+    "image": "img/uk.jpg",
+    "link": "countries-details.html"
+  }
+]

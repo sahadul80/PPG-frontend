@@ -1,0 +1,23 @@
+[
+  {
+    "img": "/img/testimonial-1.jpg",
+    "name": "John Doe",
+    "profession": "Software Engineer",
+    "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "rating": 5
+  },
+  {
+    "img": "/img/testimonial-2.jpg",
+    "name": "Jane Smith",
+    "profession": "Designer",
+    "review": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "rating": 4
+  },
+  {
+    "img": "/img/testimonial-3.jpg",
+    "name": "Mark Wilson",
+    "profession": "Marketing Specialist",
+    "review": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "rating": 5
+  }
+]

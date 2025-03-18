@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "Shahin Miah",
+    "role": "Chairman",
+    "mail": "ShahinM@peoplepulseglobal.com",
+    "image": "/img/ppg_chairman_up.png",
+    "socialLinks": {
+      "twitter": "https://twitter.com",
+      "facebook": "https://facebook.com",
+      "instagram": "https://instagram.com",
+      "linkedin": "https://linkedin.com"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Md Milon",
+    "role": "Partner",
+    "mail": "MilonM@peoplepulseglobal.com",
+    "image": "https://tailone.tailwindtemplate.net/src/img/dummy/avatar1.png",
+    "socialLinks": {
+      "twitter": "https://twitter.com",
+      "facebook": "https://facebook.com",
+      "instagram": "https://instagram.com",
+      "linkedin": "https://linkedin.com"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Noman Naeem",
+    "role": "Partner",
+    "mail": "NomanN@peoplepulseglobal.com",
+    "image": "https://tailone.tailwindtemplate.net/src/img/dummy/avatar4.png",
+    "socialLinks": {
+      "twitter": "https://twitter.com",
+      "facebook": "https://facebook.com",
+      "instagram": "https://instagram.com",
+      "linkedin": "https://linkedin.com"
+    }
+  }
+]

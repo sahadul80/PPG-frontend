@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Student Visa",
+    "description": "Visa for pursuing education abroad.",
+    "image": "img/office-1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Work Visa",
+    "description": "Visa for employment opportunities.",
+    "image": "img/office-2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Travel Visa",
+    "description": "Visa for short-term travel or tourism.",
+    "image": "img/office-3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Immigrant Visa",
+    "description": "Visa for permanent residency or immigration.",
+    "image": "img/office-4.jpg"
+  }
+]

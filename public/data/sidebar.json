@@ -1,0 +1,34 @@
+[
+  {
+    "navigationMenu": [
+      {
+        "name": "Application Process",
+        "link": "/pages/study/application-process"
+      },
+      {
+        "name": "UK Education Support",
+        "link": "/pages/study/help-&-support"
+      },
+      {
+        "name": "Job Opportunity",
+        "link": "https://ahzassociates.co.uk/job-opportunity/"
+      },
+      {
+        "name": "Latest UK University Ranking 2024",
+        "link": "/pages/study/university-ranking"
+      },
+      {
+        "name": "UK Education Services",
+        "link": "https://ahzassociates.co.uk/best-uk-education-services/"
+      },
+      {
+        "name": "Student Admission Service",
+        "link": "/pages/servies/student-admission"
+      },
+      {
+        "name": "UK University Scholarships for International Students",
+        "link": "/pages/study/scholarships"
+      }
+    ]
+  }
+]
