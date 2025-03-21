@@ -120,19 +120,19 @@ export default function ContactRequests() {
 
     return (
         <div>
-            <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center">Contact Requests</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4">Contact Requests</h2>
 
             {error && <div className="bg-red-100 text-red-800 p-4 rounded mb-4">{error}</div>}
 
             <div className="flex justify-between mb-4">
                 <input
                     type="text"
-                    className="p-2 w-full sm:w-1/2 border border-gray-300 rounded"
+                    className="w-full sm:w-1/2 border border-gray-300 rounded"
                     placeholder="Search..."
                     onChange={handleSearchChange}
                     value={searchTerm}
                 />
-                <div>
+                <div className="w-full sm:w-1/2 flex justify-end rounded-lg">
                     <button
                         onClick={() => setViewMode("card")}
                         className={`px-4 py-2 rounded border ${viewMode === "card" ? "" : "bg-gray-200"}`}
@@ -149,9 +149,9 @@ export default function ContactRequests() {
             </div>
 
             {viewMode === "card" ? (
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 text-sm rounded-lg">
+                <div className="p-2 max-h-[500px] overflow-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 text-sm rounded-lg">
                     {filteredData.map((item, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-4 shadow-lg bg-white">
+                        <div key={index} className="office-card border border-gray-200 rounded-lg p-4 shadow-lg bg-white">
                             <p>Hello, I am <strong>{item.firstName} {item.lastName}</strong>.</p>
                             <p>I work at <strong>{item.company}</strong>.</p>
                             <p>I want <strong>{item.reason}</strong> service.</p>
