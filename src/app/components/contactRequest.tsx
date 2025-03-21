@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useRef } from "react";
 import Loading from "@/app/components/loading";
+import CardViewSVG from "./cardViewSVG";
+import ListViewSVG from "./ListViewSVG";
 
 interface DashboardDataItem {
     firstName: string;
@@ -130,19 +132,18 @@ export default function ContactRequests() {
                     onChange={handleSearchChange}
                     value={searchTerm}
                 />
-
-                <div className="space-x-2">
+                <div>
                     <button
                         onClick={() => setViewMode("card")}
-                        className={`px-4 py-2 rounded border ${viewMode === "card" ? "bg-gray-600 text-white" : "text-black"}`}
+                        className={`px-4 py-2 rounded border ${viewMode === "card" ? "" : "bg-gray-200"}`}
                     >
-                        Card View
+                        <CardViewSVG />
                     </button>
                     <button
                         onClick={() => setViewMode("table")}
-                        className={`px-4 py-2 rounded border ${viewMode === "table" ? "bg-gray-600 text-white" : "text-black"}`}
+                        className={`px-4 py-2 rounded border ${viewMode === "table" ? "" : "bg-gray-200"}`}
                     >
-                        Table View
+                        <ListViewSVG/>
                     </button>
                 </div>
             </div>
