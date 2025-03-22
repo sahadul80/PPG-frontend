@@ -79,7 +79,7 @@ export default function AllSubs() {
             <div className="flex justify-between mb-4">
                 <input
                     type="text"
-                    className="w-full sm:w-1/2 border border-gray-300 rounded"
+                    className="w-full sm:w-1/2 border border-gray-300 rounded p-2"
                     placeholder="Search..."
                     onChange={handleSearchChange}
                     value={searchTerm}
@@ -87,13 +87,13 @@ export default function AllSubs() {
                 <div className="w-full sm:w-1/2 flex justify-end rounded-lg">
                     <button
                         onClick={() => setViewMode("card")}
-                        className={`px-4 py-2 rounded border ${viewMode === "card" ? "" : "bg-gray-200"}`}
+                        className={`px-4 py-2 rounded border ${viewMode === "card" ? "bg-gray-300" : "bg-gray-200"}`}
                     >
                         <CardViewSVG />
                     </button>
                     <button
                         onClick={() => setViewMode("table")}
-                        className={`px-4 py-2 rounded border ${viewMode === "table" ? "" : "bg-gray-200"}`}
+                        className={`px-4 py-2 rounded border ${viewMode === "table" ? "bg-gray-300" : "bg-gray-200"}`}
                     >
                         <ListViewSVG />
                     </button>
@@ -101,13 +101,15 @@ export default function AllSubs() {
             </div>
 
             {viewMode === "card" ? (
-                <div className="p-2 max-h-[500px] overflow-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-1 text-sm rounded-lg">
+                <div className="p-2 max-h-[500px] overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-1 text-sm">
                     {filteredData.map((item, index) => (
-                        <div key={index} className="office-card border border-gray-200 rounded-lg shadow-lg bg-white">
-                            <p>Email: <strong>{item.email}</strong>.</p>
+                        <div key={index} className="office-card border border-gray-200 rounded-lg shadow-lg bg-white p-4 flex flex-col items-center text-center">
+                            <p className="mb-2 text-gray-700">
+                                Email: <strong>{item.email}</strong>
+                            </p>
                             <a
                                 href={getContactLink(item)}
-                                className="text-sm w-full py-2 px-2 text-center rounded-lg hover:bg-gray-600 transition-colors border-2 block"
+                                className="w-full py-1 px-1 text-sm text-center rounded-lg hover:bg-gray-600 transition-colors border-2 block"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -119,23 +121,11 @@ export default function AllSubs() {
             ) : (
                 <div className="max-h-[500px] overflow-auto border border-gray-300">
                     <table className="min-w-full text-sm border-collapse">
-                        {/* Sticky Header */}
                         <thead className="bg-gray-100 sticky top-0 z-10">
                             <tr className="bg-gray-600 text-white">
-                                {["Email"].map((header, index) => (
-                                    <th
-                                        key={index}
-                                        ref={(el) => {
-                                            if (el) columnRefs.current[index] = el;
-                                        }}
-                                        className="border p-2 relative bg-gray-600 text-white"
-                                    >
-                                        {header}
-                                    </th>
-                                ))}
+                                <th className="border p-2">Email</th>
                             </tr>
                         </thead>
-                        {/* Scrollable Body */}
                         <tbody className="max-h-[500px] overflow-auto">
                             {filteredData.map((item, index) => (
                                 <tr key={index} className="border text-center">
@@ -147,7 +137,6 @@ export default function AllSubs() {
                         </tbody>
                     </table>
                 </div>
-
             )}
         </div>
     );

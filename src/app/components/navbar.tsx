@@ -4,7 +4,7 @@ import Image from "next/image";
 import { TransitionLink } from "./TransitionLink";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -129,7 +129,7 @@ export default function Navbar() {
                         <path d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z" />
                     </svg>
                 </button>
-
+                <AnimatePresence>
                 <div
                     className={`bg-white lg:flex lg:items-center lg:space-x-6 ${isMenuOpen ? "block" : "hidden"
                         } absolute lg:static top-16 left-0 right-0 flex-col lg:flex-row border-b border-gray-200`}
@@ -182,6 +182,7 @@ export default function Navbar() {
                         </div>
                     ))}
                 </div>
+                </AnimatePresence>
             </nav>
         </div>
     );

@@ -158,7 +158,7 @@ export default function ContactRequests() {
                             <p>You can contact me via <strong>{item.communicationMedium}</strong>.</p>
                             <a
                                 href={getContactLink(item)}
-                                className="w-full py-2 px-2 text-center rounded-lg hover:bg-gray-600 transition-colors border-2 block"
+                                className="w-full py-1 px-1 text-center rounded-lg hover:bg-gray-600 transition-colors border-2 block"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

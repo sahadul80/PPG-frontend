@@ -47,7 +47,7 @@ export default function Dashboard() {
         <div className="flex min-h-screen bg-gray-100">
             {/* Sidebar - Always Visible on Desktop, Slide-in on Mobile */}
             <div className="hidden sm:block sm:w-64 bg-white shadow-lg min-h-screen">
-                <div className="p-6 border-b">
+                <div className="p-4 border-b">
                     <h2 className="text-lg font-semibold">Dashboard</h2>
                 </div>
                 <nav className="space-y-1 px-4 mt-2 sm:text-sm">
@@ -55,7 +55,7 @@ export default function Dashboard() {
                         <button
                             key={link}
                             onClick={() => setActiveLink(link)}
-                            className={`w-full text-left px-4 py-3 rounded transition-all duration-200 ${
+                            className={`w-full text-left px-2 py-2 rounded transition-all duration-200 ${
                                 activeLink === link ? "" : "bg-gray-200 text-black"
                             }`}
                         >
@@ -92,7 +92,7 @@ export default function Dashboard() {
                                         setIsSidebarOpen(false);
                                     }}
                                     className={`w-full text-left px-4 py-2 rounded transition-all duration-200 ${
-                                        activeLink === link ? "bg-gray-800 text-white font-medium" : "hover:bg-gray-300"
+                                        activeLink === link ? "" : "bg-gray-200 text-black"
                                     }`}
                                 >
                                     {link === "contactRequest" && "Contact Requests"}
