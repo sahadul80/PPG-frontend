@@ -7,6 +7,7 @@ import Loading from "@/app/components/loading";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, LogOut } from "lucide-react";
+import AllSubs from "../../components/allSubs";
 
 export default function Dashboard() {
     const [user, setUser] = useState<string | null>(null);
@@ -49,13 +50,13 @@ export default function Dashboard() {
                 <div className="p-6 border-b">
                     <h2 className="text-lg font-semibold">Dashboard</h2>
                 </div>
-                <nav className="space-y-2 px-6 mt-4">
+                <nav className="space-y-1 px-4 mt-2 sm:text-sm">
                     {["contactRequest", "subscribers", "calendar"].map((link) => (
                         <button
                             key={link}
                             onClick={() => setActiveLink(link)}
                             className={`w-full text-left px-4 py-3 rounded transition-all duration-200 ${
-                                activeLink === link ? "bg-gray-800 text-white font-medium" : "hover:bg-gray-300"
+                                activeLink === link ? "" : "bg-gray-200 text-black"
                             }`}
                         >
                             {link === "contactRequest" && "Contact Requests"}
@@ -90,7 +91,7 @@ export default function Dashboard() {
                                         setActiveLink(link);
                                         setIsSidebarOpen(false);
                                     }}
-                                    className={`w-full text-left px-4 py-3 rounded transition-all duration-200 ${
+                                    className={`w-full text-left px-4 py-2 rounded transition-all duration-200 ${
                                         activeLink === link ? "bg-gray-800 text-white font-medium" : "hover:bg-gray-300"
                                     }`}
                                 >
@@ -128,6 +129,7 @@ export default function Dashboard() {
                 {/* Main Content */}
                 <main className="p-4 mt-16 sm:mt-0">
                     {activeLink === "contactRequest" && <ContactRequests />}
+                    {activeLink === "subscribers" && <AllSubs />}
                     {activeLink === "calendar" && <Calendar />}
                 </main>
             </div>

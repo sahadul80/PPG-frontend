@@ -59,7 +59,7 @@ async function sendVerificationEmail(email: string) {
         text: `Thank you for subscribing to People Pulse Global ltd.! Please verify your email to complete the subscription.`,
         html: `
             <p>Thank you for subscribing!</p>
-            <p>Please verify your email to complete the subscription.</p>
+            <p>You will be notified with our Services time to time.</p>
         `,
     };
 

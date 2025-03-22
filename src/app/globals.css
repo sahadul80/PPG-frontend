@@ -1110,14 +1110,14 @@ a {
     background-color: #f9f9f9; /* Light background */
     border: 1px solid #ddd; /* Light border */
     border-radius: 8px; /* Rounded corners */
-    padding: 20px; /* Space inside the card */
-    margin-bottom: 20px; /* Space between cards */
+    padding: 15px; /* Space inside the card */
+    margin-bottom: 10px; /* Space between cards */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
 }
 
     .office-card:hover {
-        transform: translateY(-5px); /* Lift card on hover */
+        transform: translateY(-8px); /* Lift card on hover */
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Darker shadow for hover effect */
     }
 
